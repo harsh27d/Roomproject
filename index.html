@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RoomMate — Managing shared living, made simple. Split expenses, assign chores, post house announcements, and live in harmony." />
+  <meta name="keywords" content="roommate app, split bills, chore tracker, shared apartment management, flatmate expense split" />
+  <title>RoomMate — Managing Shared Living, Made Simple</title>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="common.css" />
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-logo" id="nav-logo">
+        <div class="logo-icon">🏠</div>
+        <span>Room<span class="gradient-text">Mate</span></span>
+      </a>
+
+      <div class="navbar-links" id="navLinks">
+        <a href="index.html" class="active" id="nav-home">Home</a>
+        <a href="features.html" id="nav-features">Features</a>
+        <a href="howtojoin.html" id="nav-howtojoin">How to Join</a>
+      </div>
+
+      <div class="navbar-cta">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light theme" title="Toggle theme">
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+          <span class="icon-sun" aria-hidden="true">☀️</span>
+        </button>
+        <a href="howtojoin.html" class="btn btn-primary" id="nav-get-started">Get Started</a>
+      </div>
+
+      <button class="navbar-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero-section" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        
+        <!-- Left: Hero Text & CTA -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>The #1 App for Shared Living</span>
+          </div>
+
+          <h1 class="hero-title">
+            Managing Shared Living, <br />
+            <span class="gradient-text">Made Simple</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Split bills, assign tasks, stay organized — all in one place. Say goodbye to awkward money conversations and messy chore disputes forever.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="howtojoin.html" class="btn btn-primary" id="hero-cta-primary">
+              <span>Get Started Free</span>
+              <span>→</span>
+            </a>
+            <a href="features.html" class="btn btn-outline" id="hero-cta-secondary">
+              <span>Explore Features</span>
+            </a>
+          </div>
+
+          <!-- Trust & Social Proof Bar -->
+          <div class="hero-trust-bar">
+            <div class="trust-avatars">
+              <div class="trust-avatar">P</div>
+              <div class="trust-avatar">A</div>
+              <div class="trust-avatar">R</div>
+              <div class="trust-avatar">+</div>
+            </div>
+            <div class="trust-text">
+              <div class="trust-stars">★★★★★</div>
+              <span>Trusted by <strong>10,000+ roommates</strong> across 15+ cities</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Hero Illustration & Floating Badges -->
+        <div class="hero-visual-wrapper">
+          <div class="hero-glow-circle"></div>
+
+          <!-- Floating Interactive Badge 1: Split Expense -->
+          <div class="floating-badge badge-expense" id="badge-expense">
+            <div class="badge-icon teal">💰</div>
+            <div class="badge-text">
+              <span class="badge-title">WiFi Bill Split</span>
+              <span class="badge-sub">Harsh settled <span class="highlight-positive">₹299</span></span>
+            </div>
+          </div>
+
+          <!-- Main Image Card -->
+          <div class="hero-image-card">
+            <img 
+              src="assets/hero-room.jpg" 
+              alt="Modern cozy flat shared by roommates" 
+              width="600" 
+              height="450"
+              loading="eager"
+            />
+          </div>
+
+          <!-- Floating Interactive Badge 2: Rotating Tasks -->
+          <div class="floating-badge badge-task" id="badge-task">
+            <div class="badge-icon purple">🧹</div>
+            <div class="badge-text">
+              <span class="badge-title">Kitchen Cleaning</span>
+              <span class="badge-sub">Completed by Rohan ✓</span>
+            </div>
+          </div>
+
+          <!-- Floating Interactive Badge 3: House Notice -->
+          <div class="floating-badge badge-notice" id="badge-notice">
+            <div class="badge-icon amber">📢</div>
+            <div class="badge-text">
+              <span class="badge-title">House Notice</span>
+              <span class="badge-sub">Quiet hours after 11 PM</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS BAR SECTION ===== -->
+  <section class="stats-section" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        
+        <!-- Stat Card 1 -->
+        <div class="stat-card animate-on-scroll" id="stat-users">
+          <div class="stat-icon">👥</div>
+          <div class="stat-info">
+            <div class="stat-number">
+              <span class="counter" data-target="10">10</span><span class="gradient-accent">K+</span>
+            </div>
+            <div class="stat-label">Active Users</div>
+            <div class="stat-desc">Roommates living together in peace</div>
+          </div>
+        </div>
+
+        <!-- Stat Card 2 -->
+        <div class="stat-card animate-on-scroll" id="stat-expenses">
+          <div class="stat-icon">💳</div>
+          <div class="stat-info">
+            <div class="stat-number">
+              <span>₹</span><span class="counter" data-target="5">5</span><span class="gradient-accent">Cr+</span>
+            </div>
+            <div class="stat-label">Expenses Tracked</div>
+            <div class="stat-desc">Split accurately with 0 awkward talks</div>
+          </div>
+        </div>
+
+        <!-- Stat Card 3 -->
+        <div class="stat-card animate-on-scroll" id="stat-tasks">
+          <div class="stat-icon">📋</div>
+          <div class="stat-info">
+            <div class="stat-number">
+              <span class="counter" data-target="50">50</span><span class="gradient-accent">K+</span>
+            </div>
+            <div class="stat-label">Tasks Completed</div>
+            <div class="stat-desc">Chores checked off on schedule</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUICK OVERVIEW SECTION ===== -->
+  <section class="overview-section animate-on-scroll" id="overview">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Quick Overview</div>
+        <h2>Everything You Need for Peaceful Co-Living</h2>
+        <p>Built specifically for flats, dorms, and shared apartments. Replace spreadsheets, WhatsApp arguments, and sticky notes with one intuitive app.</p>
+      </div>
+
+      <div class="overview-grid">
+        
+        <!-- Card 1: Split Expenses -->
+        <div class="overview-card animate-on-scroll" id="overview-card-expenses">
+          <div class="card-icon-box purple">💰</div>
+          <h3>Split Expenses</h3>
+          <p>Add shared bills in seconds. Split equally, by percentage, or custom amounts, and track who owes whom in real-time with instant settle-up.</p>
+          <div class="card-features-list">
+            <div class="card-feature-item">
+              <span class="tick">✓</span>
+              <span>Equal & custom bill sharing</span>
+            </div>
+            <div class="card-feature-item">
+              <span class="tick">✓</span>
+              <span>Real-time balance breakdown</span>
+            </div>
+            <div class="card-feature-item">
+              <span class="tick">✓</span>
+              <span>1-tap settle up between flatmates</span>
+            </div>
+          </div>
+          <a href="features.html#feature-expenses" class="card-link" id="learn-expenses">
+            <span>Learn more about Expenses</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Card 2: Manage Tasks -->
+        <div class="overview-card animate-on-scroll" id="overview-card-tasks">
+          <div class="card-icon-box teal">📋</div>
+          <h3>Manage Tasks</h3>
+          <p>Assign recurring chores, auto-rotate weekly tasks fairly, and keep everyone accountable without awkward nagging or messy apartments.</p>
+          <div class="card-features-list">
+            <div class="card-feature-item">
+              <span class="tick">✓</span>
+              <span>Auto-rotating weekly assignments</span>
+            </div>
+            <div class="card-feature-item">
+              <span class="tick">✓</span>
+              <span>Due date reminders & status tags</span>
+            </div>
+            <div class="card-feature-item">
+              <span class="tick">✓</span>
+              <span>Shared accountability checklist</span>
+            </div>
+          </div>
+          <a href="features.html#feature-tasks" class="card-link" id="learn-tasks">
+            <span>Learn more about Tasks</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Card 3: Announcements -->
+        <div class="overview-card animate-on-scroll" id="overview-card-announcements">
+          <div class="card-icon-box amber">📢</div>
+          <h3>Announcements</h3>
+          <p>Broadcast house notices, guest policies, maintenance alerts, and quiet hours so important updates never get lost in group chats.</p>
+          <div class="card-features-list">
+            <div class="card-feature-item">
+              <span class="tick">✓</span>
+              <span>Pin important house guidelines</span>
+            </div>
+            <div class="card-feature-item">
+              <span class="tick">✓</span>
+              <span>Guest visits & quiet hours notice</span>
+            </div>
+            <div class="card-feature-item">
+              <span class="tick">✓</span>
+              <span>Read receipts so everyone is aligned</span>
+            </div>
+          </div>
+          <a href="features.html#feature-announcements" class="card-link" id="learn-announcements">
+            <span>Learn more about Notices</span>
+            <span>→</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS SECTION ===== -->
+  <section class="testimonials-section animate-on-scroll" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Roommate Stories</div>
+        <h2>Loved by Thousands of Flatmates</h2>
+        <p>See how roommates across India and beyond transformed their shared living experience from chaotic to completely hassle-free.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        
+        <!-- Review 1 -->
+        <div class="testimonial-card animate-on-scroll" id="testimonial-1">
+          <div class="quote-badge">“</div>
+          <div class="testimonial-rating">★★★★★</div>
+          <p class="testimonial-quote">
+            "Finally no more fighting over bills! Settle-up is so smooth, our flat hasn't had a single awkward money argument in 6 months."
+          </p>
+          <div class="reviewer-profile">
+            <div class="reviewer-avatar">PS</div>
+            <div class="reviewer-info">
+              <div class="reviewer-name">
+                <span>Priya Sharma</span>
+                <span class="verified-icon" title="Verified RoomMate User">✓</span>
+              </div>
+              <div class="reviewer-role">Software Engineer • Bengaluru</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="testimonial-card animate-on-scroll" id="testimonial-2">
+          <div class="quote-badge">“</div>
+          <div class="testimonial-rating">★★★★★</div>
+          <p class="testimonial-quote">
+            "The rotating chore schedule actually works. Everyone knows whose turn it is to take out the trash or clean the kitchen on weekends."
+          </p>
+          <div class="reviewer-profile">
+            <div class="reviewer-avatar teal">AM</div>
+            <div class="reviewer-info">
+              <div class="reviewer-name">
+                <span>Aryan Mehta</span>
+                <span class="verified-icon" title="Verified RoomMate User">✓</span>
+              </div>
+              <div class="reviewer-role">PG Student • Pune</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="testimonial-card animate-on-scroll" id="testimonial-3">
+          <div class="quote-badge">“</div>
+          <div class="testimonial-rating">★★★★★</div>
+          <p class="testimonial-quote">
+            "The announcement board is a lifesaver during exams and quiet hours. RoomMate is genuinely the most essential app for flatmates."
+          </p>
+          <div class="reviewer-profile">
+            <div class="reviewer-avatar purple">AR</div>
+            <div class="reviewer-info">
+              <div class="reviewer-name">
+                <span>Ananya Roy</span>
+                <span class="verified-icon" title="Verified RoomMate User">✓</span>
+              </div>
+              <div class="reviewer-role">Product Designer • Delhi NCR</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRE-FOOTER CTA BANNER ===== -->
+  <section class="cta-banner-section animate-on-scroll" id="cta-banner">
+    <div class="container">
+      <div class="cta-banner">
+        <h2>Ready to Make Shared Living Harmonious?</h2>
+        <p>Join over 10,000 happy roommates who split bills, complete chores, and organize their shared home effortlessly.</p>
+        <div class="cta-buttons">
+          <a href="howtojoin.html" class="btn btn-primary" id="banner-cta-primary">
+            <span>Get Started Free</span>
+            <span>→</span>
+          </a>
+          <a href="features.html" class="btn btn-outline" id="banner-cta-secondary">
+            <span>View All Features</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="index.html" class="navbar-logo">
+            <div class="logo-icon">🏠</div>
+            <span>Room<span class="gradient-text">Mate</span></span>
+          </a>
+          <p>The smartest way to manage shared living. Split expenses, assign tasks, and stay coordinated — all in one beautiful app.</p>
+          <div class="footer-socials">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">𝕏</a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">⌨</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
+          </div>
+        </div>
+
+        <!-- Column 1: Product -->
+        <div class="footer-column">
+          <h4>Product</h4>
+          <a href="features.html">Features</a>
+          <a href="features.html#feature-expenses">Expense Splitter</a>
+          <a href="features.html#feature-tasks">Chore Tracker</a>
+          <a href="features.html#feature-announcements">Announcements</a>
+        </div>
+
+        <!-- Column 2: Resources -->
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <a href="howtojoin.html">How to Join</a>
+          <a href="howtojoin.html">Quick Start Guide</a>
+          <a href="#">Roommate Agreement</a>
+          <a href="#">Support FAQ</a>
+        </div>
+
+        <!-- Column 3: Company -->
+        <div class="footer-column">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 RoomMate. Built with ❤️ for roommates everywhere.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // --- 1. Theme Management (Dark / Light Mode) ---
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+
+    // Check saved theme in localStorage or default to dark
+    const savedTheme = localStorage.getItem('roommate-theme') || 'dark';
+    if (savedTheme === 'light') {
+      root.setAttribute('data-theme', 'light');
+    } else {
+      root.removeAttribute('data-theme');
+    }
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const isLight = root.getAttribute('data-theme') === 'light';
+        if (isLight) {
+          root.removeAttribute('data-theme');
+          localStorage.setItem('roommate-theme', 'dark');
+        } else {
+          root.setAttribute('data-theme', 'light');
+          localStorage.setItem('roommate-theme', 'light');
+        }
+      });
+    }
+
+    // --- 2. Navbar Scroll Effect ---
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // --- 3. Mobile Navigation Toggle ---
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('active');
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    // --- 4. Scroll Reveal Animations (Intersection Observer) ---
+    const animatedEls = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    animatedEls.forEach((el) => observer.observe(el));
+
+    // --- 5. Animated Number Counters ---
+    let counted = false;
+    const statsSection = document.getElementById('stats');
+    if (statsSection) {
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting && !counted) {
+            counted = true;
+            document.querySelectorAll('.counter').forEach((counter) => {
+              const target = +counter.getAttribute('data-target');
+              let count = 0;
+              const step = Math.max(1, Math.ceil(target / 40));
+              const timer = setInterval(() => {
+                count += step;
+                if (count >= target) {
+                  counter.textContent = target;
+                  clearInterval(timer);
+                } else {
+                  counter.textContent = count;
+                }
+              }, 35);
+            });
+          }
+        },
+        { threshold: 0.3 }
+      );
+      statsObserver.observe(statsSection);
+    }
+  </script>
+
+</body>
+</html>
