@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Explore RoomMate's powerful features — split expenses, manage chores, post announcements, and view your smart dashboard. Shared living made simple." />
-  <title>Features — RoomMate | Shared Living Made Simple</title>
+    content="RoomMate interactive features — manage roommates, split expenses with one-click settle up, auto-rotate chores, vote on polls, track shared supplies, and live dashboard." />
+  <title>Features & Live Room Workspace — RoomMate</title>
   <link rel="stylesheet" href="common.css" />
   <link rel="stylesheet" href="features.css" />
 </head>
@@ -23,12 +23,15 @@
 
       <div class="navbar-links" id="navLinks">
         <a href="index.html">Home</a>
-        <a href="features.html" class="active">Features</a>
-        <a href="howtojoin.html">How to Join</a>
+        <a href="#features-overview">Feature Tour</a>
+        <a href="#room-hub" class="active">Room Workspace</a>
+        <a href="#comparison">Why RoomMate</a>
       </div>
 
       <div class="navbar-cta">
-        <a href="howtojoin.html" class="btn btn-primary">Get Started</a>
+        <a href="#room-hub" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+          ⚡ Launch Room App
+        </a>
       </div>
 
       <button class="navbar-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -39,371 +42,326 @@
     </div>
   </nav>
 
-  <!-- ===== PAGE HEADER ===== -->
+  <!-- ===== PAGE HERO ===== -->
   <section class="features-hero">
     <div class="container">
       <div class="features-badge">
-        <span>✨</span> Everything You Need
+        <span>🚀</span> Interactive Room Workspace
       </div>
-      <h1>Powerful Features for<br><span class="gradient-text">Shared Living</span></h1>
-      <p class="subtitle">Everything you need to manage your room, your way. From splitting bills to scheduling chores —
-        we've got it all covered.</p>
+      <h1>Manage Your Room in Real-Time<br><span class="gradient-text">All in One Place</span></h1>
+      <p class="subtitle">
+        Everything you need for harmonious shared living. Split bills with one-click settlement, auto-rotate chores,
+        vote on room decisions, track grocery wishlists, and stay coordinated.
+      </p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px;">
+        <a href="#room-hub" class="btn btn-primary">
+          ⚡ Open Room Hub Now
+        </a>
+        <a href="#features-overview" class="btn btn-outline">
+          ✨ Explore Feature Breakdown
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- ===== FEATURE 1: EXPENSE SPLITTING ===== -->
-  <section class="feature-block animate-on-scroll" id="feature-expenses">
-    <div class="container">
-      <div class="feature-inner">
-        <div class="feature-content">
-          <div class="feature-icon-wrapper purple">💰</div>
-          <span class="feature-label">Expense Management</span>
-          <h2>Smart Expense Splitting</h2>
-          <p>Add any expense, split it equally or set custom shares. Track who owes whom in real-time and settle up with
-            a single click. No more awkward money conversations.</p>
-          <ul class="feature-highlights">
-            <li>
-              <span class="check">✓</span>
-              <span>Split equally, by percentage, or custom amounts</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span>Real-time balance tracking for every member</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span>One-click settle up between roommates</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span>Monthly expense reports and history</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="feature-visual">
-          <div class="feature-mockup">
-            <div class="mockup-header">
-              <span class="mockup-dot red"></span>
-              <span class="mockup-dot yellow"></span>
-              <span class="mockup-dot green"></span>
-            </div>
-            <div class="mockup-body">
-              <div class="expense-row">
-                <div class="expense-info">
-                  <span class="expense-emoji">🛒</span>
-                  <div class="expense-details">
-                    <span class="expense-name">Groceries</span>
-                    <span class="expense-by">Paid by Harsh</span>
-                  </div>
-                </div>
-                <span class="expense-amount negative">₹1,200</span>
-              </div>
-              <div class="expense-row">
-                <div class="expense-info">
-                  <span class="expense-emoji">📶</span>
-                  <div class="expense-details">
-                    <span class="expense-name">WiFi Bill</span>
-                    <span class="expense-by">Paid by Parth</span>
-                  </div>
-                </div>
-                <span class="expense-amount negative">₹899</span>
-              </div>
-              <div class="expense-row">
-                <div class="expense-info">
-                  <span class="expense-emoji">🏠</span>
-                  <div class="expense-details">
-                    <span class="expense-name">Rent — September</span>
-                    <span class="expense-by">Paid by Rohan</span>
-                  </div>
-                </div>
-                <span class="expense-amount negative">₹15,000</span>
-              </div>
-              <div class="expense-row">
-                <div class="expense-info">
-                  <span class="expense-emoji">💡</span>
-                  <div class="expense-details">
-                    <span class="expense-name">Electricity Bill</span>
-                    <span class="expense-by">Paid by Harsh</span>
-                  </div>
-                </div>
-                <span class="expense-amount positive">+ ₹640</span>
-              </div>
-            </div>
+  <!-- ===== FEATURE SHOWCASES ===== -->
+  <div id="features-overview">
+    <!-- FEATURE 1: EXPENSE SPLITTING -->
+    <section class="feature-block animate-on-scroll" id="feature-expenses">
+      <div class="container">
+        <div class="feature-inner">
+          <div class="feature-content">
+            <div class="feature-icon-wrapper purple">💰</div>
+            <span class="feature-label">Expense Management</span>
+            <h2>Smart Expense Splitting & Settle Up</h2>
+            <p>Add any expense, split it equally among roommates, and track real-time balances. Settle up with a single
+              click without awkward money conversations.</p>
+            <ul class="feature-highlights">
+              <li><span class="check">✓</span><span>Instant equal or custom bill splitting</span></li>
+              <li><span class="check">✓</span><span>Live "Who owes whom" calculation matrix</span></li>
+              <li><span class="check">✓</span><span>One-click settlement simulation</span></li>
+              <li><span class="check">✓</span><span>Category tags (Groceries, Rent, Utilities, Food)</span></li>
+            </ul>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FEATURE 2: TASK MANAGEMENT (Reversed) ===== -->
-  <section class="feature-block reverse animate-on-scroll" id="feature-tasks">
-    <div class="container">
-      <div class="feature-inner">
-        <div class="feature-content">
-          <div class="feature-icon-wrapper teal">📋</div>
-          <span class="feature-label">Task Management</span>
-          <h2>Rotating Chore Schedule</h2>
-          <p>Create tasks, assign them to roommates, and set due dates. Auto-rotate weekly so everyone shares the load
-            fairly. No one gets stuck doing dishes every night.</p>
-          <ul class="feature-highlights">
-            <li>
-              <span class="check">✓</span>
-              <span>Auto-rotating weekly task assignments</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span>Set due dates and get reminders</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span>Track completion history per roommate</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span>Fair distribution algorithm</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="feature-visual">
-          <div class="feature-mockup">
-            <div class="mockup-header">
-              <span class="mockup-dot red"></span>
-              <span class="mockup-dot yellow"></span>
-              <span class="mockup-dot green"></span>
-            </div>
-            <div class="mockup-body">
-              <div class="task-row">
-                <div class="task-checkbox done">✓</div>
-                <div class="task-details">
-                  <span class="task-title done-text">Clean the kitchen</span>
-                  <span class="task-meta">Due: Today · Completed</span>
-                </div>
-                <div class="task-assignee a1">H</div>
+          <div class="feature-visual">
+            <div class="feature-mockup">
+              <div class="mockup-header">
+                <span class="mockup-dot red"></span>
+                <span class="mockup-dot yellow"></span>
+                <span class="mockup-dot green"></span>
               </div>
-              <div class="task-row">
-                <div class="task-checkbox"></div>
-                <div class="task-details">
-                  <span class="task-title">Vacuum living room</span>
-                  <span class="task-meta">Due: Tomorrow</span>
+              <div class="mockup-body">
+                <div class="expense-row">
+                  <div class="expense-info">
+                    <span class="expense-emoji">🛒</span>
+                    <div class="expense-details">
+                      <span class="expense-name">Groceries & Snacks</span>
+                      <span class="expense-by">Paid by Harsh</span>
+                    </div>
+                  </div>
+                  <span class="expense-amount negative">₹1,200</span>
                 </div>
-                <div class="task-assignee a2">P</div>
-              </div>
-              <div class="task-row">
-                <div class="task-checkbox"></div>
-                <div class="task-details">
-                  <span class="task-title">Take out trash</span>
-                  <span class="task-meta">Due: Wednesday</span>
+                <div class="expense-row">
+                  <div class="expense-info">
+                    <span class="expense-emoji">📶</span>
+                    <div class="expense-details">
+                      <span class="expense-name">High-Speed WiFi</span>
+                      <span class="expense-by">Paid by Parth</span>
+                    </div>
+                  </div>
+                  <span class="expense-amount negative">₹899</span>
                 </div>
-                <div class="task-assignee a3">R</div>
-              </div>
-              <div class="task-row">
-                <div class="task-checkbox done">✓</div>
-                <div class="task-details">
-                  <span class="task-title done-text">Buy toilet paper</span>
-                  <span class="task-meta">Due: Yesterday · Completed</span>
-                </div>
-                <div class="task-assignee a2">P</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FEATURE 3: ANNOUNCEMENTS ===== -->
-  <section class="feature-block animate-on-scroll" id="feature-announcements">
-    <div class="container">
-      <div class="feature-inner">
-        <div class="feature-content">
-          <div class="feature-icon-wrapper coral">📢</div>
-          <span class="feature-label">Announcements</span>
-          <h2>Room Announcements</h2>
-          <p>Post important updates — bill reminders, guest alerts, maintenance notices. Pin crucial messages so
-            everyone stays in the loop. Never miss a deadline again.</p>
-          <ul class="feature-highlights">
-            <li>
-              <span class="check">✓</span>
-              <span>Post urgent, info, or general announcements</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span>Pin important notices to the top</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span>Get notified for new announcements</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span>Announcement history and archive</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="feature-visual">
-          <div class="feature-mockup">
-            <div class="mockup-header">
-              <span class="mockup-dot red"></span>
-              <span class="mockup-dot yellow"></span>
-              <span class="mockup-dot green"></span>
-            </div>
-            <div class="mockup-body">
-              <div class="announcement-card urgent">
-                <div class="announcement-header">
-                  <span class="announcement-tag urgent">🔴 Urgent</span>
-                  <span class="announcement-time">2 hours ago</span>
-                </div>
-                <div class="announcement-title">WiFi Bill Due Tomorrow!</div>
-                <div class="announcement-desc">Please pay ₹300 each to Parth by tonight. UPI ID: parth@upi</div>
-              </div>
-              <div class="announcement-card info">
-                <div class="announcement-header">
-                  <span class="announcement-tag info">ℹ️ Info</span>
-                  <span class="announcement-time">5 hours ago</span>
-                </div>
-                <div class="announcement-title">Guest Staying This Weekend</div>
-                <div class="announcement-desc">My cousin is visiting Sat-Sun. Heads up for the extra person!</div>
-              </div>
-              <div class="announcement-card success">
-                <div class="announcement-header">
-                  <span class="announcement-tag success">✅ Resolved</span>
-                  <span class="announcement-time">1 day ago</span>
-                </div>
-                <div class="announcement-title">AC Repaired Successfully</div>
-                <div class="announcement-desc">The technician fixed it. Bill of ₹800 split equally among all.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FEATURE 4: DASHBOARD (Reversed) ===== -->
-  <section class="feature-block reverse animate-on-scroll" id="feature-dashboard">
-    <div class="container">
-      <div class="feature-inner">
-        <div class="feature-content">
-          <div class="feature-icon-wrapper gold">📊</div>
-          <span class="feature-label">Dashboard</span>
-          <h2>Smart Dashboard</h2>
-          <p>See your balance, upcoming tasks, and recent activity at a glance. One screen, full clarity. The dashboard
-            is your command center for shared living.</p>
-          <ul class="feature-highlights">
-            <li>
-              <span class="check">✓</span>
-              <span>At-a-glance view of balances and debts</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span>Upcoming tasks and deadlines widget</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span>Live activity feed from all roommates</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span>Monthly analytics and spending trends</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="feature-visual">
-          <div class="feature-mockup">
-            <div class="mockup-header">
-              <span class="mockup-dot red"></span>
-              <span class="mockup-dot yellow"></span>
-              <span class="mockup-dot green"></span>
-            </div>
-            <div class="mockup-body">
-              <div class="dashboard-stats">
-                <div class="dash-stat">
-                  <div class="dash-stat-value purple">₹2,400</div>
-                  <div class="dash-stat-label">You Owe</div>
-                </div>
-                <div class="dash-stat">
-                  <div class="dash-stat-value teal">₹1,800</div>
-                  <div class="dash-stat-label">Owed to You</div>
-                </div>
-                <div class="dash-stat">
-                  <div class="dash-stat-value coral">3</div>
-                  <div class="dash-stat-label">Pending Tasks</div>
-                </div>
-              </div>
-              <div class="dashboard-activity">
-                <div class="activity-item">
-                  <div class="activity-icon expense-icon">💰</div>
-                  <span class="activity-text"><strong>Harsh</strong> added expense "Groceries" — ₹1,200</span>
-                  <span class="activity-time-ago">2m ago</span>
-                </div>
-                <div class="activity-item">
-                  <div class="activity-icon task-icon">✅</div>
-                  <span class="activity-text"><strong>Parth</strong> completed "Clean kitchen"</span>
-                  <span class="activity-time-ago">1h ago</span>
-                </div>
-                <div class="activity-item">
-                  <div class="activity-icon announce-icon">📢</div>
-                  <span class="activity-text"><strong>Rohan</strong> posted "WiFi Bill Due"</span>
-                  <span class="activity-time-ago">3h ago</span>
+                <div class="expense-row">
+                  <div class="expense-info">
+                    <span class="expense-emoji">💡</span>
+                    <div class="expense-details">
+                      <span class="expense-name">Electricity Bill</span>
+                      <span class="expense-by">Paid by Rohan</span>
+                    </div>
+                  </div>
+                  <span class="expense-amount positive">+ ₹600</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== INTERACTIVE DEMO SECTION ===== -->
-  <section class="demo-section" id="try-it">
-    <div class="container">
-      <div class="section-header" style="text-align:center; margin-bottom:48px;">
-        <div class="features-badge" style="margin: 0 auto 20px;">
-          <span>🎮</span> Interactive Demo
+    <!-- FEATURE 2: CHORE ROTATION -->
+    <section class="feature-block reverse animate-on-scroll" id="feature-tasks">
+      <div class="container">
+        <div class="feature-inner">
+          <div class="feature-content">
+            <div class="feature-icon-wrapper teal">📋</div>
+            <span class="feature-label">Task Management</span>
+            <h2>Rotating Chore Wheel</h2>
+            <p>Keep chores fair with priority levels and one-click auto-rotation. Everyone shares the load equally, and
+              progress is tracked visually.</p>
+            <ul class="feature-highlights">
+              <li><span class="check">✓</span><span>Auto-rotate chores among all roommates with one click</span></li>
+              <li><span class="check">✓</span><span>Urgency priority tags (High 🔥, Medium ⚡, Low 🌿)</span></li>
+              <li><span class="check">✓</span><span>Live completion percentage progress bar</span></li>
+              <li><span class="check">✓</span><span>Instant check-off and activity logs</span></li>
+            </ul>
+          </div>
+          <div class="feature-visual">
+            <div class="feature-mockup">
+              <div class="mockup-header">
+                <span class="mockup-dot red"></span>
+                <span class="mockup-dot yellow"></span>
+                <span class="mockup-dot green"></span>
+              </div>
+              <div class="mockup-body">
+                <div class="task-row">
+                  <div class="task-checkbox done">✓</div>
+                  <div class="task-details">
+                    <span class="task-title done-text">Deep clean kitchen & sink</span>
+                    <span class="task-meta">Priority: High 🔥 · Completed</span>
+                  </div>
+                  <div class="task-assignee a1">H</div>
+                </div>
+                <div class="task-row">
+                  <div class="task-checkbox"></div>
+                  <div class="task-details">
+                    <span class="task-title">Vacuum living room rug</span>
+                    <span class="task-meta">Priority: Medium ⚡</span>
+                  </div>
+                  <div class="task-assignee a2">P</div>
+                </div>
+                <div class="task-row">
+                  <div class="task-checkbox"></div>
+                  <div class="task-details">
+                    <span class="task-title">Take out trash & recycling</span>
+                    <span class="task-meta">Priority: High 🔥</span>
+                  </div>
+                  <div class="task-assignee a3">R</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <h2 style="font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:800; margin-bottom:16px;">
-          Try It <span class="gradient-text">Right Here</span>
+      </div>
+    </section>
+
+    <!-- FEATURE 3: SUPPLIES WISHLIST & POLLS -->
+    <section class="feature-block animate-on-scroll" id="feature-supplies">
+      <div class="container">
+        <div class="feature-inner">
+          <div class="feature-content">
+            <div class="feature-icon-wrapper coral">🛒</div>
+            <span class="feature-label">Shared Living Essentials</span>
+            <h2>Wishlist & Quick Room Polls</h2>
+            <p>Never run out of milk or dish soap. Keep a shared room wishlist and convert bought items straight into
+              split expenses. Make decisions easily with quick polls.</p>
+            <ul class="feature-highlights">
+              <li><span class="check">✓</span><span>Shared household shopping wishlist</span></li>
+              <li><span class="check">✓</span><span>One-click "Convert to Expense" when purchased</span></li>
+              <li><span class="check">✓</span><span>Democratic room voting & polls</span></li>
+              <li><span class="check">✓</span><span>Live animated voting progress bars</span></li>
+            </ul>
+          </div>
+          <div class="feature-visual">
+            <div class="feature-mockup">
+              <div class="mockup-header">
+                <span class="mockup-dot red"></span>
+                <span class="mockup-dot yellow"></span>
+                <span class="mockup-dot green"></span>
+              </div>
+              <div class="mockup-body">
+                <div class="announcement-card info" style="margin-bottom: 12px;">
+                  <div class="announcement-header">
+                    <span class="announcement-tag info">🗳️ Room Poll</span>
+                    <span class="announcement-time">Active</span>
+                  </div>
+                  <div class="announcement-title">Weekend Movie Night Pick?</div>
+                  <div style="margin-top: 8px; font-size: 0.85rem; color: var(--text-secondary);">
+                    🎬 Sci-Fi (67%) vs 🍕 Comedy (33%)
+                  </div>
+                </div>
+                <div class="expense-row">
+                  <div class="expense-info">
+                    <span class="expense-emoji">🧼</span>
+                    <div class="expense-details">
+                      <span class="expense-name">Dish Soap & Sponges</span>
+                      <span class="expense-by">Wishlist · Added by Parth</span>
+                    </div>
+                  </div>
+                  <span class="demo-priority-tag low">Needed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== INTERACTIVE ROOM WORKSPACE (THE APP) ===== -->
+  <section class="demo-section" id="room-hub">
+    <div class="container">
+      <div class="section-header" style="text-align:center; margin-bottom:36px;">
+        <div class="features-badge" style="margin: 0 auto 16px;">
+          <span>⚡</span> Live Room Experience
+        </div>
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:800; margin-bottom:12px;">
+          Your Room <span class="gradient-text">Command Center</span>
         </h2>
-        <p style="color:var(--text-secondary); font-size:1.05rem; max-width:550px; margin:0 auto;">
-          Don't just read about features — experience them. Click the tabs below to interact with every feature live.
+        <p style="color:var(--text-secondary); font-size:1.05rem; max-width:600px; margin:0 auto;">
+          Everything is live and connected. Add roommates, split bills, settle debts, rotate chores, vote on polls, and
+          watch the dashboard update in real-time.
         </p>
       </div>
 
       <!-- Tab Navigation -->
       <div class="demo-tabs">
-        <button class="demo-tab active" data-tab="demo-expenses" id="tab-expenses">💰 Expenses</button>
-        <button class="demo-tab" data-tab="demo-tasks" id="tab-tasks">📋 Tasks</button>
-        <button class="demo-tab" data-tab="demo-announce" id="tab-announce">📢 Announce</button>
+        <button class="demo-tab active" data-tab="demo-roommates" id="tab-roommates">👥 Roommates</button>
+        <button class="demo-tab" data-tab="demo-expenses" id="tab-expenses">💰 Expenses</button>
+        <button class="demo-tab" data-tab="demo-tasks" id="tab-tasks">📋 Chores</button>
+        <button class="demo-tab" data-tab="demo-supplies" id="tab-supplies">🛒 Supplies</button>
+        <button class="demo-tab" data-tab="demo-polls" id="tab-polls">🗳️ Polls</button>
+        <button class="demo-tab" data-tab="demo-announce" id="tab-announce">📢 Notices</button>
         <button class="demo-tab" data-tab="demo-dashboard" id="tab-dashboard">📊 Dashboard</button>
       </div>
 
-      <!-- ===== DEMO 1: EXPENSE SPLITTER ===== -->
-      <div class="demo-panel active" id="demo-expenses">
-        <div class="demo-card">
+      <!-- MAIN CONTAINER -->
+      <div class="demo-card">
+
+        <!-- LIVE ROOM BANNER (Visible on all tabs) -->
+        <div class="demo-room-banner">
+          <div class="demo-room-title-area">
+            <span class="demo-room-icon">🏠</span>
+            <div>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <span class="demo-room-name" id="displayRoomName">My Room</span>
+                <button class="btn-sm-action" onclick="editRoomName()" title="Edit Room Name">✏️ Rename</button>
+              </div>
+              <div class="demo-room-meta">
+                <span>Code:</span>
+                <span class="demo-room-code-badge" id="roomCodeBadge" onclick="copyInviteLink()" title="Click to copy invite link">
+                  ROOM-7824 📋
+                </span>
+                <span id="memberCountBadge" style="color:var(--accent); font-weight:600;">• 0 Members</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:8px;">
+            <label style="font-size:0.75rem; color:var(--text-muted); font-weight:600; text-transform:uppercase;">Room Status:</label>
+            <select id="roomStatusSelect" onchange="changeRoomStatus()" style="padding:6px 12px; border-radius:20px; background:rgba(255,255,255,0.06); border:1px solid var(--card-border); color:var(--text-primary); font-size:0.85rem; outline:none; font-family:'Outfit',sans-serif; cursor:pointer;">
+              <option value="🤫 Quiet / Study Hours">🤫 Quiet Hours</option>
+              <option value="🎧 Chill Vibe" selected>🎧 Chill Vibe</option>
+              <option value="🎉 Party Mode">🎉 Party Mode</option>
+              <option value="🧹 Deep Clean Day">🧹 Clean Day</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- ================= PANEL 0: ROOMMATES ================= -->
+        <div class="demo-panel active" id="demo-roommates">
           <div class="demo-card-header">
-            <h3>💰 Add & Split an Expense</h3>
-            <span class="demo-badge">Live Demo</span>
+            <div>
+              <h3>👥 Manage Roommates</h3>
+              <p style="color:var(--text-secondary); font-size:0.85rem; margin-top:4px;">
+                Add everyone living in your room. All dropdowns across Expenses, Chores, and Polls update automatically.
+              </p>
+            </div>
+            <span class="demo-badge">Roster</span>
           </div>
 
           <div class="demo-form-row">
-            <div class="demo-input-group">
+            <div class="demo-input-group" style="flex:2">
+              <label>Roommate Name</label>
+              <input type="text" id="roommateName" placeholder="e.g. Harsh, Parth, Alex" />
+            </div>
+            <button class="btn btn-primary demo-btn" id="addRoommateBtn">+ Add Roommate</button>
+          </div>
+
+          <div class="demo-list" id="roommateList">
+            <!-- Populated by JS -->
+          </div>
+
+          <div class="demo-roommate-hint" id="roommateHint">
+            <span>💡</span> Add at least 2 roommates to experience live bill splitting, chore rotation, and voting.
+          </div>
+        </div>
+
+        <!-- ================= PANEL 1: EXPENSES & SETTLE UP ================= -->
+        <div class="demo-panel" id="demo-expenses">
+          <div class="demo-card-header">
+            <div>
+              <h3>💰 Expense Splitter & Settlement</h3>
+              <p style="color:var(--text-secondary); font-size:0.85rem; margin-top:4px;">
+                Track shared purchases with automatic equal splitting and one-click balance settlement.
+              </p>
+            </div>
+            <span class="demo-badge">Auto-Split</span>
+          </div>
+
+          <div class="demo-form-row">
+            <div class="demo-input-group" style="flex:1.5">
               <label>Expense Name</label>
-              <input type="text" id="expName" placeholder="e.g. Groceries" />
+              <input type="text" id="expName" placeholder="e.g. WiFi Bill, Groceries" />
             </div>
             <div class="demo-input-group">
               <label>Amount (₹)</label>
-              <input type="number" id="expAmount" placeholder="e.g. 1500" />
+              <input type="number" id="expAmount" placeholder="e.g. 1200" />
+            </div>
+            <div class="demo-input-group">
+              <label>Category</label>
+              <select id="expCategory">
+                <option value="🛒">🛒 Groceries</option>
+                <option value="📶">📶 Utilities & WiFi</option>
+                <option value="🍕">🍕 Food & Dining</option>
+                <option value="🏠">🏠 Rent & Maintenance</option>
+                <option value="⚡">⚡ Electricity</option>
+                <option value="🎬">🎬 Entertainment</option>
+              </select>
             </div>
             <div class="demo-input-group">
               <label>Paid By</label>
               <select id="expPaidBy">
-                <option value="Harsh">Harsh</option>
-                <option value="Parth">Parth</option>
-                <option value="Rohan">Rohan</option>
+                <!-- Dynamic options -->
               </select>
             </div>
             <button class="btn btn-primary demo-btn" id="addExpenseBtn">+ Add</button>
@@ -414,30 +372,60 @@
           </div>
 
           <div class="demo-summary" id="expenseSummary">
-            <!-- Balance cards populated by JS -->
+            <!-- Populated by JS -->
+          </div>
+
+          <!-- Quick Settle Box -->
+          <div class="demo-settle-box" id="settleBox" style="display:none;">
+            <div class="demo-settle-info">
+              <span style="font-size:1.4rem;">💸</span>
+              <div>
+                <strong style="color:var(--accent);">Ready to Settle Up?</strong>
+                <div style="font-size:0.8rem; color:var(--text-muted);">Clear balances between roommates with a single click.</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <select id="settleFrom" style="padding:8px 12px; border-radius:6px; background:var(--dark-bg-2); border:1px solid var(--card-border); color:#fff; font-size:0.85rem;"></select>
+              <span style="color:var(--text-muted); font-size:0.85rem;">pays</span>
+              <select id="settleTo" style="padding:8px 12px; border-radius:6px; background:var(--dark-bg-2); border:1px solid var(--card-border); color:#fff; font-size:0.85rem;"></select>
+              <input type="number" id="settleAmount" placeholder="₹ Amount" style="width:100px; padding:8px 10px; border-radius:6px; background:var(--dark-bg-2); border:1px solid var(--card-border); color:#fff; font-size:0.85rem;" />
+              <button class="btn-sm-action accent" onclick="executeSettleUp()">✓ Settle</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- ===== DEMO 2: TASK MANAGER ===== -->
-      <div class="demo-panel" id="demo-tasks">
-        <div class="demo-card">
+        <!-- ================= PANEL 2: CHORES & ROTATION ================= -->
+        <div class="demo-panel" id="demo-tasks">
           <div class="demo-card-header">
-            <h3>📋 Manage Chores</h3>
-            <span class="demo-badge">Live Demo</span>
+            <div>
+              <h3>📋 Chores & Fair Rotation</h3>
+              <p style="color:var(--text-secondary); font-size:0.85rem; margin-top:4px;">
+                Assign chores with urgency tags. Use Auto-Rotate to shift tasks fairly every week.
+              </p>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <button class="btn-sm-action" onclick="rotateTasks()" title="Shift tasks among all roommates">🔄 Auto-Rotate</button>
+              <span class="demo-badge">Fair Wheel</span>
+            </div>
           </div>
 
           <div class="demo-form-row">
             <div class="demo-input-group" style="flex:2">
-              <label>Task Name</label>
-              <input type="text" id="taskName" placeholder="e.g. Wash dishes" />
+              <label>Task Description</label>
+              <input type="text" id="taskName" placeholder="e.g. Wash bathroom, Take out trash" />
+            </div>
+            <div class="demo-input-group">
+              <label>Priority</label>
+              <select id="taskPriority">
+                <option value="high">🔥 High Priority</option>
+                <option value="med" selected>⚡ Normal</option>
+                <option value="low">🌿 Low / Whenever</option>
+              </select>
             </div>
             <div class="demo-input-group">
               <label>Assign To</label>
               <select id="taskAssignee">
-                <option value="Harsh">Harsh</option>
-                <option value="Parth">Parth</option>
-                <option value="Rohan">Rohan</option>
+                <!-- Dynamic options -->
               </select>
             </div>
             <button class="btn btn-primary demo-btn" id="addTaskBtn">+ Add</button>
@@ -451,23 +439,101 @@
             <!-- Stats populated by JS -->
           </div>
         </div>
-      </div>
 
-      <!-- ===== DEMO 3: ANNOUNCEMENTS ===== -->
-      <div class="demo-panel" id="demo-announce">
-        <div class="demo-card">
+        <!-- ================= PANEL 3: SUPPLIES & WISHLIST ================= -->
+        <div class="demo-panel" id="demo-supplies">
           <div class="demo-card-header">
-            <h3>📢 Post an Announcement</h3>
-            <span class="demo-badge">Live Demo</span>
+            <div>
+              <h3>🛒 Supplies & Wishlist</h3>
+              <p style="color:var(--text-secondary); font-size:0.85rem; margin-top:4px;">
+                Add household essentials needed for the room. When bought, convert directly to split expenses.
+              </p>
+            </div>
+            <span class="demo-badge">Quick-Cart</span>
           </div>
 
           <div class="demo-form-row">
             <div class="demo-input-group" style="flex:2">
-              <label>Message</label>
-              <input type="text" id="announceMsg" placeholder="e.g. WiFi bill due tomorrow!" />
+              <label>Item Needed</label>
+              <input type="text" id="supplyItem" placeholder="e.g. Dish soap, Milk, Trash bags, Coffee" />
             </div>
             <div class="demo-input-group">
-              <label>Type</label>
+              <label>Est. Cost (₹)</label>
+              <input type="number" id="supplyCost" placeholder="e.g. 150" />
+            </div>
+            <div class="demo-input-group">
+              <label>Added By</label>
+              <select id="supplyBy">
+                <!-- Dynamic options -->
+              </select>
+            </div>
+            <button class="btn btn-primary demo-btn" id="addSupplyBtn">+ Add Item</button>
+          </div>
+
+          <div class="demo-list" id="supplyList">
+            <!-- Populated by JS -->
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px; padding:12px 16px; background:rgba(255,255,255,0.02); border:1px solid var(--card-border); border-radius:var(--radius-sm);">
+            <span id="supplySummaryText" style="font-size:0.85rem; color:var(--text-secondary);">0 items in wishlist</span>
+            <button class="btn-sm-action accent" onclick="convertBoughtSupplies()" id="convertSupplyBtn" style="display:none;">
+              💸 Convert Bought Items to Expense
+            </button>
+          </div>
+        </div>
+
+        <!-- ================= PANEL 4: ROOM POLLS & VOTING ================= -->
+        <div class="demo-panel" id="demo-polls">
+          <div class="demo-card-header">
+            <div>
+              <h3>🗳️ Room Polls & Quick Votes</h3>
+              <p style="color:var(--text-secondary); font-size:0.85rem; margin-top:4px;">
+                Make democratic decisions without arguments. Click any option below to vote live!
+              </p>
+            </div>
+            <span class="demo-badge">Democratic</span>
+          </div>
+
+          <div class="demo-form-row">
+            <div class="demo-input-group" style="flex:2">
+              <label>Poll Question</label>
+              <input type="text" id="pollQuestion" placeholder="e.g. Friday Movie or Gaming Night?" />
+            </div>
+            <div class="demo-input-group">
+              <label>Option 1</label>
+              <input type="text" id="pollOpt1" placeholder="e.g. 🍿 Movie Night" />
+            </div>
+            <div class="demo-input-group">
+              <label>Option 2</label>
+              <input type="text" id="pollOpt2" placeholder="e.g. 🎮 Gaming" />
+            </div>
+            <button class="btn btn-primary demo-btn" id="createPollBtn">🗳️ Launch Poll</button>
+          </div>
+
+          <div id="pollsList">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- ================= PANEL 5: ANNOUNCEMENTS ================= -->
+        <div class="demo-panel" id="demo-announce">
+          <div class="demo-card-header">
+            <div>
+              <h3>📢 Room Notices & Alerts</h3>
+              <p style="color:var(--text-secondary); font-size:0.85rem; margin-top:4px;">
+                Broadcast important notices, guest visits, and maintenance updates to all roommates.
+              </p>
+            </div>
+            <span class="demo-badge">Pin Board</span>
+          </div>
+
+          <div class="demo-form-row">
+            <div class="demo-input-group" style="flex:2">
+              <label>Notice Message</label>
+              <input type="text" id="announceMsg" placeholder="e.g. WiFi technician arriving at 4 PM" />
+            </div>
+            <div class="demo-input-group">
+              <label>Tag</label>
               <select id="announceType">
                 <option value="urgent">🔴 Urgent</option>
                 <option value="info" selected>ℹ️ Info</option>
@@ -477,9 +543,7 @@
             <div class="demo-input-group">
               <label>Posted By</label>
               <select id="announceBy">
-                <option value="Harsh">Harsh</option>
-                <option value="Parth">Parth</option>
-                <option value="Rohan">Rohan</option>
+                <!-- Dynamic options -->
               </select>
             </div>
             <button class="btn btn-primary demo-btn" id="addAnnounceBtn">📢 Post</button>
@@ -489,14 +553,17 @@
             <!-- Populated by JS -->
           </div>
         </div>
-      </div>
 
-      <!-- ===== DEMO 4: LIVE DASHBOARD ===== -->
-      <div class="demo-panel" id="demo-dashboard">
-        <div class="demo-card">
+        <!-- ================= PANEL 6: LIVE DASHBOARD ================= -->
+        <div class="demo-panel" id="demo-dashboard">
           <div class="demo-card-header">
-            <h3>📊 Live Dashboard</h3>
-            <span class="demo-badge">Auto-Updates</span>
+            <div>
+              <h3>📊 Live Command Center</h3>
+              <p style="color:var(--text-secondary); font-size:0.85rem; margin-top:4px;">
+                Real-time overview of spending, chore completion, active polls, and debt settlement matrix.
+              </p>
+            </div>
+            <span class="demo-badge">Live Stream</span>
           </div>
 
           <div class="demo-dashboard-grid">
@@ -504,54 +571,50 @@
               <div class="demo-dash-icon" style="background:rgba(108,99,255,0.15)">💰</div>
               <div>
                 <div class="demo-dash-value" id="dashTotalExp">₹0</div>
-                <div class="demo-dash-label">Total Expenses</div>
+                <div class="demo-dash-label">Total Spend</div>
               </div>
             </div>
             <div class="demo-dash-stat">
               <div class="demo-dash-icon" style="background:rgba(0,212,170,0.15)">📋</div>
               <div>
-                <div class="demo-dash-value" id="dashTotalTasks">0</div>
-                <div class="demo-dash-label">Total Tasks</div>
+                <div class="demo-dash-value" id="dashDoneTasks">0%</div>
+                <div class="demo-dash-label">Chores Completed</div>
               </div>
             </div>
             <div class="demo-dash-stat">
-              <div class="demo-dash-icon" style="background:rgba(255,107,107,0.15)">✅</div>
+              <div class="demo-dash-icon" style="background:rgba(255,217,61,0.15)">🛒</div>
               <div>
-                <div class="demo-dash-value" id="dashDoneTasks">0</div>
-                <div class="demo-dash-label">Completed</div>
+                <div class="demo-dash-value" id="dashSuppliesCount">0</div>
+                <div class="demo-dash-label">Wishlist Items</div>
               </div>
             </div>
             <div class="demo-dash-stat">
-              <div class="demo-dash-icon" style="background:rgba(255,217,61,0.15)">📢</div>
+              <div class="demo-dash-icon" style="background:rgba(255,107,107,0.15)">🗳️</div>
               <div>
-                <div class="demo-dash-value" id="dashAnnouncements">0</div>
-                <div class="demo-dash-label">Announcements</div>
+                <div class="demo-dash-value" id="dashPollsCount">0</div>
+                <div class="demo-dash-label">Active Polls</div>
               </div>
-            </div>
-          </div>
-
-          <h4 style="color:var(--text-secondary); font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; margin: 24px 0 12px;">
-            Recent Activity
-          </h4>
-          <div class="demo-activity-feed" id="activityFeed">
-            <div class="demo-activity-empty">
-              <span>🕐</span> No activity yet — try adding expenses, tasks, or announcements!
             </div>
           </div>
 
           <div class="demo-balance-section">
             <h4 style="color:var(--text-secondary); font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:12px;">
-              Who Owes Whom
+              Debt & Balance Matrix
             </h4>
             <div id="dashBalances" class="demo-balances-grid">
-              <div class="demo-activity-empty">
-                <span>💸</span> Add some expenses to see balances!
-              </div>
+              <!-- Populated by JS -->
             </div>
           </div>
-        </div>
-      </div>
 
+          <h4 style="color:var(--text-secondary); font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; margin: 24px 0 12px;">
+            Live Activity Stream
+          </h4>
+          <div class="demo-activity-feed" id="activityFeed">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -559,8 +622,8 @@
   <section class="comparison-section animate-on-scroll" id="comparison">
     <div class="container">
       <div class="section-header">
-        <h2>Life <span class="gradient-text">Before vs After</span> RoomMate</h2>
-        <p>See how RoomMate transforms the chaos of shared living into smooth, stress-free coordination.</p>
+        <h2>Life <span class="gradient-text">Without vs With</span> RoomMate</h2>
+        <p>See why thousands of roommates switch from chaotic WhatsApp groups to RoomMate.</p>
       </div>
 
       <table class="comparison-table">
@@ -573,53 +636,48 @@
         </thead>
         <tbody>
           <tr>
-            <td>Splitting Bills</td>
-            <td class="bad">Awkward money conversations, who paid what?</td>
-            <td class="good">Automated splitting, real-time balance tracking</td>
+            <td>Splitting Bills & Settle Up</td>
+            <td class="bad">Awkward reminders, lost receipts & forgotten debts</td>
+            <td class="good">Automated equal split, real-time balances, 1-click settlement</td>
           </tr>
           <tr>
-            <td>Assigning Chores</td>
+            <td>Chore Allocation</td>
             <td class="bad">"It's not my turn!" — endless arguments</td>
-            <td class="good">Fair auto-rotation, everyone gets equal share</td>
+            <td class="good">1-click auto-rotation wheel with fair distribution</td>
           </tr>
           <tr>
-            <td>Important Updates</td>
-            <td class="bad">Lost in WhatsApp group chaos</td>
-            <td class="good">Pinned announcements, urgent alerts</td>
+            <td>Grocery Wishlist</td>
+            <td class="bad">Duplicate items bought, forgotten essentials</td>
+            <td class="good">Shared checklist with direct conversion to split expense</td>
           </tr>
           <tr>
-            <td>Tracking Expenses</td>
-            <td class="bad">Scattered notes, forgotten debts</td>
-            <td class="good">Complete history, monthly reports</td>
+            <td>Room Decisions</td>
+            <td class="bad">Ignored chat messages, unilateral choices</td>
+            <td class="good">Democratic polls with live animated results</td>
           </tr>
           <tr>
-            <td>Settling Up</td>
-            <td class="bad">"I'll pay you later" — never happens</td>
-            <td class="good">One-click settlement, clear records</td>
-          </tr>
-          <tr>
-            <td>Overall Vibe</td>
-            <td class="bad">😤 Frustration and tension</td>
-            <td class="good">😊 Harmony and transparency</td>
+            <td>Room Harmony</td>
+            <td class="bad">😤 Constant tension & confusion</td>
+            <td class="good">😊 Complete clarity, transparency & peace of mind</td>
           </tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <!-- ===== CTA SECTION ===== -->
+  <!-- ===== CALL TO ACTION ===== -->
   <section class="cta-section">
     <div class="container">
       <div class="cta-card animate-on-scroll">
         <span class="cta-emoji">🚀</span>
-        <h2>Ready to Simplify Your <span class="gradient-text">Shared Living?</span></h2>
-        <p>Join thousands of roommates who manage their space effortlessly with RoomMate.</p>
+        <h2>Ready to Supercharge Your <span class="gradient-text">Shared Living?</span></h2>
+        <p>Start managing your room, roommates, expenses, and chores right now with zero friction.</p>
         <div class="cta-buttons">
-          <a href="howtojoin.html" class="btn btn-primary">
-            Get Started Free →
+          <a href="#room-hub" class="btn btn-primary">
+            ⚡ Open Room Workspace Now →
           </a>
           <a href="index.html" class="btn btn-outline">
-            ← Back to Home
+            🏠 Back to Home
           </a>
         </div>
       </div>
@@ -635,38 +693,30 @@
             <div class="logo-icon">🏠</div>
             <span>Room<span class="gradient-text">Mate</span></span>
           </a>
-          <p>The smartest way to manage shared living. Split expenses, assign tasks, and stay coordinated — all in one
-            beautiful app.</p>
-          <div class="footer-socials">
-            <a href="#" aria-label="Twitter">𝕏</a>
-            <a href="#" aria-label="GitHub">⌨</a>
-            <a href="#" aria-label="LinkedIn">in</a>
-            <a href="#" aria-label="Instagram">📷</a>
-          </div>
+          <p>The smartest all-in-one workspace for shared living. Split expenses, automate chores, vote on polls, and stay synchronized.</p>
         </div>
 
         <div class="footer-column">
-          <h4>Product</h4>
-          <a href="features.html">Features</a>
-          <a href="#">Pricing</a>
-          <a href="#">Changelog</a>
-          <a href="#">Roadmap</a>
+          <h4>Navigation</h4>
+          <a href="index.html">Home</a>
+          <a href="#features-overview">Feature Tour</a>
+          <a href="#room-hub">Room Workspace</a>
+          <a href="#comparison">Comparison</a>
         </div>
 
         <div class="footer-column">
-          <h4>Resources</h4>
-          <a href="howtojoin.html">Get Started</a>
-          <a href="#">Documentation</a>
-          <a href="#">FAQ</a>
-          <a href="#">Support</a>
+          <h4>Features</h4>
+          <a href="#tab-expenses" onclick="document.getElementById('tab-expenses').click()">Expense Splitter</a>
+          <a href="#tab-tasks" onclick="document.getElementById('tab-tasks').click()">Chore Wheel</a>
+          <a href="#tab-supplies" onclick="document.getElementById('tab-supplies').click()">Wishlist Cart</a>
+          <a href="#tab-polls" onclick="document.getElementById('tab-polls').click()">Room Polls</a>
         </div>
 
         <div class="footer-column">
-          <h4>Company</h4>
-          <a href="#">About Us</a>
-          <a href="#">Contact</a>
-          <a href="#">Blog</a>
-          <a href="#">Careers</a>
+          <h4>App Status</h4>
+          <a href="#room-hub">Room Code: ROOM-7824</a>
+          <a href="#room-hub">Local Live Store: Active</a>
+          <a href="#room-hub">Auto-Sync: Enabled</a>
         </div>
       </div>
 
@@ -675,15 +725,14 @@
         <div class="footer-bottom-links">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
-          <a href="#">Cookie Policy</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- ===== JAVASCRIPT ===== -->
+  <!-- ===== JAVASCRIPT LOGIC ===== -->
   <script>
-    // ===================== NAVBAR =====================
+    // ===================== NAVBAR & SCROLL =====================
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 50);
@@ -695,7 +744,6 @@
       navLinks.classList.toggle('active');
     });
 
-    // ===================== SCROLL ANIMATIONS =====================
     const animatedEls = document.querySelectorAll('.animate-on-scroll');
     const observer = new IntersectionObserver(
       (entries) => {
@@ -718,26 +766,58 @@
         tabs.forEach(t => t.classList.remove('active'));
         panels.forEach(p => p.classList.remove('active'));
         tab.classList.add('active');
-        document.getElementById(tab.dataset.tab).classList.add('active');
+        const targetPanel = document.getElementById(tab.dataset.tab);
+        if (targetPanel) targetPanel.classList.add('active');
         if (tab.dataset.tab === 'demo-dashboard') updateDashboard();
       });
     });
 
-    // ===================== SHARED DATA STORE =====================
-    const roommates = ['Harsh', 'Parth', 'Rohan'];
-    const emojis = ['🛒', '🍕', '💡', '📶', '🏠', '🎬', '🚕', '💊', '🧹', '☕'];
+    // ===================== SHARED STATE =====================
+    let roomName = 'My Room';
+    let roomCode = 'ROOM-7824';
+    let roomStatus = '🎧 Chill Vibe';
+
+    let roommates = [];
+    const avatarStyles = [
+      { bg: 'rgba(108, 99, 255, 0.2)', color: 'var(--primary-light)', border: 'rgba(108, 99, 255, 0.4)' },
+      { bg: 'rgba(0, 212, 170, 0.2)', color: 'var(--accent)', border: 'rgba(0, 212, 170, 0.4)' },
+      { bg: 'rgba(255, 107, 107, 0.2)', color: '#ff6b6b', border: 'rgba(255, 107, 107, 0.4)' },
+      { bg: 'rgba(255, 217, 61, 0.2)', color: '#ffd93d', border: 'rgba(255, 217, 61, 0.4)' },
+      { bg: 'rgba(168, 85, 247, 0.2)', color: '#c084fc', border: 'rgba(168, 85, 247, 0.4)' },
+      { bg: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8', border: 'rgba(56, 189, 248, 0.4)' },
+      { bg: 'rgba(251, 146, 60, 0.2)', color: '#fb923c', border: 'rgba(251, 146, 60, 0.4)' }
+    ];
 
     let expenses = [];
-
     let tasks = [];
-
+    let supplies = [];
+    let polls = [];
     let announcements = [];
-
     let activityLog = [];
+
+    // ===================== UTILITIES & TOAST =====================
+    function showToast(msg) {
+      const existing = document.querySelector('.demo-toast');
+      if (existing) existing.remove();
+      const toast = document.createElement('div');
+      toast.className = 'demo-toast';
+      toast.innerHTML = `<span>✨</span> ${msg}`;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 2500);
+    }
+
+    function getAvatarStyle(name) {
+      if (!name) return avatarStyles[0];
+      let hash = 0;
+      for (let i = 0; i < name.length; i++) {
+        hash = (hash << 5) - hash + name.charCodeAt(i);
+      }
+      return avatarStyles[Math.abs(hash) % avatarStyles.length];
+    }
 
     function addActivity(icon, text) {
       activityLog.unshift({ icon, text, time: new Date() });
-      if (activityLog.length > 15) activityLog.pop();
+      if (activityLog.length > 20) activityLog.pop();
     }
 
     function timeAgo(date) {
@@ -748,16 +828,156 @@
       return Math.floor(diff / 86400) + 'd ago';
     }
 
-    // ===================== EXPENSE DEMO =====================
+    function shakeButton(id) {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      btn.classList.add('shake');
+      setTimeout(() => btn.classList.remove('shake'), 500);
+    }
+
+    // ===================== ROOM BANNER CONTROLS =====================
+    function editRoomName() {
+      const newName = prompt('Enter your room / apartment name:', roomName);
+      if (newName && newName.trim()) {
+        roomName = newName.trim();
+        document.getElementById('displayRoomName').textContent = roomName;
+        addActivity('🏠', `Renamed room to <strong>"${roomName}"</strong>`);
+        showToast('Room name updated!');
+        updateDashboard();
+      }
+    }
+
+    function copyInviteLink() {
+      const link = `${window.location.origin}${window.location.pathname}#room=${roomCode}`;
+      navigator.clipboard.writeText(link).then(() => {
+        showToast(`Invite code ${roomCode} copied to clipboard!`);
+      }).catch(() => {
+        showToast(`Room code: ${roomCode}`);
+      });
+    }
+
+    function changeRoomStatus() {
+      const status = document.getElementById('roomStatusSelect').value;
+      roomStatus = status;
+      addActivity('📢', `Room status changed to <strong>${status}</strong>`);
+      showToast(`Status: ${status}`);
+    }
+
+    // ===================== ROOMMATE MANAGEMENT =====================
+    function updateSelects() {
+      const selects = [
+        document.getElementById('expPaidBy'),
+        document.getElementById('taskAssignee'),
+        document.getElementById('supplyBy'),
+        document.getElementById('announceBy'),
+        document.getElementById('settleFrom'),
+        document.getElementById('settleTo')
+      ];
+
+      selects.forEach((el) => {
+        if (!el) return;
+        if (roommates.length === 0) {
+          el.innerHTML = `<option value="" disabled selected>Add roommates first</option>`;
+        } else {
+          el.innerHTML = roommates.map((r, i) =>
+            `<option value="${r}" ${i === 0 ? 'selected' : ''}>${r}</option>`
+          ).join('');
+        }
+      });
+
+      // Update Member count badge
+      const badge = document.getElementById('memberCountBadge');
+      if (badge) badge.textContent = `• ${roommates.length} Member${roommates.length === 1 ? '' : 's'}`;
+    }
+
+    function renderRoommates() {
+      const list = document.getElementById('roommateList');
+      const hint = document.getElementById('roommateHint');
+
+      if (roommates.length === 0) {
+        list.innerHTML = '<div class="demo-empty">No roommates added yet. Enter a name above to get started!</div>';
+        if (hint) hint.style.display = 'flex';
+        return;
+      }
+
+      if (hint) hint.style.display = roommates.length < 2 ? 'flex' : 'none';
+
+      list.innerHTML = roommates.map((name, i) => {
+        const style = getAvatarStyle(name);
+        return `
+          <div class="demo-item" style="animation-delay:${i * 0.05}s">
+            <div class="demo-item-left">
+              <div class="demo-roommate-avatar" style="background:${style.bg}; color:${style.color}; border:1px solid ${style.border}">
+                ${name[0]}
+              </div>
+              <div>
+                <div class="demo-item-name">${name}</div>
+                <div class="demo-item-sub">Roommate #${i + 1} · ${i === 0 ? '👑 Admin' : '🏠 Member'}</div>
+              </div>
+            </div>
+            <div class="demo-item-right">
+              <button class="demo-delete-btn" onclick="deleteRoommate('${name.replace(/'/g, "\\'")}')" title="Remove ${name}">✕</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function addRoommate() {
+      const input = document.getElementById('roommateName');
+      const name = input.value.trim();
+
+      if (!name) {
+        shakeButton('addRoommateBtn');
+        return;
+      }
+
+      if (roommates.some(r => r.toLowerCase() === name.toLowerCase())) {
+        alert(`"${name}" is already in the room!`);
+        shakeButton('addRoommateBtn');
+        return;
+      }
+
+      roommates.push(name);
+      addActivity('👤', `Added roommate <strong>${name}</strong>`);
+      input.value = '';
+      showToast(`Added ${name} to room!`);
+      renderRoommates();
+      updateSelects();
+      renderExpenses();
+      renderTasks();
+      updateDashboard();
+    }
+
+    function deleteRoommate(name) {
+      const index = roommates.indexOf(name);
+      if (index === -1) return;
+
+      roommates.splice(index, 1);
+      addActivity('🗑️', `Removed roommate <strong>${name}</strong>`);
+      renderRoommates();
+      updateSelects();
+      renderExpenses();
+      renderTasks();
+      updateDashboard();
+    }
+
+    document.getElementById('addRoommateBtn').addEventListener('click', addRoommate);
+
+    // ===================== EXPENSE SPLITTER =====================
     function renderExpenses() {
       const list = document.getElementById('expenseList');
       const summary = document.getElementById('expenseSummary');
+      const settleBox = document.getElementById('settleBox');
 
       if (expenses.length === 0) {
-        list.innerHTML = '<div class="demo-empty">No expenses yet. Add one above!</div>';
+        list.innerHTML = '<div class="demo-empty">No expenses yet. Add your first shared expense above!</div>';
         summary.innerHTML = '';
+        if (settleBox) settleBox.style.display = 'none';
         return;
       }
+
+      const numPeople = roommates.length > 0 ? roommates.length : 1;
 
       list.innerHTML = expenses.map((e, i) => `
         <div class="demo-item expense-anim" style="animation-delay:${i * 0.05}s">
@@ -765,7 +985,7 @@
             <span class="demo-item-emoji">${e.emoji}</span>
             <div>
               <div class="demo-item-name">${e.name}</div>
-              <div class="demo-item-sub">Paid by ${e.paidBy} · ₹${(e.amount / 3).toFixed(0)}/person</div>
+              <div class="demo-item-sub">Paid by <strong>${e.paidBy}</strong> · ₹${(e.amount / numPeople).toFixed(0)}/person (${numPeople} ways)</div>
             </div>
           </div>
           <div class="demo-item-right">
@@ -775,17 +995,25 @@
         </div>
       `).join('');
 
-      // Calculate balances
+      if (roommates.length === 0) {
+        summary.innerHTML = `
+          <div class="demo-summary-header">
+            <span>Total: <strong>₹${expenses.reduce((s, e) => s + e.amount, 0).toLocaleString()}</strong></span>
+            <span style="color:var(--text-muted)">Add roommates to calculate split balances!</span>
+          </div>
+        `;
+        if (settleBox) settleBox.style.display = 'none';
+        return;
+      }
+
+      // Calculate dynamic balances
       const balances = {};
       roommates.forEach(r => balances[r] = 0);
       expenses.forEach(e => {
-        const share = e.amount / 3;
+        const share = e.amount / roommates.length;
         roommates.forEach(r => {
-          if (r === e.paidBy) {
-            balances[r] += e.amount - share;
-          } else {
-            balances[r] -= share;
-          }
+          if (r === e.paidBy) balances[r] += e.amount - share;
+          else balances[r] -= share;
         });
       });
 
@@ -793,14 +1021,14 @@
 
       summary.innerHTML = `
         <div class="demo-summary-header">
-          <span>Total: <strong>₹${total.toLocaleString()}</strong></span>
-          <span>Split 3 ways: <strong>₹${(total / 3).toFixed(0)}/person</strong></span>
+          <span>Total Spend: <strong>₹${total.toLocaleString()}</strong></span>
+          <span>Equal Split (${roommates.length} ways): <strong>₹${(total / roommates.length).toFixed(0)}/person</strong></span>
         </div>
-        <div class="demo-balance-cards">
+        <div class="demo-balance-cards" style="grid-template-columns: repeat(${Math.min(roommates.length, 3)}, 1fr);">
           ${roommates.map(r => {
             const bal = balances[r];
-            const cls = bal > 0 ? 'positive' : bal < 0 ? 'negative' : 'neutral';
-            const label = bal > 0 ? 'gets back' : bal < 0 ? 'owes' : 'settled';
+            const cls = bal > 0.5 ? 'positive' : bal < -0.5 ? 'negative' : 'neutral';
+            const label = bal > 0.5 ? 'gets back' : bal < -0.5 ? 'owes' : 'settled';
             return `
               <div class="demo-balance-card ${cls}">
                 <div class="demo-balance-name">${r}</div>
@@ -811,6 +1039,10 @@
           }).join('')}
         </div>
       `;
+
+      if (settleBox && roommates.length >= 2) {
+        settleBox.style.display = 'flex';
+      }
     }
 
     function deleteExpense(i) {
@@ -818,54 +1050,105 @@
       addActivity('🗑️', `Removed expense "${e.name}"`);
       expenses.splice(i, 1);
       renderExpenses();
+      updateDashboard();
     }
 
     document.getElementById('addExpenseBtn').addEventListener('click', () => {
       const name = document.getElementById('expName').value.trim();
       const amount = parseFloat(document.getElementById('expAmount').value);
+      const category = document.getElementById('expCategory').value;
       const paidBy = document.getElementById('expPaidBy').value;
+
+      if (!paidBy) {
+        alert('Please add at least one roommate in the Roommates tab first!');
+        shakeButton('addExpenseBtn');
+        return;
+      }
 
       if (!name || !amount || amount <= 0) {
         shakeButton('addExpenseBtn');
         return;
       }
 
-      const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-      expenses.push({ name, amount, paidBy, emoji });
+      expenses.push({ name, amount, paidBy, emoji: category });
       addActivity('💰', `<strong>${paidBy}</strong> added "${name}" — ₹${amount.toLocaleString()}`);
       document.getElementById('expName').value = '';
       document.getElementById('expAmount').value = '';
+      showToast(`Added expense ₹${amount.toLocaleString()}`);
       renderExpenses();
+      updateDashboard();
     });
 
-    // ===================== TASK DEMO =====================
+    function executeSettleUp() {
+      const from = document.getElementById('settleFrom').value;
+      const to = document.getElementById('settleTo').value;
+      const amount = parseFloat(document.getElementById('settleAmount').value);
+
+      if (!from || !to || from === to) {
+        alert('Please choose two different roommates to settle between!');
+        return;
+      }
+      if (!amount || amount <= 0) {
+        alert('Please enter a valid settlement amount!');
+        return;
+      }
+
+      // Add a settlement record
+      expenses.push({
+        name: `Settlement (${from} → ${to})`,
+        amount: amount,
+        paidBy: from,
+        emoji: '🤝'
+      });
+
+      addActivity('💸', `<strong>${from}</strong> settled <strong>₹${amount.toLocaleString()}</strong> with <strong>${to}</strong>`);
+      document.getElementById('settleAmount').value = '';
+      showToast(`Settled ₹${amount} between ${from} and ${to}!`);
+      renderExpenses();
+      updateDashboard();
+    }
+
+    // ===================== CHORES & ROTATION =====================
     function renderTasks() {
       const list = document.getElementById('taskList');
       const stats = document.getElementById('taskStats');
 
       if (tasks.length === 0) {
-        list.innerHTML = '<div class="demo-empty">No tasks yet. Add one above!</div>';
+        list.innerHTML = '<div class="demo-empty">No chores added yet. Add chores above to keep the room spotless!</div>';
         stats.innerHTML = '';
         return;
       }
 
-      const assigneeClass = { Harsh: 'a1', Parth: 'a2', Rohan: 'a3' };
+      const priorityMap = {
+        high: { label: '🔥 Urgent', cls: 'high' },
+        med: { label: '⚡ Normal', cls: 'med' },
+        low: { label: '🌿 Low', cls: 'low' }
+      };
 
-      list.innerHTML = tasks.map((t, i) => `
-        <div class="demo-item task-item ${t.done ? 'task-done' : ''}" style="animation-delay:${i * 0.05}s">
-          <div class="demo-item-left" style="cursor:pointer" onclick="toggleTask(${i})">
-            <div class="demo-task-check ${t.done ? 'checked' : ''}">${t.done ? '✓' : ''}</div>
-            <div>
-              <div class="demo-item-name ${t.done ? 'strike' : ''}">${t.name}</div>
-              <div class="demo-item-sub">${t.done ? 'Completed ✅' : 'Pending'}</div>
+      list.innerHTML = tasks.map((t, i) => {
+        const style = getAvatarStyle(t.assignee);
+        const pri = priorityMap[t.priority] || priorityMap.med;
+        return `
+          <div class="demo-item task-item ${t.done ? 'task-done' : ''}" style="animation-delay:${i * 0.05}s">
+            <div class="demo-item-left" style="cursor:pointer" onclick="toggleTask(${i})">
+              <div class="demo-task-check ${t.done ? 'checked' : ''}">${t.done ? '✓' : ''}</div>
+              <div>
+                <div class="demo-item-name ${t.done ? 'strike' : ''}">${t.name}</div>
+                <div class="demo-item-sub" style="display:flex; align-items:center; gap:8px; margin-top:3px;">
+                  <span class="demo-priority-tag ${pri.cls}">${pri.label}</span>
+                  <span>· Assigned to <strong>${t.assignee || 'Unassigned'}</strong></span>
+                </div>
+              </div>
+            </div>
+            <div class="demo-item-right">
+              <div class="demo-task-assignee-badge" style="background:${style.bg}; color:${style.color}; border:1px solid ${style.border}">
+                ${t.assignee ? t.assignee[0] : '?'}
+              </div>
+              <button class="demo-delete-btn" onclick="deleteTask(${i})" title="Delete">✕</button>
             </div>
           </div>
-          <div class="demo-item-right">
-            <div class="demo-task-assignee-badge ${assigneeClass[t.assignee]}">${t.assignee[0]}</div>
-            <button class="demo-delete-btn" onclick="deleteTask(${i})" title="Delete">✕</button>
-          </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
 
       const done = tasks.filter(t => t.done).length;
       const total = tasks.length;
@@ -876,7 +1159,7 @@
           <div class="demo-progress-bar">
             <div class="demo-progress-fill" style="width:${pct}%"></div>
           </div>
-          <span class="demo-progress-text">${done}/${total} done (${pct}%)</span>
+          <span class="demo-progress-text">${done}/${total} chores done (${pct}%)</span>
         </div>
       `;
     }
@@ -886,35 +1169,246 @@
       const action = tasks[i].done ? 'completed' : 'unchecked';
       addActivity(tasks[i].done ? '✅' : '↩️', `<strong>${tasks[i].assignee}</strong> ${action} "${tasks[i].name}"`);
       renderTasks();
+      updateDashboard();
     }
 
     function deleteTask(i) {
-      addActivity('🗑️', `Removed task "${tasks[i].name}"`);
+      addActivity('🗑️', `Removed chore "${tasks[i].name}"`);
       tasks.splice(i, 1);
       renderTasks();
+      updateDashboard();
+    }
+
+    function rotateTasks() {
+      if (tasks.length === 0 || roommates.length < 2) {
+        alert('Add at least 2 roommates and some chores to rotate assignments!');
+        return;
+      }
+
+      tasks.forEach(t => {
+        const curIdx = roommates.indexOf(t.assignee);
+        const nextIdx = (curIdx + 1) % roommates.length;
+        t.assignee = roommates[nextIdx];
+      });
+
+      addActivity('🔄', `Auto-rotated chore assignments among all roommates`);
+      showToast('Chores rotated fairly!');
+      renderTasks();
+      updateDashboard();
     }
 
     document.getElementById('addTaskBtn').addEventListener('click', () => {
       const name = document.getElementById('taskName').value.trim();
+      const priority = document.getElementById('taskPriority').value;
       const assignee = document.getElementById('taskAssignee').value;
+
+      if (!assignee) {
+        alert('Please add at least one roommate in the Roommates tab first!');
+        shakeButton('addTaskBtn');
+        return;
+      }
 
       if (!name) {
         shakeButton('addTaskBtn');
         return;
       }
 
-      tasks.push({ name, assignee, done: false });
-      addActivity('📋', `<strong>${assignee}</strong> was assigned "${name}"`);
+      tasks.push({ name, priority, assignee, done: false });
+      addActivity('📋', `Assigned chore "${name}" to <strong>${assignee}</strong>`);
       document.getElementById('taskName').value = '';
+      showToast(`Assigned chore to ${assignee}!`);
       renderTasks();
+      updateDashboard();
     });
 
-    // ===================== ANNOUNCEMENT DEMO =====================
+    // ===================== SUPPLIES & WISHLIST =====================
+    function renderSupplies() {
+      const list = document.getElementById('supplyList');
+      const summaryText = document.getElementById('supplySummaryText');
+      const convertBtn = document.getElementById('convertSupplyBtn');
+
+      if (supplies.length === 0) {
+        list.innerHTML = '<div class="demo-empty">No items in the wishlist. Add household essentials needed above!</div>';
+        summaryText.textContent = '0 items in wishlist';
+        if (convertBtn) convertBtn.style.display = 'none';
+        return;
+      }
+
+      list.innerHTML = supplies.map((s, i) => `
+        <div class="demo-wishlist-item ${s.bought ? 'bought' : ''}">
+          <div class="demo-item-left" style="cursor:pointer" onclick="toggleSupply(${i})">
+            <div class="demo-task-check ${s.bought ? 'checked' : ''}">${s.bought ? '✓' : ''}</div>
+            <div>
+              <div class="demo-item-name ${s.bought ? 'strike' : ''}">${s.name}</div>
+              <div class="demo-item-sub">Added by <strong>${s.by}</strong> · Est. ₹${s.cost.toLocaleString()} ${s.bought ? '· Bought ✅' : ''}</div>
+            </div>
+          </div>
+          <div class="demo-item-right">
+            <button class="demo-delete-btn" onclick="deleteSupply(${i})" title="Delete">✕</button>
+          </div>
+        </div>
+      `).join('');
+
+      const boughtCount = supplies.filter(s => s.bought).length;
+      summaryText.textContent = `${supplies.length} item${supplies.length === 1 ? '' : 's'} (${boughtCount} bought)`;
+
+      if (convertBtn) {
+        convertBtn.style.display = boughtCount > 0 ? 'inline-flex' : 'none';
+      }
+    }
+
+    function toggleSupply(i) {
+      supplies[i].bought = !supplies[i].bought;
+      renderSupplies();
+      updateDashboard();
+    }
+
+    function deleteSupply(i) {
+      addActivity('🗑️', `Removed "${supplies[i].name}" from wishlist`);
+      supplies.splice(i, 1);
+      renderSupplies();
+      updateDashboard();
+    }
+
+    function convertBoughtSupplies() {
+      const boughtItems = supplies.filter(s => s.bought);
+      if (boughtItems.length === 0) return;
+
+      boughtItems.forEach(item => {
+        expenses.push({
+          name: item.name,
+          amount: item.cost || 100,
+          paidBy: item.by || (roommates[0] || 'Roommate'),
+          emoji: '🛒'
+        });
+        addActivity('🛒', `Converted bought supply "${item.name}" into split expense (₹${item.cost})`);
+      });
+
+      // Remove bought items from wishlist
+      supplies = supplies.filter(s => !s.bought);
+      showToast(`Converted ${boughtItems.length} items to shared expenses!`);
+      renderSupplies();
+      renderExpenses();
+      updateDashboard();
+    }
+
+    document.getElementById('addSupplyBtn').addEventListener('click', () => {
+      const name = document.getElementById('supplyItem').value.trim();
+      const cost = parseFloat(document.getElementById('supplyCost').value) || 0;
+      const by = document.getElementById('supplyBy').value;
+
+      if (!by) {
+        alert('Please add at least one roommate first!');
+        shakeButton('addSupplyBtn');
+        return;
+      }
+
+      if (!name) {
+        shakeButton('addSupplyBtn');
+        return;
+      }
+
+      supplies.push({ name, cost, by, bought: false });
+      addActivity('🛒', `<strong>${by}</strong> added "${name}" to room wishlist`);
+      document.getElementById('supplyItem').value = '';
+      document.getElementById('supplyCost').value = '';
+      showToast(`Added ${name} to wishlist!`);
+      renderSupplies();
+      updateDashboard();
+    });
+
+    // ===================== ROOM POLLS & VOTING =====================
+    function renderPolls() {
+      const container = document.getElementById('pollsList');
+
+      if (polls.length === 0) {
+        container.innerHTML = '<div class="demo-empty">No active room polls. Launch one above!</div>';
+        return;
+      }
+
+      container.innerHTML = polls.map((p, i) => {
+        const total = p.votes1 + p.votes2;
+        const pct1 = total > 0 ? Math.round((p.votes1 / total) * 100) : 50;
+        const pct2 = total > 0 ? Math.round((p.votes2 / total) * 100) : 50;
+
+        return `
+          <div class="demo-poll-card">
+            <div class="demo-poll-header">
+              <div>
+                <div class="demo-poll-question">${p.question}</div>
+                <div class="demo-poll-by">Initiated by ${p.by} · ${total} vote${total === 1 ? '' : 's'}</div>
+              </div>
+              <button class="demo-delete-btn small" onclick="deletePoll(${i})" title="Delete Poll">✕</button>
+            </div>
+            <div class="demo-poll-options">
+              <div class="demo-poll-option" onclick="votePoll(${i}, 1)">
+                <div class="demo-poll-option-fill" style="width:${pct1}%"></div>
+                <span class="demo-poll-option-text">${p.opt1}</span>
+                <span class="demo-poll-option-stats">${p.votes1} votes (${pct1}%)</span>
+              </div>
+              <div class="demo-poll-option" onclick="votePoll(${i}, 2)">
+                <div class="demo-poll-option-fill" style="width:${pct2}%"></div>
+                <span class="demo-poll-option-text">${p.opt2}</span>
+                <span class="demo-poll-option-stats">${p.votes2} votes (${pct2}%)</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function votePoll(pollIndex, optionNum) {
+      if (optionNum === 1) polls[pollIndex].votes1++;
+      else polls[pollIndex].votes2++;
+
+      addActivity('🗳️', `New vote recorded on poll: <strong>"${polls[pollIndex].question}"</strong>`);
+      showToast('Vote counted!');
+      renderPolls();
+      updateDashboard();
+    }
+
+    function deletePoll(i) {
+      addActivity('🗑️', `Closed poll "${polls[i].question}"`);
+      polls.splice(i, 1);
+      renderPolls();
+      updateDashboard();
+    }
+
+    document.getElementById('createPollBtn').addEventListener('click', () => {
+      const question = document.getElementById('pollQuestion').value.trim();
+      const opt1 = document.getElementById('pollOpt1').value.trim() || 'Option A';
+      const opt2 = document.getElementById('pollOpt2').value.trim() || 'Option B';
+
+      if (!question) {
+        shakeButton('createPollBtn');
+        return;
+      }
+
+      polls.unshift({
+        id: Date.now(),
+        question,
+        by: roommates[0] || 'Roommate',
+        opt1,
+        votes1: 0,
+        opt2,
+        votes2: 0
+      });
+
+      addActivity('🗳️', `Launched new room poll: <strong>"${question}"</strong>`);
+      document.getElementById('pollQuestion').value = '';
+      document.getElementById('pollOpt1').value = '';
+      document.getElementById('pollOpt2').value = '';
+      showToast('Poll created!');
+      renderPolls();
+      updateDashboard();
+    });
+
+    // ===================== ANNOUNCEMENTS =====================
     function renderAnnouncements() {
       const list = document.getElementById('announceList');
 
       if (announcements.length === 0) {
-        list.innerHTML = '<div class="demo-empty">No announcements yet. Post one above!</div>';
+        list.innerHTML = '<div class="demo-empty">No notices posted yet. Broadcast a message above!</div>';
         return;
       }
 
@@ -925,7 +1419,7 @@
       };
 
       list.innerHTML = announcements.map((a, i) => {
-        const tag = tagMap[a.type];
+        const tag = tagMap[a.type] || tagMap.info;
         return `
           <div class="demo-announce-card ${tag.cls}" style="animation-delay:${i * 0.05}s">
             <div class="demo-announce-top">
@@ -936,16 +1430,17 @@
               </div>
             </div>
             <div class="demo-announce-msg">${a.msg}</div>
-            <div class="demo-announce-by">— ${a.by}</div>
+            <div class="demo-announce-by">— Posted by ${a.by}</div>
           </div>
         `;
       }).join('');
     }
 
     function deleteAnnouncement(i) {
-      addActivity('🗑️', `Removed announcement "${announcements[i].msg.substring(0, 30)}..."`);
+      addActivity('🗑️', `Removed notice "${announcements[i].msg.substring(0, 30)}..."`);
       announcements.splice(i, 1);
       renderAnnouncements();
+      updateDashboard();
     }
 
     document.getElementById('addAnnounceBtn').addEventListener('click', () => {
@@ -953,29 +1448,41 @@
       const type = document.getElementById('announceType').value;
       const by = document.getElementById('announceBy').value;
 
+      if (!by) {
+        alert('Please add at least one roommate first!');
+        shakeButton('addAnnounceBtn');
+        return;
+      }
+
       if (!msg) {
         shakeButton('addAnnounceBtn');
         return;
       }
 
       announcements.unshift({ msg, type, by, time: new Date() });
-      addActivity('📢', `<strong>${by}</strong> posted "${msg.substring(0, 40)}"`);
+      addActivity('📢', `<strong>${by}</strong> posted notice: "${msg.substring(0, 40)}"`);
       document.getElementById('announceMsg').value = '';
+      showToast('Notice posted!');
       renderAnnouncements();
+      updateDashboard();
     });
 
     // ===================== DASHBOARD =====================
     function updateDashboard() {
       const totalExp = expenses.reduce((s, e) => s + e.amount, 0);
       document.getElementById('dashTotalExp').textContent = '₹' + totalExp.toLocaleString();
-      document.getElementById('dashTotalTasks').textContent = tasks.length;
-      document.getElementById('dashDoneTasks').textContent = tasks.filter(t => t.done).length;
-      document.getElementById('dashAnnouncements').textContent = announcements.length;
 
-      // Activity feed
+      const doneTasks = tasks.filter(t => t.done).length;
+      const taskPct = tasks.length > 0 ? Math.round((doneTasks / tasks.length) * 100) : 0;
+      document.getElementById('dashDoneTasks').textContent = `${taskPct}%`;
+
+      document.getElementById('dashSuppliesCount').textContent = supplies.filter(s => !s.bought).length;
+      document.getElementById('dashPollsCount').textContent = polls.length;
+
+      // Activity Feed
       const feed = document.getElementById('activityFeed');
       if (activityLog.length === 0) {
-        feed.innerHTML = '<div class="demo-activity-empty"><span>🕐</span> No activity yet — try adding expenses, tasks, or announcements!</div>';
+        feed.innerHTML = '<div class="demo-activity-empty"><span>🕐</span> No activity yet — try adding roommates, expenses, chores, or voting!</div>';
       } else {
         feed.innerHTML = activityLog.map(a => `
           <div class="demo-activity-row">
@@ -986,15 +1493,15 @@
         `).join('');
       }
 
-      // Balances
+      // Debt Matrix
       const balDiv = document.getElementById('dashBalances');
-      if (expenses.length === 0) {
-        balDiv.innerHTML = '<div class="demo-activity-empty"><span>💸</span> Add some expenses to see balances!</div>';
+      if (expenses.length === 0 || roommates.length === 0) {
+        balDiv.innerHTML = '<div class="demo-activity-empty"><span>💸</span> Add roommates and expenses to see real-time balances!</div>';
       } else {
         const balances = {};
         roommates.forEach(r => balances[r] = 0);
         expenses.forEach(e => {
-          const share = e.amount / 3;
+          const share = e.amount / roommates.length;
           roommates.forEach(r => {
             if (r === e.paidBy) balances[r] += e.amount - share;
             else balances[r] -= share;
@@ -1003,8 +1510,8 @@
 
         balDiv.innerHTML = roommates.map(r => {
           const bal = balances[r];
-          const cls = bal > 0 ? 'positive' : bal < 0 ? 'negative' : 'neutral';
-          const label = bal > 0 ? 'gets back' : bal < 0 ? 'owes' : 'settled';
+          const cls = bal > 0.5 ? 'positive' : bal < -0.5 ? 'negative' : 'neutral';
+          const label = bal > 0.5 ? 'gets back' : bal < -0.5 ? 'owes' : 'settled';
           return `
             <div class="demo-dash-balance ${cls}">
               <strong>${r}</strong>
@@ -1016,26 +1523,26 @@
       }
     }
 
-    // ===================== UTILITY =====================
-    function shakeButton(id) {
-      const btn = document.getElementById(id);
-      btn.classList.add('shake');
-      setTimeout(() => btn.classList.remove('shake'), 500);
-    }
-
-    // Enter key support for inputs
+    // Enter key support for all demo inputs
     document.querySelectorAll('.demo-input-group input').forEach(input => {
       input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
           const panel = input.closest('.demo-panel');
-          panel.querySelector('.demo-btn').click();
+          if (panel) {
+            const btn = panel.querySelector('.demo-btn');
+            if (btn) btn.click();
+          }
         }
       });
     });
 
-    // ===================== INITIAL RENDER =====================
+    // ===================== INITIAL SEED / RENDER =====================
+    renderRoommates();
+    updateSelects();
     renderExpenses();
     renderTasks();
+    renderSupplies();
+    renderPolls();
     renderAnnouncements();
     updateDashboard();
   </script>

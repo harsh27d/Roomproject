@@ -974,6 +974,33 @@
   font-size: 0.95rem;
 }
 
+/* Roommate Specific */
+.demo-roommate-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+
+.demo-roommate-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(108, 99, 255, 0.08);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
 /* Expense Summary */
 .demo-summary {
   margin-top: 20px;
@@ -1315,6 +1342,266 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--text-muted);
+}
+
+/* ===== ROOM HUB & BANNER ===== */
+.demo-room-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.12) 0%, rgba(0, 212, 170, 0.08) 100%);
+  border: 1px solid rgba(108, 99, 255, 0.25);
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.demo-room-title-area {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.demo-room-icon {
+  font-size: 2rem;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm);
+}
+
+.demo-room-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.demo-room-meta {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.demo-room-code-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: monospace;
+  font-weight: 700;
+  color: var(--accent);
+  border: 1px dashed rgba(0, 212, 170, 0.3);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.demo-room-code-badge:hover {
+  background: rgba(0, 212, 170, 0.15);
+  border-color: var(--accent);
+}
+
+.demo-room-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  background: rgba(108, 99, 255, 0.15);
+  border: 1px solid rgba(108, 99, 255, 0.3);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Secondary Action Buttons */
+.btn-sm-action {
+  padding: 8px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-sm-action:hover {
+  background: rgba(108, 99, 255, 0.2);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.btn-sm-action.accent {
+  background: rgba(0, 212, 170, 0.12);
+  border-color: rgba(0, 212, 170, 0.3);
+  color: var(--accent);
+}
+
+.btn-sm-action.accent:hover {
+  background: rgba(0, 212, 170, 0.25);
+}
+
+/* Priority Tags */
+.demo-priority-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.demo-priority-tag.high { background: rgba(255, 107, 107, 0.15); color: #ff6b6b; border: 1px solid rgba(255, 107, 107, 0.3); }
+.demo-priority-tag.med { background: rgba(255, 217, 61, 0.15); color: #ffd93d; border: 1px solid rgba(255, 217, 61, 0.3); }
+.demo-priority-tag.low { background: rgba(0, 212, 170, 0.15); color: var(--accent); border: 1px solid rgba(0, 212, 170, 0.3); }
+
+/* Quick Settle Box */
+.demo-settle-box {
+  margin-top: 20px;
+  padding: 18px 20px;
+  background: rgba(0, 212, 170, 0.04);
+  border: 1px solid rgba(0, 212, 170, 0.2);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.demo-settle-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+/* Polls Specific */
+.demo-poll-card {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+.demo-poll-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.demo-poll-question {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #fff;
+}
+
+.demo-poll-by {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.demo-poll-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.demo-poll-option {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.demo-poll-option:hover {
+  border-color: var(--primary);
+  background: rgba(108, 99, 255, 0.08);
+}
+
+.demo-poll-option-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(108, 99, 255, 0.25), rgba(0, 212, 170, 0.2));
+  transition: width 0.4s ease;
+  z-index: 0;
+}
+
+.demo-poll-option-text {
+  position: relative;
+  z-index: 1;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.demo-poll-option-stats {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+/* Wishlist Item */
+.demo-wishlist-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  transition: var(--transition);
+}
+
+.demo-wishlist-item.bought {
+  opacity: 0.6;
+}
+
+/* Quick toast notification */
+.demo-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--dark-bg-2);
+  color: #fff;
+  border: 1px solid var(--accent);
+  padding: 12px 22px;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 9999;
+  animation: fadeInUp 0.3s ease;
 }
 
 /* Shake Animation */
