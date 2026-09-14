@@ -1,0 +1,36 @@
+{
+  "name": "RoomMate — Shared Living Made Simple",
+  "short_name": "RoomMate",
+  "description": "Split expenses, rotate chores, post room notices, vote on polls, and live in harmony.",
+  "start_url": "/features",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f0f1a",
+  "theme_color": "#6C63FF",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Room Hub",
+      "url": "/features#room-hub",
+      "description": "Open your live room workspace"
+    },
+    {
+      "name": "Expenses",
+      "url": "/features#tab-expenses",
+      "description": "Add and split expenses"
+    }
+  ]
+}

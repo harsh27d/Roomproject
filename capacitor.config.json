@@ -1,0 +1,10 @@
+{
+  "appId": "com.roommate.app",
+  "appName": "RoomMate",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "url": "https://roomproject-liard.vercel.app",
+    "cleartext": true
+  }
+}
