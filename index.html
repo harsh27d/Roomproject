@@ -514,6 +514,8 @@
         { threshold: 0.3 }
       );
       statsObserver.observe(statsSection);
+    }
+
     // --- 6. Service Worker Registration & PWA Install Prompt ---
     let deferredPrompt = null;
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;

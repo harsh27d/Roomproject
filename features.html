@@ -884,12 +884,11 @@
       if (nameEl) nameEl.textContent = roomName;
       const codeEl = document.getElementById('roomCodeBadge');
       if (codeEl) codeEl.innerHTML = `${roomCode} 📋`;
+      const statusSelect = document.getElementById('roomStatusSelect');
+      if (statusSelect && roomStatus) statusSelect.value = roomStatus;
 
       // Trigger cloud sync in background
       syncFromSupabase();
-    }
-      const statusSelect = document.getElementById('roomStatusSelect');
-      if (statusSelect && roomStatus) statusSelect.value = roomStatus;
     }
 
     // ===================== UTILITIES & TOAST =====================
