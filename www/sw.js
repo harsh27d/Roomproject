@@ -1,13 +1,15 @@
 /**
- * RoomMate Service Worker
- * Provides offline caching, push notifications readiness, and enables standalone PWA installation.
+ * RoomMate Service Worker v3
+ * Auto-activates and provides resilient offline and navigation routing.
  */
 
-const CACHE_NAME = 'roommate-v2';
+const CACHE_NAME = 'roommate-v3';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
+  '/features',
   '/features.html',
+  '/auth',
   '/auth.html',
   '/common.css',
   '/home.css',
@@ -26,14 +28,20 @@ const ASSETS_TO_CACHE = [
 ];
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE).catch((err) => {
-        console.warn('Pre-caching assets warning:', err);
-      });
+      return Promise.allSettled(
+        ASSETS_TO_CACHE.map((url) =>
+          fetch(url, { cache: 'reload' })
+            .then((response) => {
+              if (response.ok) return cache.put(url, response);
+            })
+            .catch((err) => console.warn('Pre-cache skip:', url, err))
+        )
+      );
     })
   );
-  self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
@@ -42,51 +50,54 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         keys.map((key) => {
           if (key !== CACHE_NAME) {
+            console.log('Clearing old cache:', key);
             return caches.delete(key);
           }
         })
       );
-    })
+    }).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
-  // Only intercept GET requests
+  // Only handle GET requests
   if (event.request.method !== 'GET') return;
 
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        // Fetch in background to update cache
-        fetch(event.request)
-          .then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200) {
-              caches.open(CACHE_NAME).then((cache) => {
-                cache.put(event.request, networkResponse.clone());
-              });
-            }
-          })
-          .catch(() => {});
-        return cachedResponse;
-      }
+  const url = new URL(event.request.url);
 
-      return fetch(event.request)
-        .then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200 && event.request.url.startsWith(self.location.origin)) {
-            const responseClone = networkResponse.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, responseClone);
-            });
+  // Network-first strategy with cache fallback
+  event.respondWith(
+    fetch(event.request)
+      .then((networkResponse) => {
+        // Cache valid same-origin responses
+        if (networkResponse && networkResponse.status === 200 && url.origin === self.location.origin) {
+          const clone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, clone);
+          });
+        }
+        return networkResponse;
+      })
+      .catch(async () => {
+        // Look in cache for exact match
+        const cached = await caches.match(event.request);
+        if (cached) return cached;
+
+        // If navigation request failed, try fallback pages
+        if (event.request.mode === 'navigate') {
+          if (url.pathname.includes('feature')) {
+            return (await caches.match('/features.html')) || (await caches.match('/features'));
           }
-          return networkResponse;
-        })
-        .catch(() => {
-          // If offline and navigating to a page, return index or offline fallback
-          if (event.request.mode === 'navigate') {
-            return caches.match('/index.html') || caches.match('/');
+          if (url.pathname.includes('auth')) {
+            return (await caches.match('/auth.html')) || (await caches.match('/auth'));
           }
+          return (await caches.match('/index.html')) || (await caches.match('/'));
+        }
+
+        return new Response('Network error occurred', {
+          status: 408,
+          headers: { 'Content-Type': 'text/plain' }
         });
-    })
+      })
   );
 });
