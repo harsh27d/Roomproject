@@ -1,9 +1,9 @@
 /**
  * RoomMate Service Worker
- * Provides offline caching and enables standalone PWA / WebAPK installation on mobile devices.
+ * Provides offline caching, push notifications readiness, and enables standalone PWA installation.
  */
 
-const CACHE_NAME = 'roommate-cache-v1';
+const CACHE_NAME = 'roommate-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -15,13 +15,20 @@ const ASSETS_TO_CACHE = [
   '/auth.css',
   '/auth.js',
   '/supabaseClient.js',
-  '/manifest.json'
+  '/manifest.json',
+  '/assets/icon-96.png',
+  '/assets/icon-144.png',
+  '/assets/icon-192.png',
+  '/assets/icon-512.png',
+  '/assets/icon-maskable-192.png',
+  '/assets/icon-maskable-512.png',
+  '/assets/app-icon.png'
 ];
 
-self.addEventListener('install', (e) => {
-  e.waitUntil(
+self.addEventListener('install', (event) => {
+  event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE).catch(err => {
+      return cache.addAll(ASSETS_TO_CACHE).catch((err) => {
         console.warn('Pre-caching assets warning:', err);
       });
     })
@@ -29,8 +36,8 @@ self.addEventListener('install', (e) => {
   self.skipWaiting();
 });
 
-self.addEventListener('activate', (e) => {
-  e.waitUntil(
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
         keys.map((key) => {
@@ -44,11 +51,42 @@ self.addEventListener('activate', (e) => {
   self.clients.claim();
 });
 
-self.addEventListener('fetch', (e) => {
-  // Network first with cache fallback
-  e.respondWith(
-    fetch(e.request).catch(() => {
-      return caches.match(e.request);
+self.addEventListener('fetch', (event) => {
+  // Only intercept GET requests
+  if (event.request.method !== 'GET') return;
+
+  event.respondWith(
+    caches.match(event.request).then((cachedResponse) => {
+      if (cachedResponse) {
+        // Fetch in background to update cache
+        fetch(event.request)
+          .then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200) {
+              caches.open(CACHE_NAME).then((cache) => {
+                cache.put(event.request, networkResponse.clone());
+              });
+            }
+          })
+          .catch(() => {});
+        return cachedResponse;
+      }
+
+      return fetch(event.request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200 && event.request.url.startsWith(self.location.origin)) {
+            const responseClone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseClone);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => {
+          // If offline and navigating to a page, return index or offline fallback
+          if (event.request.mode === 'navigate') {
+            return caches.match('/index.html') || caches.match('/');
+          }
+        });
     })
   );
 });

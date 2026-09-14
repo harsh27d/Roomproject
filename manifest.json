@@ -1,36 +1,118 @@
 {
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "id": "/",
   "name": "RoomMate — Shared Living Made Simple",
   "short_name": "RoomMate",
-  "description": "Split expenses, rotate chores, post room notices, vote on polls, and live in harmony.",
-  "start_url": "/features",
+  "description": "Split expenses, rotate chores, post room notices, vote on polls, and coordinate roommates in one modern app.",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
   "background_color": "#0f0f1a",
-  "theme_color": "#6C63FF",
+  "theme_color": "#0f0f1a",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": [
+    "lifestyle",
+    "productivity",
+    "utilities",
+    "finance"
+  ],
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "assets/icon-192.png",
-      "sizes": "192x192",
+      "src": "/assets/icon-96.png",
+      "sizes": "96x96",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "assets/icon-512.png",
+      "src": "/assets/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/screenshot-desktop.png",
+      "sizes": "1920x1032",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "RoomMate Dashboard & Expense Hub on Desktop"
+    },
+    {
+      "src": "/assets/screenshot-mobile.png",
+      "sizes": "630x943",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "RoomMate Mobile Workspace"
     }
   ],
   "shortcuts": [
     {
       "name": "Room Hub",
-      "url": "/features#room-hub",
-      "description": "Open your live room workspace"
+      "short_name": "Hub",
+      "url": "/features.html#room-hub",
+      "description": "Open your live room workspace",
+      "icons": [
+        {
+          "src": "/assets/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "Expenses",
-      "url": "/features#tab-expenses",
-      "description": "Add and split expenses"
+      "short_name": "Expenses",
+      "url": "/features.html#feature-expenses",
+      "description": "Add and split expenses",
+      "icons": [
+        {
+          "src": "/assets/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Account",
+      "short_name": "Account",
+      "url": "/auth.html",
+      "description": "Sign in or manage account",
+      "icons": [
+        {
+          "src": "/assets/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ]
 }
