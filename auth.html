@@ -138,23 +138,62 @@
         </button>
       </form>
 
-      <div style="text-align:center; margin-top:20px; font-size:0.85rem; color:var(--text-muted);">
+      <!-- Supabase Status & Config Trigger -->
+      <div style="margin-top:24px; padding-top:16px; border-top:1px solid var(--card-border); text-align:center;">
+        <button type="button" onclick="openSupabaseModal()" style="background:transparent; border:none; color:var(--text-muted); font-size:0.8rem; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+          <span>⚡</span> <span id="supabaseStatusLabel">Database: Local / Supabase Config</span>
+        </button>
+      </div>
+
+      <div style="text-align:center; margin-top:12px; font-size:0.85rem; color:var(--text-muted);">
         <a href="index.html" style="color:var(--text-secondary); text-decoration:none;">← Back to Home Page</a>
       </div>
     </div>
   </div>
 
+  <!-- Supabase Settings Modal -->
+  <div id="supabaseModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); backdrop-filter:blur(10px); z-index:9999; align-items:center; justify-content:center; padding:20px;">
+    <div style="background:var(--dark-bg-2); border:1px solid var(--card-border); border-radius:16px; width:100%; max-width:440px; padding:28px; box-shadow:0 20px 50px rgba(0,0,0,0.6);">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h3 style="color:#fff; font-size:1.2rem; display:flex; align-items:center; gap:8px;">
+          <span>⚡</span> Connect Supabase DB
+        </h3>
+        <button onclick="closeSupabaseModal()" style="background:transparent; border:none; color:var(--text-muted); font-size:1.1rem; cursor:pointer;">✕</button>
+      </div>
+      <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:16px;">
+        Paste your Supabase Project URL & Anon Public API Key to enable cloud auth and multi-room sync:
+      </p>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div>
+          <label style="font-size:0.75rem; color:var(--text-muted); font-weight:600; text-transform:uppercase;">Supabase Project URL</label>
+          <input type="text" id="sbModalUrl" placeholder="https://your-id.supabase.co" style="width:100%; padding:10px 14px; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid var(--card-border); color:#fff; font-size:0.9rem; margin-top:4px;" />
+        </div>
+        <div>
+          <label style="font-size:0.75rem; color:var(--text-muted); font-weight:600; text-transform:uppercase;">Supabase Anon Key</label>
+          <input type="password" id="sbModalKey" placeholder="eyJhbGciOi..." style="width:100%; padding:10px 14px; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid var(--card-border); color:#fff; font-size:0.9rem; margin-top:4px;" />
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:20px; justify-content:flex-end;">
+        <button onclick="closeSupabaseModal()" class="btn btn-outline" style="padding:8px 18px; font-size:0.85rem;">Cancel</button>
+        <button onclick="saveSupabaseSettings()" class="btn btn-primary" style="padding:8px 20px; font-size:0.85rem;">Save & Connect</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabaseClient.js"></script>
   <script src="auth.js"></script>
   <script>
     let currentAvatar = '😎';
     let roomMode = 'create';
 
-    // Check URL params for ?tab=signup
     window.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.get('tab') === 'signup') {
         switchAuthTab('signup');
       }
+
+      updateSupabaseStatusLabel();
 
       // If already logged in, redirect to features
       if (getCurrentUser()) {
@@ -164,6 +203,42 @@
         }, 800);
       }
     });
+
+    function updateSupabaseStatusLabel() {
+      const label = document.getElementById('supabaseStatusLabel');
+      if (!label) return;
+      if (typeof isSupabaseConfigured === 'function' && isSupabaseConfigured()) {
+        label.innerHTML = `<span style="color:var(--accent);">● Supabase Connected</span> (Click to edit)`;
+      } else {
+        label.innerHTML = `<span>Database: Local Storage</span> (Click to connect Supabase)`;
+      }
+    }
+
+    function openSupabaseModal() {
+      const modal = document.getElementById('supabaseModal');
+      document.getElementById('sbModalUrl').value = localStorage.getItem('supabase_url') || '';
+      document.getElementById('sbModalKey').value = localStorage.getItem('supabase_anon_key') || '';
+      modal.style.display = 'flex';
+    }
+
+    function closeSupabaseModal() {
+      document.getElementById('supabaseModal').style.display = 'none';
+    }
+
+    function saveSupabaseSettings() {
+      const url = document.getElementById('sbModalUrl').value.trim();
+      const key = document.getElementById('sbModalKey').value.trim();
+
+      if (!url || !key) {
+        alert('Please enter both Supabase URL and Anon Key!');
+        return;
+      }
+
+      const ok = setSupabaseKeys(url, key);
+      closeSupabaseModal();
+      updateSupabaseStatusLabel();
+      alert(ok ? '⚡ Supabase connected successfully!' : 'Could not initialize Supabase. Please check your keys.');
+    }
 
     function switchAuthTab(tab) {
       const isLogin = tab === 'login';
@@ -216,12 +291,19 @@
       alertBox.innerHTML = '';
     }
 
-    function handleLogin(e) {
+    async function handleLogin(e) {
       e.preventDefault();
       const email = document.getElementById('loginEmail').value;
       const password = document.getElementById('loginPassword').value;
 
-      const res = loginUser(email, password);
+      const submitBtn = document.getElementById('loginSubmitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Signing in...';
+
+      const res = await loginUser(email, password);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Sign In to RoomMate →';
+
       if (!res.success) {
         showAlert('error', res.message);
         return;
@@ -233,7 +315,7 @@
       }, 700);
     }
 
-    function handleSignup(e) {
+    async function handleSignup(e) {
       e.preventDefault();
       const name = document.getElementById('signupName').value;
       const email = document.getElementById('signupEmail').value;
@@ -241,7 +323,11 @@
       const roomName = document.getElementById('signupRoomName').value;
       const roomCode = document.getElementById('signupRoomCode').value;
 
-      const res = registerUser({
+      const submitBtn = document.getElementById('signupSubmitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating account...';
+
+      const res = await registerUser({
         name,
         email,
         password,
@@ -249,6 +335,9 @@
         roomCode: roomMode === 'join' ? roomCode : '',
         avatar: currentAvatar
       });
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Create Account & Launch →';
 
       if (!res.success) {
         showAlert('error', res.message);

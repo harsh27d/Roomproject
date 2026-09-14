@@ -26,9 +26,22 @@ function getCurrentUser() {
   }
 }
 
-function registerUser({ name, email, password, roomName, roomCode, avatar }) {
+async function registerUser({ name, email, password, roomName, roomCode, avatar }) {
   const users = getAllUsers();
   const normalizedEmail = email.trim().toLowerCase();
+
+  // Try Supabase Sign Up if configured
+  if (typeof isSupabaseConfigured === 'function' && isSupabaseConfigured()) {
+    const sbRes = await sbSignUp(normalizedEmail, password, {
+      name: name.trim(),
+      avatar: avatar || '👤',
+      roomName: roomName || `${name}'s Room`,
+      roomCode: roomCode || 'ROOM-' + Math.floor(1000 + Math.random() * 9000)
+    });
+    if (sbRes && !sbRes.success) {
+      return { success: false, message: sbRes.error || 'Supabase registration failed.' };
+    }
+  }
 
   if (users.some(u => u.email === normalizedEmail)) {
     return { success: false, message: 'An account with this email already exists.' };
@@ -44,7 +57,7 @@ function registerUser({ name, email, password, roomName, roomCode, avatar }) {
     id: 'user_' + Date.now(),
     name: name.trim(),
     email: normalizedEmail,
-    password: password, // In client-side demo, saved locally
+    password: password,
     avatar: avatar || '👤',
     roomName: finalRoomName,
     roomCode: generatedRoomCode,
@@ -75,7 +88,6 @@ function registerUser({ name, email, password, roomName, roomCode, avatar }) {
       }]
     });
   } else {
-    // If joining existing room, add user to roommates list if not present
     if (!existingRoom.roommates.includes(newUser.name)) {
       existingRoom.roommates.push(newUser.name);
       existingRoom.activityLog.unshift({
@@ -87,14 +99,22 @@ function registerUser({ name, email, password, roomName, roomCode, avatar }) {
     }
   }
 
-  // Set active session
   setSession(newUser);
   return { success: true, user: newUser };
 }
 
-function loginUser(email, password) {
-  const users = getAllUsers();
+async function loginUser(email, password) {
   const normalizedEmail = email.trim().toLowerCase();
+
+  // Try Supabase Sign In if configured
+  if (typeof isSupabaseConfigured === 'function' && isSupabaseConfigured()) {
+    const sbRes = await sbSignIn(normalizedEmail, password);
+    if (sbRes && !sbRes.success) {
+      return { success: false, message: sbRes.error || 'Invalid email or password.' };
+    }
+  }
+
+  const users = getAllUsers();
   const user = users.find(u => u.email === normalizedEmail && u.password === password);
 
   if (!user) {
@@ -118,7 +138,10 @@ function setSession(user) {
   localStorage.setItem(AUTH_KEYS.SESSION, JSON.stringify(sessionData));
 }
 
-function logoutUser() {
+async function logoutUser() {
+  if (typeof sbSignOut === 'function') {
+    await sbSignOut();
+  }
   localStorage.removeItem(AUTH_KEYS.SESSION);
   window.location.reload();
 }
