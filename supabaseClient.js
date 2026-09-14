@@ -1,25 +1,24 @@
 /**
  * Supabase Client Configuration & Database Helpers
- * Plug in your Supabase project credentials below or set them via the in-app settings modal.
+ * Permanently connected to RoomMate Supabase Backend
  */
 
 const SUPABASE_CONFIG = {
-  // Replace these with your Supabase Project URL and Anon API Key
-  URL: localStorage.getItem('supabase_url') || 'https://your-project-id.supabase.co',
-  ANON_KEY: localStorage.getItem('supabase_anon_key') || 'your-anon-public-key-here'
+  URL: 'https://uqizibytsqnvxlaqhxon.supabase.co',
+  ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxaXppYnl0c3FudnhsYXFoeG9uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkzODExODYsImV4cCI6MjEwNDk1NzE4Nn0.4CS43qMU7MCRMjzLNgaWFKOwgpu8Mr84i01eRSeLduk'
 };
 
 let supabaseClient = null;
 
 // Initialize Supabase if library is available
 function initSupabase() {
-  if (typeof window.supabase !== 'undefined' && SUPABASE_CONFIG.URL !== 'https://your-project-id.supabase.co') {
+  if (typeof window.supabase !== 'undefined') {
     try {
       supabaseClient = window.supabase.createClient(SUPABASE_CONFIG.URL, SUPABASE_CONFIG.ANON_KEY);
-      console.log('⚡ Supabase Client Initialized Successfully');
+      console.log('⚡ Supabase Connected Permanently:', SUPABASE_CONFIG.URL);
       return true;
     } catch (err) {
-      console.warn('Supabase initialization failed, running in local mode:', err);
+      console.warn('Supabase initialization warning:', err);
       return false;
     }
   }
@@ -31,18 +30,9 @@ function isSupabaseConfigured() {
   return supabaseClient !== null;
 }
 
-// Update Supabase keys dynamically
-function setSupabaseKeys(url, anonKey) {
-  if (!url || !anonKey) return false;
-  localStorage.setItem('supabase_url', url.trim());
-  localStorage.setItem('supabase_anon_key', anonKey.trim());
-  SUPABASE_CONFIG.URL = url.trim();
-  SUPABASE_CONFIG.ANON_KEY = anonKey.trim();
-  return initSupabase();
-}
-
 // ===================== SUPABASE AUTH HELPERS =====================
 async function sbSignUp(email, password, metadata) {
+  if (!isSupabaseConfigured()) initSupabase();
   if (!isSupabaseConfigured()) return null;
   try {
     const { data, error } = await supabaseClient.auth.signUp({
@@ -60,6 +50,7 @@ async function sbSignUp(email, password, metadata) {
 }
 
 async function sbSignIn(email, password) {
+  if (!isSupabaseConfigured()) initSupabase();
   if (!isSupabaseConfigured()) return null;
   try {
     const { data, error } = await supabaseClient.auth.signInWithPassword({
@@ -85,6 +76,7 @@ async function sbSignOut() {
 
 // ===================== SUPABASE DATABASE SYNC HELPERS =====================
 async function sbFetchRoomData(roomCode) {
+  if (!isSupabaseConfigured()) initSupabase();
   if (!isSupabaseConfigured()) return null;
   try {
     const { data: room, error: roomErr } = await supabaseClient
