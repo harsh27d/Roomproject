@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sign in or create your RoomMate account to manage roommates, split expenses, and coordinate chores." />
+  <title>Account Access — RoomMate</title>
+  <link rel="stylesheet" href="common.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+
+<body>
+
+  <div class="auth-page">
+    <!-- Glow Orbs -->
+    <div class="auth-bg-glow purple"></div>
+    <div class="auth-bg-glow teal"></div>
+
+    <div class="auth-card">
+      <div class="auth-header">
+        <a href="index.html" class="auth-logo">
+          <span>🏠</span>
+          <span>Room<span class="gradient-text">Mate</span></span>
+        </a>
+        <h2 id="authTitle">Welcome Back</h2>
+        <p id="authSubtitle">Access your room workspace, expenses, and chores</p>
+      </div>
+
+      <!-- Tab Switcher -->
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" id="tabLoginBtn" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="auth-tab-btn" id="tabSignupBtn" onclick="switchAuthTab('signup')">Create Account</button>
+      </div>
+
+      <!-- Alert Message Box -->
+      <div class="auth-alert" id="authAlert"></div>
+
+      <!-- ================= SIGN IN FORM ================= -->
+      <form class="auth-form active" id="loginForm" onsubmit="handleLogin(event)">
+        <div class="auth-input-group">
+          <label for="loginEmail">Email Address</label>
+          <div class="auth-input-wrapper">
+            <span class="auth-input-icon">✉️</span>
+            <input type="email" id="loginEmail" placeholder="you@example.com" required autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="auth-input-group">
+          <label for="loginPassword">Password</label>
+          <div class="auth-input-wrapper">
+            <span class="auth-input-icon">🔒</span>
+            <input type="password" id="loginPassword" placeholder="••••••••" required autocomplete="current-password" />
+            <button type="button" class="auth-toggle-pwd" onclick="togglePassword('loginPassword')">👁️</button>
+          </div>
+        </div>
+
+        <div class="auth-form-footer">
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-size:0.85rem; color:var(--text-secondary);">
+            <input type="checkbox" id="rememberMe" checked style="accent-color:var(--primary);" />
+            Remember me
+          </label>
+          <a href="#" onclick="alert('For demo accounts, please register or use your registered email & password!')">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary auth-submit-btn" id="loginSubmitBtn">
+          Sign In to RoomMate →
+        </button>
+      </form>
+
+      <!-- ================= CREATE ACCOUNT FORM ================= -->
+      <form class="auth-form" id="signupForm" onsubmit="handleSignup(event)">
+        <div class="auth-input-group">
+          <label for="signupName">Your Full Name</label>
+          <div class="auth-input-wrapper">
+            <span class="auth-input-icon">👤</span>
+            <input type="text" id="signupName" placeholder="e.g. Harsh Sharma" required />
+          </div>
+        </div>
+
+        <div class="auth-input-group">
+          <label for="signupEmail">Email Address</label>
+          <div class="auth-input-wrapper">
+            <span class="auth-input-icon">✉️</span>
+            <input type="email" id="signupEmail" placeholder="you@example.com" required autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="auth-input-group">
+          <label for="signupPassword">Password</label>
+          <div class="auth-input-wrapper">
+            <span class="auth-input-icon">🔒</span>
+            <input type="password" id="signupPassword" placeholder="At least 6 characters" required minlength="6" autocomplete="new-password" />
+            <button type="button" class="auth-toggle-pwd" onclick="togglePassword('signupPassword')">👁️</button>
+          </div>
+        </div>
+
+        <!-- Room Setup Options -->
+        <div class="auth-input-group">
+          <label>Room Setup</label>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+            <button type="button" class="btn-sm-action active" id="modeCreateRoom" onclick="toggleRoomMode('create')" style="justify-content:center; padding:10px; background:rgba(108,99,255,0.2); border-color:var(--primary);">
+              🏠 Create Room
+            </button>
+            <button type="button" class="btn-sm-action" id="modeJoinRoom" onclick="toggleRoomMode('join')" style="justify-content:center; padding:10px;">
+              🔑 Join Room
+            </button>
+          </div>
+
+          <div class="auth-input-wrapper" id="roomNameWrapper">
+            <span class="auth-input-icon">🏢</span>
+            <input type="text" id="signupRoomName" placeholder="Room Name (e.g. Flat 402 - Dream Squad)" />
+          </div>
+
+          <div class="auth-input-wrapper" id="roomCodeWrapper" style="display:none;">
+            <span class="auth-input-icon">🔑</span>
+            <input type="text" id="signupRoomCode" placeholder="Enter Invite Code (e.g. ROOM-7824)" />
+          </div>
+        </div>
+
+        <!-- Avatar Selection -->
+        <div class="auth-input-group">
+          <label>Pick Your Avatar</label>
+          <div class="auth-avatar-picker" id="avatarPicker">
+            <div class="auth-avatar-option selected" onclick="selectAvatar(this, '😎')">😎</div>
+            <div class="auth-avatar-option" onclick="selectAvatar(this, '🚀')">🚀</div>
+            <div class="auth-avatar-option" onclick="selectAvatar(this, '👑')">👑</div>
+            <div class="auth-avatar-option" onclick="selectAvatar(this, '⚡')">⚡</div>
+            <div class="auth-avatar-option" onclick="selectAvatar(this, '🍕')">🍕</div>
+            <div class="auth-avatar-option" onclick="selectAvatar(this, '🎮')">🎮</div>
+            <div class="auth-avatar-option" onclick="selectAvatar(this, '🦁')">🦁</div>
+          </div>
+          <input type="hidden" id="selectedAvatar" value="😎" />
+        </div>
+
+        <button type="submit" class="btn btn-primary auth-submit-btn" id="signupSubmitBtn">
+          Create Account & Launch →
+        </button>
+      </form>
+
+      <div style="text-align:center; margin-top:20px; font-size:0.85rem; color:var(--text-muted);">
+        <a href="index.html" style="color:var(--text-secondary); text-decoration:none;">← Back to Home Page</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    let currentAvatar = '😎';
+    let roomMode = 'create';
+
+    // Check URL params for ?tab=signup
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('tab') === 'signup') {
+        switchAuthTab('signup');
+      }
+
+      // If already logged in, redirect to features
+      if (getCurrentUser()) {
+        showAlert('success', `Already logged in as ${getCurrentUser().name}. Redirecting...`);
+        setTimeout(() => {
+          window.location.href = 'features.html#room-hub';
+        }, 800);
+      }
+    });
+
+    function switchAuthTab(tab) {
+      const isLogin = tab === 'login';
+      document.getElementById('tabLoginBtn').classList.toggle('active', isLogin);
+      document.getElementById('tabSignupBtn').classList.toggle('active', !isLogin);
+      document.getElementById('loginForm').classList.toggle('active', isLogin);
+      document.getElementById('signupForm').classList.toggle('active', !isLogin);
+
+      document.getElementById('authTitle').textContent = isLogin ? 'Welcome Back' : 'Create Account';
+      document.getElementById('authSubtitle').textContent = isLogin
+        ? 'Access your room workspace, expenses, and chores'
+        : 'Set up your room, invite roommates, and get organized';
+
+      hideAlert();
+    }
+
+    function togglePassword(inputId) {
+      const input = document.getElementById(inputId);
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+
+    function toggleRoomMode(mode) {
+      roomMode = mode;
+      const isCreate = mode === 'create';
+      document.getElementById('modeCreateRoom').style.background = isCreate ? 'rgba(108,99,255,0.2)' : 'rgba(255,255,255,0.06)';
+      document.getElementById('modeCreateRoom').style.borderColor = isCreate ? 'var(--primary)' : 'var(--card-border)';
+      document.getElementById('modeJoinRoom').style.background = !isCreate ? 'rgba(108,99,255,0.2)' : 'rgba(255,255,255,0.06)';
+      document.getElementById('modeJoinRoom').style.borderColor = !isCreate ? 'var(--primary)' : 'var(--card-border)';
+
+      document.getElementById('roomNameWrapper').style.display = isCreate ? 'flex' : 'none';
+      document.getElementById('roomCodeWrapper').style.display = !isCreate ? 'flex' : 'none';
+    }
+
+    function selectAvatar(el, avatar) {
+      document.querySelectorAll('.auth-avatar-option').forEach(opt => opt.classList.remove('selected'));
+      el.classList.add('selected');
+      currentAvatar = avatar;
+      document.getElementById('selectedAvatar').value = avatar;
+    }
+
+    function showAlert(type, msg) {
+      const alertBox = document.getElementById('authAlert');
+      alertBox.className = `auth-alert ${type}`;
+      alertBox.innerHTML = `<span>${type === 'error' ? '⚠️' : '✅'}</span> ${msg}`;
+    }
+
+    function hideAlert() {
+      const alertBox = document.getElementById('authAlert');
+      alertBox.className = 'auth-alert';
+      alertBox.innerHTML = '';
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      const res = loginUser(email, password);
+      if (!res.success) {
+        showAlert('error', res.message);
+        return;
+      }
+
+      showAlert('success', `Welcome back, ${res.user.name}! Redirecting...`);
+      setTimeout(() => {
+        window.location.href = 'features.html#room-hub';
+      }, 700);
+    }
+
+    function handleSignup(e) {
+      e.preventDefault();
+      const name = document.getElementById('signupName').value;
+      const email = document.getElementById('signupEmail').value;
+      const password = document.getElementById('signupPassword').value;
+      const roomName = document.getElementById('signupRoomName').value;
+      const roomCode = document.getElementById('signupRoomCode').value;
+
+      const res = registerUser({
+        name,
+        email,
+        password,
+        roomName: roomMode === 'create' ? roomName : '',
+        roomCode: roomMode === 'join' ? roomCode : '',
+        avatar: currentAvatar
+      });
+
+      if (!res.success) {
+        showAlert('error', res.message);
+        return;
+      }
+
+      showAlert('success', `Account created successfully! Welcome to RoomMate, ${res.user.name}.`);
+      setTimeout(() => {
+        window.location.href = 'features.html#room-hub';
+      }, 700);
+    }
+  </script>
+
+</body>
+
+</html>

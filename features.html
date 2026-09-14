@@ -9,6 +9,7 @@
   <title>Features & Live Room Workspace — RoomMate</title>
   <link rel="stylesheet" href="common.css" />
   <link rel="stylesheet" href="features.css" />
+  <script src="auth.js"></script>
 </head>
 
 <body>
@@ -772,12 +773,13 @@
       });
     });
 
-    // ===================== SHARED STATE =====================
-    let roomName = 'My Room';
-    let roomCode = 'ROOM-7824';
+    // ===================== SHARED STATE & PERSISTENCE =====================
+    let currentUser = typeof getCurrentUser === 'function' ? getCurrentUser() : null;
+    let roomName = currentUser ? currentUser.roomName : 'My Room';
+    let roomCode = currentUser ? currentUser.roomCode : 'ROOM-7824';
     let roomStatus = '🎧 Chill Vibe';
 
-    let roommates = [];
+    let roommates = currentUser ? [currentUser.name] : [];
     const avatarStyles = [
       { bg: 'rgba(108, 99, 255, 0.2)', color: 'var(--primary-light)', border: 'rgba(108, 99, 255, 0.4)' },
       { bg: 'rgba(0, 212, 170, 0.2)', color: 'var(--accent)', border: 'rgba(0, 212, 170, 0.4)' },
@@ -794,6 +796,54 @@
     let polls = [];
     let announcements = [];
     let activityLog = [];
+
+    function persistRoomData() {
+      if (typeof saveRoomStorage === 'function') {
+        saveRoomStorage(roomCode, {
+          roomName,
+          roomCode,
+          roomStatus,
+          roommates,
+          expenses,
+          tasks,
+          supplies,
+          polls,
+          announcements,
+          activityLog
+        });
+      }
+    }
+
+    function loadInitialRoomData() {
+      if (typeof getRoomStorage === 'function') {
+        const saved = getRoomStorage(roomCode);
+        if (saved) {
+          roomName = saved.roomName || roomName;
+          roomCode = saved.roomCode || roomCode;
+          roomStatus = saved.roomStatus || roomStatus;
+          roommates = saved.roommates || roommates;
+          expenses = saved.expenses || [];
+          tasks = saved.tasks || [];
+          supplies = saved.supplies || [];
+          polls = saved.polls || [];
+          announcements = saved.announcements || [];
+          activityLog = saved.activityLog || [];
+
+          // If current user is logged in, ensure they are in roommates list
+          if (currentUser && !roommates.includes(currentUser.name)) {
+            roommates.unshift(currentUser.name);
+          }
+        }
+      }
+
+      // Update room UI headers
+      const nameEl = document.getElementById('displayRoomName');
+      if (nameEl) nameEl.textContent = roomName;
+      const codeEl = document.getElementById('roomCodeBadge');
+      if (codeEl) codeEl.innerHTML = `${roomCode} 📋`;
+      const statusSelect = document.getElementById('roomStatusSelect');
+      if (statusSelect && roomStatus) statusSelect.value = roomStatus;
+    }
 
     // ===================== UTILITIES & TOAST =====================
     function showToast(msg) {
@@ -818,10 +868,12 @@
     function addActivity(icon, text) {
       activityLog.unshift({ icon, text, time: new Date() });
       if (activityLog.length > 20) activityLog.pop();
+      persistRoomData();
     }
 
     function timeAgo(date) {
-      const diff = Math.floor((Date.now() - date) / 1000);
+      const d = typeof date === 'string' ? new Date(date) : date;
+      const diff = Math.floor((Date.now() - (d ? d.getTime() : Date.now())) / 1000);
       if (diff < 60) return 'Just now';
       if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
       if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
@@ -843,6 +895,7 @@
         document.getElementById('displayRoomName').textContent = roomName;
         addActivity('🏠', `Renamed room to <strong>"${roomName}"</strong>`);
         showToast('Room name updated!');
+        persistRoomData();
         updateDashboard();
       }
     }
@@ -861,6 +914,7 @@
       roomStatus = status;
       addActivity('📢', `Room status changed to <strong>${status}</strong>`);
       showToast(`Status: ${status}`);
+      persistRoomData();
     }
 
     // ===================== ROOMMATE MANAGEMENT =====================
@@ -942,6 +996,7 @@
       addActivity('👤', `Added roommate <strong>${name}</strong>`);
       input.value = '';
       showToast(`Added ${name} to room!`);
+      persistRoomData();
       renderRoommates();
       updateSelects();
       renderExpenses();
@@ -955,6 +1010,7 @@
 
       roommates.splice(index, 1);
       addActivity('🗑️', `Removed roommate <strong>${name}</strong>`);
+      persistRoomData();
       renderRoommates();
       updateSelects();
       renderExpenses();
@@ -1049,6 +1105,7 @@
       const e = expenses[i];
       addActivity('🗑️', `Removed expense "${e.name}"`);
       expenses.splice(i, 1);
+      persistRoomData();
       renderExpenses();
       updateDashboard();
     }
@@ -1075,6 +1132,7 @@
       document.getElementById('expName').value = '';
       document.getElementById('expAmount').value = '';
       showToast(`Added expense ₹${amount.toLocaleString()}`);
+      persistRoomData();
       renderExpenses();
       updateDashboard();
     });
@@ -1104,6 +1162,7 @@
       addActivity('💸', `<strong>${from}</strong> settled <strong>₹${amount.toLocaleString()}</strong> with <strong>${to}</strong>`);
       document.getElementById('settleAmount').value = '';
       showToast(`Settled ₹${amount} between ${from} and ${to}!`);
+      persistRoomData();
       renderExpenses();
       updateDashboard();
     }
@@ -1168,6 +1227,7 @@
       tasks[i].done = !tasks[i].done;
       const action = tasks[i].done ? 'completed' : 'unchecked';
       addActivity(tasks[i].done ? '✅' : '↩️', `<strong>${tasks[i].assignee}</strong> ${action} "${tasks[i].name}"`);
+      persistRoomData();
       renderTasks();
       updateDashboard();
     }
@@ -1175,6 +1235,7 @@
     function deleteTask(i) {
       addActivity('🗑️', `Removed chore "${tasks[i].name}"`);
       tasks.splice(i, 1);
+      persistRoomData();
       renderTasks();
       updateDashboard();
     }
@@ -1193,6 +1254,7 @@
 
       addActivity('🔄', `Auto-rotated chore assignments among all roommates`);
       showToast('Chores rotated fairly!');
+      persistRoomData();
       renderTasks();
       updateDashboard();
     }
@@ -1217,6 +1279,7 @@
       addActivity('📋', `Assigned chore "${name}" to <strong>${assignee}</strong>`);
       document.getElementById('taskName').value = '';
       showToast(`Assigned chore to ${assignee}!`);
+      persistRoomData();
       renderTasks();
       updateDashboard();
     });
@@ -1259,6 +1322,7 @@
 
     function toggleSupply(i) {
       supplies[i].bought = !supplies[i].bought;
+      persistRoomData();
       renderSupplies();
       updateDashboard();
     }
@@ -1266,6 +1330,7 @@
     function deleteSupply(i) {
       addActivity('🗑️', `Removed "${supplies[i].name}" from wishlist`);
       supplies.splice(i, 1);
+      persistRoomData();
       renderSupplies();
       updateDashboard();
     }
@@ -1287,6 +1352,7 @@
       // Remove bought items from wishlist
       supplies = supplies.filter(s => !s.bought);
       showToast(`Converted ${boughtItems.length} items to shared expenses!`);
+      persistRoomData();
       renderSupplies();
       renderExpenses();
       updateDashboard();
@@ -1313,6 +1379,7 @@
       document.getElementById('supplyItem').value = '';
       document.getElementById('supplyCost').value = '';
       showToast(`Added ${name} to wishlist!`);
+      persistRoomData();
       renderSupplies();
       updateDashboard();
     });
@@ -1363,6 +1430,7 @@
 
       addActivity('🗳️', `New vote recorded on poll: <strong>"${polls[pollIndex].question}"</strong>`);
       showToast('Vote counted!');
+      persistRoomData();
       renderPolls();
       updateDashboard();
     }
@@ -1370,6 +1438,7 @@
     function deletePoll(i) {
       addActivity('🗑️', `Closed poll "${polls[i].question}"`);
       polls.splice(i, 1);
+      persistRoomData();
       renderPolls();
       updateDashboard();
     }
@@ -1399,6 +1468,7 @@
       document.getElementById('pollOpt1').value = '';
       document.getElementById('pollOpt2').value = '';
       showToast('Poll created!');
+      persistRoomData();
       renderPolls();
       updateDashboard();
     });
@@ -1439,6 +1509,7 @@
     function deleteAnnouncement(i) {
       addActivity('🗑️', `Removed notice "${announcements[i].msg.substring(0, 30)}..."`);
       announcements.splice(i, 1);
+      persistRoomData();
       renderAnnouncements();
       updateDashboard();
     }
@@ -1463,6 +1534,7 @@
       addActivity('📢', `<strong>${by}</strong> posted notice: "${msg.substring(0, 40)}"`);
       document.getElementById('announceMsg').value = '';
       showToast('Notice posted!');
+      persistRoomData();
       renderAnnouncements();
       updateDashboard();
     });
@@ -1537,6 +1609,7 @@
     });
 
     // ===================== INITIAL SEED / RENDER =====================
+    loadInitialRoomData();
     renderRoommates();
     updateSelects();
     renderExpenses();
