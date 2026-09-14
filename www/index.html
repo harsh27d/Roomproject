@@ -30,7 +30,8 @@
       <div class="navbar-links" id="navLinks">
         <a href="index.html" class="active" id="nav-home">Home</a>
         <a href="features.html" id="nav-features">Features</a>
-        <a href="howtojoin.html" id="nav-howtojoin">How to Join</a>
+        <a href="features.html#room-hub" id="nav-hub">Room Hub</a>
+        <a href="auth.html" id="nav-auth">Sign In / Register</a>
       </div>
 
       <div class="navbar-cta">
@@ -39,7 +40,7 @@
           <span class="icon-moon" aria-hidden="true">🌙</span>
           <span class="icon-sun" aria-hidden="true">☀️</span>
         </button>
-        <a href="howtojoin.html" class="btn btn-primary" id="nav-get-started">Get Started</a>
+        <a href="auth.html" class="btn btn-primary" id="nav-get-started">Get Started Free</a>
       </div>
 
       <button class="navbar-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -72,7 +73,7 @@
           </p>
 
           <div class="hero-cta-group">
-            <a href="howtojoin.html" class="btn btn-primary" id="hero-cta-primary">
+            <a href="auth.html" class="btn btn-primary" id="hero-cta-primary">
               <span>Get Started Free</span>
               <span>→</span>
             </a>
@@ -358,7 +359,7 @@
         <h2>Ready to Make Shared Living Harmonious?</h2>
         <p>Join over 10,000 happy roommates who split bills, complete chores, and organize their shared home effortlessly.</p>
         <div class="cta-buttons">
-          <a href="howtojoin.html" class="btn btn-primary" id="banner-cta-primary">
+          <a href="auth.html" class="btn btn-primary" id="banner-cta-primary">
             <span>Get Started Free</span>
             <span>→</span>
           </a>
@@ -393,7 +394,7 @@
         <!-- Column 1: Product -->
         <div class="footer-column">
           <h4>Product</h4>
-          <a href="features.html">Features</a>
+          <a href="features.html">Features Tour</a>
           <a href="features.html#feature-expenses">Expense Splitter</a>
           <a href="features.html#feature-tasks">Chore Tracker</a>
           <a href="features.html#feature-announcements">Announcements</a>
@@ -401,11 +402,10 @@
 
         <!-- Column 2: Resources -->
         <div class="footer-column">
-          <h4>Resources</h4>
-          <a href="howtojoin.html">How to Join</a>
-          <a href="howtojoin.html">Quick Start Guide</a>
-          <a href="#">Roommate Agreement</a>
-          <a href="#">Support FAQ</a>
+          <h4>Access</h4>
+          <a href="auth.html">Create Account</a>
+          <a href="auth.html">Sign In</a>
+          <a href="features.html#room-hub">Room Hub</a>
         </div>
 
         <!-- Column 3: Company -->
@@ -515,7 +515,9 @@
       );
       statsObserver.observe(statsSection);
     // --- 6. Service Worker Registration & PWA Install Prompt ---
-    let deferredPrompt;
+    let deferredPrompt = null;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js').catch((err) => {
@@ -527,9 +529,29 @@
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
+      showPwaBanner();
+    });
+
+    function showPwaBanner() {
+      if (isStandalone) return;
+      if (sessionStorage.getItem('pwa-dismissed') === 'true') return;
       const installBanner = document.getElementById('pwaInstallBanner');
       if (installBanner) installBanner.style.display = 'flex';
-    });
+    }
+
+    // Auto-show install banner for mobile users after 1.5s
+    setTimeout(() => {
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768;
+      if (isMobile && !isStandalone) {
+        showPwaBanner();
+      }
+    }, 1500);
+
+    function dismissPwaBanner() {
+      const installBanner = document.getElementById('pwaInstallBanner');
+      if (installBanner) installBanner.style.display = 'none';
+      sessionStorage.setItem('pwa-dismissed', 'true');
+    }
 
     function triggerPwaInstall() {
       if (deferredPrompt) {
@@ -539,11 +561,15 @@
             console.log('User installed RoomMate');
           }
           deferredPrompt = null;
-          const installBanner = document.getElementById('pwaInstallBanner');
-          if (installBanner) installBanner.style.display = 'none';
+          dismissPwaBanner();
         });
       } else {
-        alert('To install RoomMate on mobile: tap Share (iOS) or Menu (Android) and choose "Add to Home Screen" or "Install App"!');
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        if (isIOS) {
+          alert('📲 To install RoomMate on iPhone:\n1. Tap the Share button (⎋) at the bottom\n2. Tap "Add to Home Screen" ➕');
+        } else {
+          alert('📲 To install RoomMate on Android:\n1. Tap the 3 dots menu (⋮) in Chrome\n2. Tap "Install app" or "Add to Home screen"');
+        }
       }
     }
   </script>
@@ -558,7 +584,7 @@
       </div>
     </div>
     <div style="display:flex; align-items:center; gap:8px;">
-      <button onclick="document.getElementById('pwaInstallBanner').style.display='none'" style="background:transparent; border:none; color:#a0a0c0; font-size:1rem; cursor:pointer; padding:4px;">✕</button>
+      <button onclick="dismissPwaBanner()" style="background:transparent; border:none; color:#a0a0c0; font-size:1rem; cursor:pointer; padding:4px;">✕</button>
       <button onclick="triggerPwaInstall()" style="background:linear-gradient(135deg, #6C63FF, #00D2FF); color:#fff; border:none; border-radius:8px; padding:7px 14px; font-size:0.8rem; font-weight:700; cursor:pointer; white-space:nowrap; box-shadow:0 4px 15px rgba(108,99,255,0.4);">Install 📲</button>
     </div>
   </div>

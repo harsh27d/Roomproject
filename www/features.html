@@ -1627,7 +1627,9 @@
     updateDashboard();
 
     // ===================== PWA & SERVICE WORKER REGISTRATION =====================
-    let deferredPrompt;
+    let deferredPrompt = null;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js').then((reg) => {
@@ -1641,9 +1643,28 @@
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
+      showPwaBanner();
+    });
+
+    function showPwaBanner() {
+      if (isStandalone) return;
+      if (sessionStorage.getItem('pwa-dismissed') === 'true') return;
       const installBanner = document.getElementById('pwaInstallBanner');
       if (installBanner) installBanner.style.display = 'flex';
-    });
+    }
+
+    setTimeout(() => {
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768;
+      if (isMobile && !isStandalone) {
+        showPwaBanner();
+      }
+    }, 1500);
+
+    function dismissPwaBanner() {
+      const installBanner = document.getElementById('pwaInstallBanner');
+      if (installBanner) installBanner.style.display = 'none';
+      sessionStorage.setItem('pwa-dismissed', 'true');
+    }
 
     function triggerPwaInstall() {
       if (deferredPrompt) {
@@ -1653,11 +1674,15 @@
             showToast('Installing RoomMate App! 🎉');
           }
           deferredPrompt = null;
-          const installBanner = document.getElementById('pwaInstallBanner');
-          if (installBanner) installBanner.style.display = 'none';
+          dismissPwaBanner();
         });
       } else {
-        alert('To install RoomMate on mobile: tap Share (iOS) or Menu (Android) and choose "Add to Home Screen" or "Install App"!');
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        if (isIOS) {
+          alert('📲 To install RoomMate on iPhone:\n1. Tap the Share button (⎋) at the bottom\n2. Tap "Add to Home Screen" ➕');
+        } else {
+          alert('📲 To install RoomMate on Android:\n1. Tap the 3 dots menu (⋮) in Chrome\n2. Tap "Install app" or "Add to Home screen" 📲');
+        }
       }
     }
   </script>
@@ -1672,8 +1697,8 @@
       </div>
     </div>
     <div style="display:flex; align-items:center; gap:8px;">
-      <button onclick="document.getElementById('pwaInstallBanner').style.display='none'" style="background:transparent; border:none; color:var(--text-muted); font-size:0.9rem; cursor:pointer;">✕</button>
-      <button onclick="triggerPwaInstall()" class="btn btn-primary" style="padding:6px 14px; font-size:0.8rem;">Install</button>
+      <button onclick="dismissPwaBanner()" style="background:transparent; border:none; color:var(--text-muted); font-size:1rem; cursor:pointer; padding:4px;">✕</button>
+      <button onclick="triggerPwaInstall()" class="btn btn-primary" style="padding:6px 14px; font-size:0.8rem;">Install 📲</button>
     </div>
   </div>
 
