@@ -55,7 +55,6 @@
   <section class="feature-block animate-on-scroll" id="feature-expenses">
     <div class="container">
       <div class="feature-inner">
-        <!-- Text -->
         <div class="feature-content">
           <div class="feature-icon-wrapper purple">💰</div>
           <span class="feature-label">Expense Management</span>
@@ -82,7 +81,6 @@
           </ul>
         </div>
 
-        <!-- Mockup Visual -->
         <div class="feature-visual">
           <div class="feature-mockup">
             <div class="mockup-header">
@@ -142,7 +140,6 @@
   <section class="feature-block reverse animate-on-scroll" id="feature-tasks">
     <div class="container">
       <div class="feature-inner">
-        <!-- Text -->
         <div class="feature-content">
           <div class="feature-icon-wrapper teal">📋</div>
           <span class="feature-label">Task Management</span>
@@ -169,7 +166,6 @@
           </ul>
         </div>
 
-        <!-- Mockup Visual -->
         <div class="feature-visual">
           <div class="feature-mockup">
             <div class="mockup-header">
@@ -221,7 +217,6 @@
   <section class="feature-block animate-on-scroll" id="feature-announcements">
     <div class="container">
       <div class="feature-inner">
-        <!-- Text -->
         <div class="feature-content">
           <div class="feature-icon-wrapper coral">📢</div>
           <span class="feature-label">Announcements</span>
@@ -248,7 +243,6 @@
           </ul>
         </div>
 
-        <!-- Mockup Visual -->
         <div class="feature-visual">
           <div class="feature-mockup">
             <div class="mockup-header">
@@ -292,7 +286,6 @@
   <section class="feature-block reverse animate-on-scroll" id="feature-dashboard">
     <div class="container">
       <div class="feature-inner">
-        <!-- Text -->
         <div class="feature-content">
           <div class="feature-icon-wrapper gold">📊</div>
           <span class="feature-label">Dashboard</span>
@@ -319,7 +312,6 @@
           </ul>
         </div>
 
-        <!-- Mockup Visual -->
         <div class="feature-visual">
           <div class="feature-mockup">
             <div class="mockup-header">
@@ -363,6 +355,203 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== INTERACTIVE DEMO SECTION ===== -->
+  <section class="demo-section" id="try-it">
+    <div class="container">
+      <div class="section-header" style="text-align:center; margin-bottom:48px;">
+        <div class="features-badge" style="margin: 0 auto 20px;">
+          <span>🎮</span> Interactive Demo
+        </div>
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:800; margin-bottom:16px;">
+          Try It <span class="gradient-text">Right Here</span>
+        </h2>
+        <p style="color:var(--text-secondary); font-size:1.05rem; max-width:550px; margin:0 auto;">
+          Don't just read about features — experience them. Click the tabs below to interact with every feature live.
+        </p>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="demo-tabs">
+        <button class="demo-tab active" data-tab="demo-expenses" id="tab-expenses">💰 Expenses</button>
+        <button class="demo-tab" data-tab="demo-tasks" id="tab-tasks">📋 Tasks</button>
+        <button class="demo-tab" data-tab="demo-announce" id="tab-announce">📢 Announce</button>
+        <button class="demo-tab" data-tab="demo-dashboard" id="tab-dashboard">📊 Dashboard</button>
+      </div>
+
+      <!-- ===== DEMO 1: EXPENSE SPLITTER ===== -->
+      <div class="demo-panel active" id="demo-expenses">
+        <div class="demo-card">
+          <div class="demo-card-header">
+            <h3>💰 Add & Split an Expense</h3>
+            <span class="demo-badge">Live Demo</span>
+          </div>
+
+          <div class="demo-form-row">
+            <div class="demo-input-group">
+              <label>Expense Name</label>
+              <input type="text" id="expName" placeholder="e.g. Groceries" />
+            </div>
+            <div class="demo-input-group">
+              <label>Amount (₹)</label>
+              <input type="number" id="expAmount" placeholder="e.g. 1500" />
+            </div>
+            <div class="demo-input-group">
+              <label>Paid By</label>
+              <select id="expPaidBy">
+                <option value="Harsh">Harsh</option>
+                <option value="Parth">Parth</option>
+                <option value="Rohan">Rohan</option>
+              </select>
+            </div>
+            <button class="btn btn-primary demo-btn" id="addExpenseBtn">+ Add</button>
+          </div>
+
+          <div class="demo-list" id="expenseList">
+            <!-- Populated by JS -->
+          </div>
+
+          <div class="demo-summary" id="expenseSummary">
+            <!-- Balance cards populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== DEMO 2: TASK MANAGER ===== -->
+      <div class="demo-panel" id="demo-tasks">
+        <div class="demo-card">
+          <div class="demo-card-header">
+            <h3>📋 Manage Chores</h3>
+            <span class="demo-badge">Live Demo</span>
+          </div>
+
+          <div class="demo-form-row">
+            <div class="demo-input-group" style="flex:2">
+              <label>Task Name</label>
+              <input type="text" id="taskName" placeholder="e.g. Wash dishes" />
+            </div>
+            <div class="demo-input-group">
+              <label>Assign To</label>
+              <select id="taskAssignee">
+                <option value="Harsh">Harsh</option>
+                <option value="Parth">Parth</option>
+                <option value="Rohan">Rohan</option>
+              </select>
+            </div>
+            <button class="btn btn-primary demo-btn" id="addTaskBtn">+ Add</button>
+          </div>
+
+          <div class="demo-list" id="taskList">
+            <!-- Populated by JS -->
+          </div>
+
+          <div class="demo-task-stats" id="taskStats">
+            <!-- Stats populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== DEMO 3: ANNOUNCEMENTS ===== -->
+      <div class="demo-panel" id="demo-announce">
+        <div class="demo-card">
+          <div class="demo-card-header">
+            <h3>📢 Post an Announcement</h3>
+            <span class="demo-badge">Live Demo</span>
+          </div>
+
+          <div class="demo-form-row">
+            <div class="demo-input-group" style="flex:2">
+              <label>Message</label>
+              <input type="text" id="announceMsg" placeholder="e.g. WiFi bill due tomorrow!" />
+            </div>
+            <div class="demo-input-group">
+              <label>Type</label>
+              <select id="announceType">
+                <option value="urgent">🔴 Urgent</option>
+                <option value="info" selected>ℹ️ Info</option>
+                <option value="success">✅ Resolved</option>
+              </select>
+            </div>
+            <div class="demo-input-group">
+              <label>Posted By</label>
+              <select id="announceBy">
+                <option value="Harsh">Harsh</option>
+                <option value="Parth">Parth</option>
+                <option value="Rohan">Rohan</option>
+              </select>
+            </div>
+            <button class="btn btn-primary demo-btn" id="addAnnounceBtn">📢 Post</button>
+          </div>
+
+          <div class="demo-list" id="announceList">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== DEMO 4: LIVE DASHBOARD ===== -->
+      <div class="demo-panel" id="demo-dashboard">
+        <div class="demo-card">
+          <div class="demo-card-header">
+            <h3>📊 Live Dashboard</h3>
+            <span class="demo-badge">Auto-Updates</span>
+          </div>
+
+          <div class="demo-dashboard-grid">
+            <div class="demo-dash-stat">
+              <div class="demo-dash-icon" style="background:rgba(108,99,255,0.15)">💰</div>
+              <div>
+                <div class="demo-dash-value" id="dashTotalExp">₹0</div>
+                <div class="demo-dash-label">Total Expenses</div>
+              </div>
+            </div>
+            <div class="demo-dash-stat">
+              <div class="demo-dash-icon" style="background:rgba(0,212,170,0.15)">📋</div>
+              <div>
+                <div class="demo-dash-value" id="dashTotalTasks">0</div>
+                <div class="demo-dash-label">Total Tasks</div>
+              </div>
+            </div>
+            <div class="demo-dash-stat">
+              <div class="demo-dash-icon" style="background:rgba(255,107,107,0.15)">✅</div>
+              <div>
+                <div class="demo-dash-value" id="dashDoneTasks">0</div>
+                <div class="demo-dash-label">Completed</div>
+              </div>
+            </div>
+            <div class="demo-dash-stat">
+              <div class="demo-dash-icon" style="background:rgba(255,217,61,0.15)">📢</div>
+              <div>
+                <div class="demo-dash-value" id="dashAnnouncements">0</div>
+                <div class="demo-dash-label">Announcements</div>
+              </div>
+            </div>
+          </div>
+
+          <h4 style="color:var(--text-secondary); font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; margin: 24px 0 12px;">
+            Recent Activity
+          </h4>
+          <div class="demo-activity-feed" id="activityFeed">
+            <div class="demo-activity-empty">
+              <span>🕐</span> No activity yet — try adding expenses, tasks, or announcements!
+            </div>
+          </div>
+
+          <div class="demo-balance-section">
+            <h4 style="color:var(--text-secondary); font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:12px;">
+              Who Owes Whom
+            </h4>
+            <div id="dashBalances" class="demo-balances-grid">
+              <div class="demo-activity-empty">
+                <span>💸</span> Add some expenses to see balances!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -494,20 +683,19 @@
 
   <!-- ===== JAVASCRIPT ===== -->
   <script>
-    // Navbar scroll effect
+    // ===================== NAVBAR =====================
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Mobile nav toggle
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
     navToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
 
-    // Scroll animations (Intersection Observer)
+    // ===================== SCROLL ANIMATIONS =====================
     const animatedEls = document.querySelectorAll('.animate-on-scroll');
     const observer = new IntersectionObserver(
       (entries) => {
@@ -520,6 +708,336 @@
       { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
     );
     animatedEls.forEach((el) => observer.observe(el));
+
+    // ===================== TAB SWITCHING =====================
+    const tabs = document.querySelectorAll('.demo-tab');
+    const panels = document.querySelectorAll('.demo-panel');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+        if (tab.dataset.tab === 'demo-dashboard') updateDashboard();
+      });
+    });
+
+    // ===================== SHARED DATA STORE =====================
+    const roommates = ['Harsh', 'Parth', 'Rohan'];
+    const emojis = ['🛒', '🍕', '💡', '📶', '🏠', '🎬', '🚕', '💊', '🧹', '☕'];
+
+    let expenses = [];
+
+    let tasks = [];
+
+    let announcements = [];
+
+    let activityLog = [];
+
+    function addActivity(icon, text) {
+      activityLog.unshift({ icon, text, time: new Date() });
+      if (activityLog.length > 15) activityLog.pop();
+    }
+
+    function timeAgo(date) {
+      const diff = Math.floor((Date.now() - date) / 1000);
+      if (diff < 60) return 'Just now';
+      if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+      if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+      return Math.floor(diff / 86400) + 'd ago';
+    }
+
+    // ===================== EXPENSE DEMO =====================
+    function renderExpenses() {
+      const list = document.getElementById('expenseList');
+      const summary = document.getElementById('expenseSummary');
+
+      if (expenses.length === 0) {
+        list.innerHTML = '<div class="demo-empty">No expenses yet. Add one above!</div>';
+        summary.innerHTML = '';
+        return;
+      }
+
+      list.innerHTML = expenses.map((e, i) => `
+        <div class="demo-item expense-anim" style="animation-delay:${i * 0.05}s">
+          <div class="demo-item-left">
+            <span class="demo-item-emoji">${e.emoji}</span>
+            <div>
+              <div class="demo-item-name">${e.name}</div>
+              <div class="demo-item-sub">Paid by ${e.paidBy} · ₹${(e.amount / 3).toFixed(0)}/person</div>
+            </div>
+          </div>
+          <div class="demo-item-right">
+            <span class="demo-item-amount">₹${e.amount.toLocaleString()}</span>
+            <button class="demo-delete-btn" onclick="deleteExpense(${i})" title="Delete">✕</button>
+          </div>
+        </div>
+      `).join('');
+
+      // Calculate balances
+      const balances = {};
+      roommates.forEach(r => balances[r] = 0);
+      expenses.forEach(e => {
+        const share = e.amount / 3;
+        roommates.forEach(r => {
+          if (r === e.paidBy) {
+            balances[r] += e.amount - share;
+          } else {
+            balances[r] -= share;
+          }
+        });
+      });
+
+      const total = expenses.reduce((s, e) => s + e.amount, 0);
+
+      summary.innerHTML = `
+        <div class="demo-summary-header">
+          <span>Total: <strong>₹${total.toLocaleString()}</strong></span>
+          <span>Split 3 ways: <strong>₹${(total / 3).toFixed(0)}/person</strong></span>
+        </div>
+        <div class="demo-balance-cards">
+          ${roommates.map(r => {
+            const bal = balances[r];
+            const cls = bal > 0 ? 'positive' : bal < 0 ? 'negative' : 'neutral';
+            const label = bal > 0 ? 'gets back' : bal < 0 ? 'owes' : 'settled';
+            return `
+              <div class="demo-balance-card ${cls}">
+                <div class="demo-balance-name">${r}</div>
+                <div class="demo-balance-amount ${cls}">₹${Math.abs(bal).toFixed(0)}</div>
+                <div class="demo-balance-label">${label}</div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    }
+
+    function deleteExpense(i) {
+      const e = expenses[i];
+      addActivity('🗑️', `Removed expense "${e.name}"`);
+      expenses.splice(i, 1);
+      renderExpenses();
+    }
+
+    document.getElementById('addExpenseBtn').addEventListener('click', () => {
+      const name = document.getElementById('expName').value.trim();
+      const amount = parseFloat(document.getElementById('expAmount').value);
+      const paidBy = document.getElementById('expPaidBy').value;
+
+      if (!name || !amount || amount <= 0) {
+        shakeButton('addExpenseBtn');
+        return;
+      }
+
+      const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+      expenses.push({ name, amount, paidBy, emoji });
+      addActivity('💰', `<strong>${paidBy}</strong> added "${name}" — ₹${amount.toLocaleString()}`);
+      document.getElementById('expName').value = '';
+      document.getElementById('expAmount').value = '';
+      renderExpenses();
+    });
+
+    // ===================== TASK DEMO =====================
+    function renderTasks() {
+      const list = document.getElementById('taskList');
+      const stats = document.getElementById('taskStats');
+
+      if (tasks.length === 0) {
+        list.innerHTML = '<div class="demo-empty">No tasks yet. Add one above!</div>';
+        stats.innerHTML = '';
+        return;
+      }
+
+      const assigneeClass = { Harsh: 'a1', Parth: 'a2', Rohan: 'a3' };
+
+      list.innerHTML = tasks.map((t, i) => `
+        <div class="demo-item task-item ${t.done ? 'task-done' : ''}" style="animation-delay:${i * 0.05}s">
+          <div class="demo-item-left" style="cursor:pointer" onclick="toggleTask(${i})">
+            <div class="demo-task-check ${t.done ? 'checked' : ''}">${t.done ? '✓' : ''}</div>
+            <div>
+              <div class="demo-item-name ${t.done ? 'strike' : ''}">${t.name}</div>
+              <div class="demo-item-sub">${t.done ? 'Completed ✅' : 'Pending'}</div>
+            </div>
+          </div>
+          <div class="demo-item-right">
+            <div class="demo-task-assignee-badge ${assigneeClass[t.assignee]}">${t.assignee[0]}</div>
+            <button class="demo-delete-btn" onclick="deleteTask(${i})" title="Delete">✕</button>
+          </div>
+        </div>
+      `).join('');
+
+      const done = tasks.filter(t => t.done).length;
+      const total = tasks.length;
+      const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+
+      stats.innerHTML = `
+        <div class="demo-progress-bar-container">
+          <div class="demo-progress-bar">
+            <div class="demo-progress-fill" style="width:${pct}%"></div>
+          </div>
+          <span class="demo-progress-text">${done}/${total} done (${pct}%)</span>
+        </div>
+      `;
+    }
+
+    function toggleTask(i) {
+      tasks[i].done = !tasks[i].done;
+      const action = tasks[i].done ? 'completed' : 'unchecked';
+      addActivity(tasks[i].done ? '✅' : '↩️', `<strong>${tasks[i].assignee}</strong> ${action} "${tasks[i].name}"`);
+      renderTasks();
+    }
+
+    function deleteTask(i) {
+      addActivity('🗑️', `Removed task "${tasks[i].name}"`);
+      tasks.splice(i, 1);
+      renderTasks();
+    }
+
+    document.getElementById('addTaskBtn').addEventListener('click', () => {
+      const name = document.getElementById('taskName').value.trim();
+      const assignee = document.getElementById('taskAssignee').value;
+
+      if (!name) {
+        shakeButton('addTaskBtn');
+        return;
+      }
+
+      tasks.push({ name, assignee, done: false });
+      addActivity('📋', `<strong>${assignee}</strong> was assigned "${name}"`);
+      document.getElementById('taskName').value = '';
+      renderTasks();
+    });
+
+    // ===================== ANNOUNCEMENT DEMO =====================
+    function renderAnnouncements() {
+      const list = document.getElementById('announceList');
+
+      if (announcements.length === 0) {
+        list.innerHTML = '<div class="demo-empty">No announcements yet. Post one above!</div>';
+        return;
+      }
+
+      const tagMap = {
+        urgent: { label: '🔴 Urgent', cls: 'urgent' },
+        info: { label: 'ℹ️ Info', cls: 'info' },
+        success: { label: '✅ Resolved', cls: 'success' }
+      };
+
+      list.innerHTML = announcements.map((a, i) => {
+        const tag = tagMap[a.type];
+        return `
+          <div class="demo-announce-card ${tag.cls}" style="animation-delay:${i * 0.05}s">
+            <div class="demo-announce-top">
+              <span class="demo-announce-tag ${tag.cls}">${tag.label}</span>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="demo-announce-time">${timeAgo(a.time)}</span>
+                <button class="demo-delete-btn small" onclick="deleteAnnouncement(${i})" title="Delete">✕</button>
+              </div>
+            </div>
+            <div class="demo-announce-msg">${a.msg}</div>
+            <div class="demo-announce-by">— ${a.by}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function deleteAnnouncement(i) {
+      addActivity('🗑️', `Removed announcement "${announcements[i].msg.substring(0, 30)}..."`);
+      announcements.splice(i, 1);
+      renderAnnouncements();
+    }
+
+    document.getElementById('addAnnounceBtn').addEventListener('click', () => {
+      const msg = document.getElementById('announceMsg').value.trim();
+      const type = document.getElementById('announceType').value;
+      const by = document.getElementById('announceBy').value;
+
+      if (!msg) {
+        shakeButton('addAnnounceBtn');
+        return;
+      }
+
+      announcements.unshift({ msg, type, by, time: new Date() });
+      addActivity('📢', `<strong>${by}</strong> posted "${msg.substring(0, 40)}"`);
+      document.getElementById('announceMsg').value = '';
+      renderAnnouncements();
+    });
+
+    // ===================== DASHBOARD =====================
+    function updateDashboard() {
+      const totalExp = expenses.reduce((s, e) => s + e.amount, 0);
+      document.getElementById('dashTotalExp').textContent = '₹' + totalExp.toLocaleString();
+      document.getElementById('dashTotalTasks').textContent = tasks.length;
+      document.getElementById('dashDoneTasks').textContent = tasks.filter(t => t.done).length;
+      document.getElementById('dashAnnouncements').textContent = announcements.length;
+
+      // Activity feed
+      const feed = document.getElementById('activityFeed');
+      if (activityLog.length === 0) {
+        feed.innerHTML = '<div class="demo-activity-empty"><span>🕐</span> No activity yet — try adding expenses, tasks, or announcements!</div>';
+      } else {
+        feed.innerHTML = activityLog.map(a => `
+          <div class="demo-activity-row">
+            <span class="demo-activity-icon">${a.icon}</span>
+            <span class="demo-activity-text">${a.text}</span>
+            <span class="demo-activity-time">${timeAgo(a.time)}</span>
+          </div>
+        `).join('');
+      }
+
+      // Balances
+      const balDiv = document.getElementById('dashBalances');
+      if (expenses.length === 0) {
+        balDiv.innerHTML = '<div class="demo-activity-empty"><span>💸</span> Add some expenses to see balances!</div>';
+      } else {
+        const balances = {};
+        roommates.forEach(r => balances[r] = 0);
+        expenses.forEach(e => {
+          const share = e.amount / 3;
+          roommates.forEach(r => {
+            if (r === e.paidBy) balances[r] += e.amount - share;
+            else balances[r] -= share;
+          });
+        });
+
+        balDiv.innerHTML = roommates.map(r => {
+          const bal = balances[r];
+          const cls = bal > 0 ? 'positive' : bal < 0 ? 'negative' : 'neutral';
+          const label = bal > 0 ? 'gets back' : bal < 0 ? 'owes' : 'settled';
+          return `
+            <div class="demo-dash-balance ${cls}">
+              <strong>${r}</strong>
+              <span class="demo-dash-bal-amount ${cls}">₹${Math.abs(bal).toFixed(0)}</span>
+              <span class="demo-dash-bal-label">${label}</span>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    // ===================== UTILITY =====================
+    function shakeButton(id) {
+      const btn = document.getElementById(id);
+      btn.classList.add('shake');
+      setTimeout(() => btn.classList.remove('shake'), 500);
+    }
+
+    // Enter key support for inputs
+    document.querySelectorAll('.demo-input-group input').forEach(input => {
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const panel = input.closest('.demo-panel');
+          panel.querySelector('.demo-btn').click();
+        }
+      });
+    });
+
+    // ===================== INITIAL RENDER =====================
+    renderExpenses();
+    renderTasks();
+    renderAnnouncements();
+    updateDashboard();
   </script>
 
 </body>
