@@ -29,46 +29,66 @@ function getCurrentUser() {
 async function registerUser({ name, email, password, roomName, roomCode, avatar }) {
   const users = getAllUsers();
   const normalizedEmail = email.trim().toLowerCase();
-
-  // Try Supabase Sign Up if configured
-  if (typeof isSupabaseConfigured === 'function' && isSupabaseConfigured()) {
-    const sbRes = await sbSignUp(normalizedEmail, password, {
-      name: name.trim(),
-      avatar: avatar || '👤',
-      roomName: roomName || `${name}'s Room`,
-      roomCode: roomCode || 'ROOM-' + Math.floor(1000 + Math.random() * 9000)
-    });
-    if (sbRes && !sbRes.success) {
-      return { success: false, message: sbRes.error || 'Supabase registration failed.' };
-    }
-  }
-
-  if (users.some(u => u.email === normalizedEmail)) {
-    return { success: false, message: 'An account with this email already exists.' };
-  }
+  const cleanName = name.trim();
+  const userAvatar = avatar || '👤';
 
   const generatedRoomCode = roomCode && roomCode.trim() 
     ? roomCode.trim().toUpperCase() 
     : 'ROOM-' + Math.floor(1000 + Math.random() * 9000);
 
-  const finalRoomName = roomName && roomName.trim() ? roomName.trim() : `${name}'s Room`;
+  const finalRoomName = roomName && roomName.trim() ? roomName.trim() : `${cleanName}'s Room`;
+  const userRole = roomCode && roomCode.trim() ? 'Member' : 'Admin';
+
+  // 1. Try Supabase Auth Sign Up
+  if (typeof isSupabaseConfigured === 'function' && isSupabaseConfigured()) {
+    try {
+      await sbSignUp(normalizedEmail, password, {
+        name: cleanName,
+        avatar: userAvatar,
+        roomName: finalRoomName,
+        roomCode: generatedRoomCode,
+        role: userRole
+      });
+    } catch (err) {
+      console.warn('Supabase auth warning during register:', err);
+    }
+
+    // 2. Insert Room & Member in Supabase tables
+    if (typeof sbCreateOrJoinRoom === 'function') {
+      try {
+        await sbCreateOrJoinRoom({
+          roomCode: generatedRoomCode,
+          roomName: finalRoomName,
+          userName: cleanName,
+          avatar: userAvatar,
+          role: userRole
+        });
+      } catch (err) {
+        console.warn('Supabase room insert warning:', err);
+      }
+    }
+  }
+
+  if (users.some(u => u.email === normalizedEmail)) {
+    return { success: false, message: 'An account with this email already exists locally.' };
+  }
 
   const newUser = {
     id: 'user_' + Date.now(),
-    name: name.trim(),
+    name: cleanName,
     email: normalizedEmail,
     password: password,
-    avatar: avatar || '👤',
+    avatar: userAvatar,
     roomName: finalRoomName,
     roomCode: generatedRoomCode,
-    role: roomCode && roomCode.trim() ? 'Member' : 'Admin',
+    role: userRole,
     createdAt: new Date().toISOString()
   };
 
   users.push(newUser);
   localStorage.setItem(AUTH_KEYS.USERS, JSON.stringify(users));
 
-  // Initialize room data if creating a new room
+  // Initialize room data locally as well
   const existingRoom = getRoomStorage(generatedRoomCode);
   if (!existingRoom) {
     saveRoomStorage(generatedRoomCode, {
@@ -106,19 +126,58 @@ async function registerUser({ name, email, password, roomName, roomCode, avatar 
 async function loginUser(email, password) {
   const normalizedEmail = email.trim().toLowerCase();
 
-  // Try Supabase Sign In if configured
+  // 1. Try Supabase Cloud Sign In
   if (typeof isSupabaseConfigured === 'function' && isSupabaseConfigured()) {
     const sbRes = await sbSignIn(normalizedEmail, password);
-    if (sbRes && !sbRes.success) {
-      return { success: false, message: sbRes.error || 'Invalid email or password.' };
+    if (sbRes && sbRes.success && sbRes.data && sbRes.data.user) {
+      const meta = sbRes.data.user.user_metadata || {};
+      const userName = meta.name || normalizedEmail.split('@')[0];
+      const roomCode = (meta.roomCode || 'ROOM-1001').toUpperCase();
+      const roomName = meta.roomName || `${userName}'s Room`;
+      const avatar = meta.avatar || '😎';
+      const role = meta.role || 'Member';
+
+      const user = {
+        id: sbRes.data.user.id,
+        name: userName,
+        email: normalizedEmail,
+        avatar,
+        roomName,
+        roomCode,
+        role
+      };
+
+      // Add to local storage users list if missing
+      const users = getAllUsers();
+      if (!users.some(u => u.email === normalizedEmail)) {
+        users.push({ ...user, password });
+        localStorage.setItem(AUTH_KEYS.USERS, JSON.stringify(users));
+      }
+
+      // Ensure room is synced in background
+      if (typeof sbCreateOrJoinRoom === 'function') {
+        sbCreateOrJoinRoom({ roomCode, roomName, userName, avatar, role }).catch(() => {});
+      }
+
+      setSession(user);
+      return { success: true, user };
+    } else if (sbRes && !sbRes.success) {
+      const errMsg = sbRes.error || '';
+      if (errMsg.toLowerCase().includes('email not confirmed')) {
+        return {
+          success: false,
+          message: 'Supabase email confirmation is enabled. Please confirm the link sent to your email, or turn off "Confirm Email" in Supabase Auth settings!'
+        };
+      }
     }
   }
 
+  // 2. Fallback to Local Storage Users
   const users = getAllUsers();
   const user = users.find(u => u.email === normalizedEmail && u.password === password);
 
   if (!user) {
-    return { success: false, message: 'Invalid email or password.' };
+    return { success: false, message: 'Invalid email or password. Please check your credentials or create an account.' };
   }
 
   setSession(user);

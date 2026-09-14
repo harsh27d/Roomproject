@@ -821,6 +821,43 @@
       }
     }
 
+    async function syncFromSupabase() {
+      if (typeof sbFetchRoomData === 'function') {
+        try {
+          const cloudData = await sbFetchRoomData(roomCode);
+          if (cloudData) {
+            roomName = cloudData.roomName || roomName;
+            roomStatus = cloudData.roomStatus || roomStatus;
+            if (cloudData.roommates && cloudData.roommates.length > 0) {
+              roommates = Array.from(new Set([...roommates, ...cloudData.roommates]));
+            }
+            if (cloudData.expenses && cloudData.expenses.length > 0) expenses = cloudData.expenses;
+            if (cloudData.tasks && cloudData.tasks.length > 0) tasks = cloudData.tasks;
+            if (cloudData.supplies && cloudData.supplies.length > 0) supplies = cloudData.supplies;
+            if (cloudData.polls && cloudData.polls.length > 0) polls = cloudData.polls;
+            if (cloudData.announcements && cloudData.announcements.length > 0) announcements = cloudData.announcements;
+            if (cloudData.activityLog && cloudData.activityLog.length > 0) activityLog = cloudData.activityLog;
+
+            // Re-render components with live cloud data
+            persistRoomData();
+            renderRoommates();
+            updateSelects();
+            renderExpenses();
+            renderTasks();
+            renderSupplies();
+            renderPolls();
+            renderAnnouncements();
+            updateDashboard();
+
+            const nameEl = document.getElementById('displayRoomName');
+            if (nameEl) nameEl.textContent = roomName;
+          }
+        } catch (err) {
+          console.warn('Live sync error:', err);
+        }
+      }
+    }
+
     function loadInitialRoomData() {
       if (typeof getRoomStorage === 'function') {
         const saved = getRoomStorage(roomCode);
@@ -836,7 +873,6 @@
           announcements = saved.announcements || [];
           activityLog = saved.activityLog || [];
 
-          // If current user is logged in, ensure they are in roommates list
           if (currentUser && !roommates.includes(currentUser.name)) {
             roommates.unshift(currentUser.name);
           }
@@ -848,6 +884,10 @@
       if (nameEl) nameEl.textContent = roomName;
       const codeEl = document.getElementById('roomCodeBadge');
       if (codeEl) codeEl.innerHTML = `${roomCode} 📋`;
+
+      // Trigger cloud sync in background
+      syncFromSupabase();
+    }
       const statusSelect = document.getElementById('roomStatusSelect');
       if (statusSelect && roomStatus) statusSelect.value = roomStatus;
     }
@@ -1134,7 +1174,8 @@
         return;
       }
 
-      expenses.push({ name, amount, paidBy, emoji: category });
+      const newExp = { name, amount, paidBy, emoji: category };
+      expenses.push(newExp);
       addActivity('💰', `<strong>${paidBy}</strong> added "${name}" — ₹${amount.toLocaleString()}`);
       document.getElementById('expName').value = '';
       document.getElementById('expAmount').value = '';
@@ -1142,6 +1183,11 @@
       persistRoomData();
       renderExpenses();
       updateDashboard();
+
+      // Sync with Supabase cloud DB
+      if (typeof sbAddExpense === 'function') {
+        sbAddExpense(roomCode, newExp).catch(e => console.warn('Supabase expense sync warning:', e));
+      }
     });
 
     function executeSettleUp() {
@@ -1237,6 +1283,10 @@
       persistRoomData();
       renderTasks();
       updateDashboard();
+
+      if (typeof sbToggleChore === 'function') {
+        sbToggleChore(roomCode, tasks[i].name, tasks[i].done);
+      }
     }
 
     function deleteTask(i) {
@@ -1282,13 +1332,18 @@
         return;
       }
 
-      tasks.push({ name, priority, assignee, done: false });
+      const newTask = { name, priority, assignee, done: false };
+      tasks.push(newTask);
       addActivity('📋', `Assigned chore "${name}" to <strong>${assignee}</strong>`);
       document.getElementById('taskName').value = '';
       showToast(`Assigned chore to ${assignee}!`);
       persistRoomData();
       renderTasks();
       updateDashboard();
+
+      if (typeof sbAddChore === 'function') {
+        sbAddChore(roomCode, newTask).catch(e => console.warn('Supabase chore sync warning:', e));
+      }
     });
 
     // ===================== SUPPLIES & WISHLIST =====================
