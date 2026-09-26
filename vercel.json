@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/features", "destination": "/features.html" },
+    { "source": "/auth", "destination": "/auth.html" }
+  ]
+}
