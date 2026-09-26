@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Features — RoomieSync | All-in-One Roommate Management</title>
+  <meta name="description" content="Discover all the powerful features RoomieSync offers — expense splitting, chore rotation, shared grocery lists, smart notifications, spending insights, and more." />
+  <meta name="keywords" content="roommate features, expense splitting, chore tracker, grocery list, shared living tools" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="RoomieSync Features — Everything for Shared Living" />
+  <meta property="og:description" content="Expense splitting, chore rotation, smart notifications, and more — all free." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="common.css" />
+  <link rel="stylesheet" href="features.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVBAR
+       ═══════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="navbar__logo" aria-label="RoomieSync Home">
+      <div class="navbar__logo-icon" aria-hidden="true">🏠</div>
+      <span class="navbar__logo-text">RoomieSync</span>
+    </a>
+
+    <ul class="navbar__links" role="list">
+      <li><a href="index.html" id="nav-home">Home</a></li>
+      <li><a href="features.html" class="active" id="nav-features" aria-current="page">Features</a></li>
+      <li><a href="howtojoin.html" id="nav-howtojoin">How to Join</a></li>
+    </ul>
+
+    <a href="howtojoin.html#cta-signup" class="navbar__cta" id="nav-cta">Get Started Free</a>
+
+    <button
+      class="navbar__hamburger"
+      id="hamburger-btn"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="navbar__mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html" id="mob-home">Home</a>
+    <a href="features.html" class="active" id="mob-features" aria-current="page">Features</a>
+    <a href="howtojoin.html" id="mob-howtojoin">How to Join</a>
+    <a href="howtojoin.html#cta-signup" class="mobile-cta" id="mob-cta">🚀 Get Started Free</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MAIN CONTENT
+       ═══════════════════════════════════════════════════════ -->
+  <main class="page-wrapper">
+
+    <!-- ─── HERO ──────────────────────────────────────────── -->
+    <section class="hero" id="page-header" aria-labelledby="hero-title">
+      <div class="hero__badge" role="status">
+        <span class="hero__badge-dot" aria-hidden="true"></span>
+        All Features Included · Free Plan
+      </div>
+
+      <h1 class="hero__title" id="hero-title">
+        Built for<br />
+        <span class="highlight">Real Roommates</span>
+      </h1>
+
+      <p class="hero__subtitle">
+        Every feature is designed to solve a real problem.
+        No bloat, no fluff — just the tools you actually need for harmonious shared living.
+      </p>
+    </section>
+
+    <!-- ─── FEATURES GRID ─────────────────────────────────── -->
+    <section class="features-section" id="features" aria-labelledby="features-title">
+      <div class="container">
+
+        <h2 id="features-title" class="sr-only" style="position:absolute;clip:rect(0,0,0,0);">All Features</h2>
+
+        <div class="features-grid">
+
+          <!-- Feature 1 -->
+          <div class="feature-card feature-card--large" id="feature-expense">
+            <div class="feature-card__icon-wrap purple">
+              <span class="feature-card__icon">💸</span>
+            </div>
+            <div class="feature-card__content">
+              <span class="feature-card__tag purple">Core Feature</span>
+              <h3>Smart Expense Splitting</h3>
+              <p>
+                Add any expense — rent, utilities, groceries, subscriptions — and split it evenly or with custom shares.
+                Track who paid, who owes, and send gentle reminders automatically.
+              </p>
+              <ul class="feature-card__perks">
+                <li>✅ Equal or custom splits</li>
+                <li>✅ Recurring expense support</li>
+                <li>✅ Payment reminders</li>
+                <li>✅ Settlement suggestions</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-card feature-card--large" id="feature-chores">
+            <div class="feature-card__icon-wrap teal">
+              <span class="feature-card__icon">📋</span>
+            </div>
+            <div class="feature-card__content">
+              <span class="feature-card__tag teal">Core Feature</span>
+              <h3>Chore Rotation System</h3>
+              <p>
+                Create tasks, set frequencies, and let RoomieSync auto-assign them on a fair rotation.
+                Nobody gets stuck with the dishes every week.
+              </p>
+              <ul class="feature-card__perks">
+                <li>✅ Auto-rotation scheduler</li>
+                <li>✅ Custom task categories</li>
+                <li>✅ Completion tracking</li>
+                <li>✅ Fairness scoring</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-card" id="feature-grocery">
+            <div class="feature-card__icon-wrap purple">
+              <span class="feature-card__icon">🛒</span>
+            </div>
+            <div class="feature-card__content">
+              <h3>Shared Grocery List</h3>
+              <p>
+                Collaborative shopping list that syncs in real-time.
+                Add items, check them off at the store, and avoid duplicates.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="feature-card" id="feature-notifications">
+            <div class="feature-card__icon-wrap teal">
+              <span class="feature-card__icon">🔔</span>
+            </div>
+            <div class="feature-card__content">
+              <h3>Smart Notifications</h3>
+              <p>
+                Get nudged about bills, chores, and upcoming deadlines — without the nagging.
+                Customizable frequency and channels.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="feature-card" id="feature-insights">
+            <div class="feature-card__icon-wrap purple">
+              <span class="feature-card__icon">📊</span>
+            </div>
+            <div class="feature-card__content">
+              <h3>Spending Insights</h3>
+              <p>
+                Beautiful charts and monthly summaries showing exactly where shared money goes.
+                Export as CSV or PDF anytime.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="feature-card" id="feature-privacy">
+            <div class="feature-card__icon-wrap teal">
+              <span class="feature-card__icon">🔒</span>
+            </div>
+            <div class="feature-card__content">
+              <h3>Privacy First</h3>
+              <p>
+                End-to-end encryption, zero ads, and we never sell your data.
+                Delete your account and data anytime from settings.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 7 -->
+          <div class="feature-card" id="feature-invites">
+            <div class="feature-card__icon-wrap purple">
+              <span class="feature-card__icon">🔗</span>
+            </div>
+            <div class="feature-card__content">
+              <h3>One-Click Invites</h3>
+              <p>
+                Share a unique room code and your flatmates join instantly.
+                No email chains, no hassle — just one link.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 8 -->
+          <div class="feature-card" id="feature-realtime">
+            <div class="feature-card__icon-wrap teal">
+              <span class="feature-card__icon">⚡</span>
+            </div>
+            <div class="feature-card__content">
+              <h3>Real-Time Sync</h3>
+              <p>
+                Changes reflect instantly across all devices.
+                No refreshing needed — everyone stays on the same page.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 9 -->
+          <div class="feature-card" id="feature-mobile">
+            <div class="feature-card__icon-wrap purple">
+              <span class="feature-card__icon">📱</span>
+            </div>
+            <div class="feature-card__content">
+              <h3>Mobile Friendly</h3>
+              <p>
+                Works perfectly on phones, tablets, and desktops.
+                Native iOS and Android apps coming soon with push notifications.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 10 -->
+          <div class="feature-card" id="feature-history">
+            <div class="feature-card__icon-wrap teal">
+              <span class="feature-card__icon">🗂️</span>
+            </div>
+            <div class="feature-card__content">
+              <h3>Complete History</h3>
+              <p>
+                Full audit trail of every expense, payment, and chore.
+                Perfect for end-of-lease settlements and disputes.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── COMPARISON TABLE ──────────────────────────────── -->
+    <section class="comparison-section" id="comparison" aria-labelledby="comparison-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label" aria-hidden="true">📋 Plans</span>
+          <h2 class="section-title" id="comparison-title">
+            Free vs <span class="accent">Pro</span>
+          </h2>
+          <p class="section-desc">
+            Most roommates love the free plan. Power users upgrade to Pro.
+          </p>
+        </div>
+
+        <div class="comparison-table-wrap">
+          <table class="comparison-table" role="table" aria-label="Feature comparison between Free and Pro plans">
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">Free</th>
+                <th scope="col" class="pro-col">Pro</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Expense Splitting</td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Chore Rotation</td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Shared Grocery List</td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Smart Notifications</td>
+                <td><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Roommates per room</td>
+                <td>Up to 8</td>
+                <td>Unlimited</td>
+              </tr>
+              <tr>
+                <td>Spending Insights</td>
+                <td>Basic</td>
+                <td>Advanced</td>
+              </tr>
+              <tr>
+                <td>Export (CSV/PDF)</td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Priority Support</td>
+                <td><span class="cross">✗</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td>Price</td>
+                <td><strong style="color:#00d4aa;">Free Forever</strong></td>
+                <td><strong style="color:#6C63FF;">₹149/mo</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FINAL CTA ─────────────────────────────────────── -->
+    <section class="cta-section" id="features-cta" aria-labelledby="features-cta-title">
+      <div class="cta-inner">
+
+        <div class="cta-emoji-row" aria-hidden="true">
+          <span>🏠</span>
+          <span>✨</span>
+          <span>🤝</span>
+        </div>
+
+        <h2 id="features-cta-title">
+          Start Using These<br />
+          <span class="grad">Features Today</span>
+        </h2>
+
+        <p>
+          All core features are free — forever. No credit card, no trial period,
+          no catch. Just sign up and go.
+        </p>
+
+        <div class="cta-btn-group">
+          <a href="howtojoin.html#cta-signup" class="btn-primary" id="features-cta-btn" role="button">
+            🚀 Get Started Free <span class="btn-arrow">→</span>
+          </a>
+          <a href="howtojoin.html" class="btn-secondary" id="features-howtojoin-btn">
+            See How to Join
+          </a>
+        </div>
+
+        <div class="cta-trust" aria-label="Social proof">
+          <div class="avatars" aria-hidden="true">
+            <span title="Alex">A</span>
+            <span title="Maya">M</span>
+            <span title="Raj">R</span>
+            <span title="Sam">S</span>
+            <span title="Priya">P</span>
+          </div>
+          Join <strong>&nbsp;10,000+&nbsp;</strong> happy roommates today · No card needed
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__top">
+
+        <!-- Brand -->
+        <div class="footer__brand">
+          <a href="index.html" class="footer__brand-link" aria-label="RoomieSync Home">
+            <div class="footer__brand-icon" aria-hidden="true">🏠</div>
+            <span class="footer__brand-name">RoomieSync</span>
+          </a>
+          <p class="footer__tagline">
+            The smartest way to manage shared living.
+            Fair splits, zero drama, happy homes.
+          </p>
+          <div class="footer__socials" aria-label="Social media links">
+            <a href="#" class="footer__social-btn" id="footer-twitter" aria-label="Twitter">𝕏</a>
+            <a href="#" class="footer__social-btn" id="footer-instagram" aria-label="Instagram">📸</a>
+            <a href="#" class="footer__social-btn" id="footer-discord" aria-label="Discord">💬</a>
+            <a href="#" class="footer__social-btn" id="footer-github" aria-label="GitHub">⌨</a>
+          </div>
+        </div>
+
+        <!-- Product Links -->
+        <div class="footer__col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="features.html" id="footer-features">Features</a></li>
+            <li><a href="howtojoin.html" id="footer-howtojoin">How to Join</a></li>
+            <li><a href="#" id="footer-pricing">Pricing</a></li>
+            <li><a href="#" id="footer-changelog">Changelog</a></li>
+          </ul>
+        </div>
+
+        <!-- Support Links -->
+        <div class="footer__col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="howtojoin.html#faq" id="footer-faq">FAQ</a></li>
+            <li><a href="#" id="footer-docs">Documentation</a></li>
+            <li><a href="#" id="footer-contact">Contact Us</a></li>
+            <li><a href="#" id="footer-status">Status</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal Links -->
+        <div class="footer__col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#" id="footer-privacy">Privacy Policy</a></li>
+            <li><a href="#" id="footer-terms">Terms of Service</a></li>
+            <li><a href="#" id="footer-cookies">Cookie Policy</a></li>
+            <li><a href="#" id="footer-security">Security</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <hr class="footer__divider" />
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          © 2026 <strong>RoomieSync</strong>. Built with ❤️ for roommates everywhere.
+        </p>
+        <nav class="footer__legal" aria-label="Legal links">
+          <a href="#" id="footer-privacy-bottom">Privacy</a>
+          <a href="#" id="footer-terms-bottom">Terms</a>
+          <a href="#" id="footer-cookies-bottom">Cookies</a>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       JAVASCRIPT
+       ═══════════════════════════════════════════════════════ -->
+  <script>
+    // ── Navbar: scroll class ──────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ── Navbar: hamburger menu ────────────────────────────
+    const hamburgerBtn  = document.getElementById('hamburger-btn');
+    const mobileMenu    = document.getElementById('mobile-menu');
+
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = hamburgerBtn.classList.toggle('open');
+      mobileMenu.classList.toggle('open', isOpen);
+      hamburgerBtn.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', e => {
+      if (!navbar.contains(e.target) && !mobileMenu.contains(e.target)) {
+        hamburgerBtn.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // ── Intersection Observer: animate feature cards ──────
+    const featureCards = document.querySelectorAll('.feature-card');
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    featureCards.forEach(card => observer.observe(card));
+
+    // ── Smooth scroll for anchor links ───────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
