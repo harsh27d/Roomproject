@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>RoomieSync — Smart Roommate Management for Shared Living</title>
+  <meta name="description" content="RoomieSync makes shared living effortless. Split expenses, assign chores, manage groceries, and keep the peace — all in one beautiful dashboard." />
+  <meta name="keywords" content="roommate management, expense splitting, shared living, chore tracker, flatmate app" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="RoomieSync — Smart Roommate Management" />
+  <meta property="og:description" content="Split expenses, assign chores, and manage your shared home effortlessly." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="common.css" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVBAR
+       ═══════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="navbar__logo" aria-label="RoomieSync Home">
+      <div class="navbar__logo-icon" aria-hidden="true">🏠</div>
+      <span class="navbar__logo-text">RoomieSync</span>
+    </a>
+
+    <ul class="navbar__links" role="list">
+      <li><a href="index.html" class="active" id="nav-home" aria-current="page">Home</a></li>
+      <li><a href="features.html" id="nav-features">Features</a></li>
+      <li><a href="howtojoin.html" id="nav-howtojoin">How to Join</a></li>
+    </ul>
+
+    <a href="howtojoin.html#cta-signup" class="navbar__cta" id="nav-cta">Get Started Free</a>
+
+    <button
+      class="navbar__hamburger"
+      id="hamburger-btn"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="navbar__mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html" class="active" id="mob-home" aria-current="page">Home</a>
+    <a href="features.html" id="mob-features">Features</a>
+    <a href="howtojoin.html" id="mob-howtojoin">How to Join</a>
+    <a href="howtojoin.html#cta-signup" class="mobile-cta" id="mob-cta">🚀 Get Started Free</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MAIN CONTENT
+       ═══════════════════════════════════════════════════════ -->
+  <main class="page-wrapper">
+
+    <!-- ─── HERO ──────────────────────────────────────────── -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <!-- Floating particles -->
+      <div class="hero__particles" aria-hidden="true">
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+      </div>
+
+      <div class="hero__content">
+        <div class="hero__badge" role="status">
+          <span class="hero__badge-dot" aria-hidden="true"></span>
+          Now in Beta · Free Forever
+        </div>
+
+        <h1 class="hero__title" id="hero-title">
+          Shared Living,<br />
+          <span class="highlight">Made Simple</span>
+        </h1>
+
+        <p class="hero__subtitle">
+          Split expenses, assign chores, manage groceries, and keep the peace —
+          all in one beautiful dashboard built for modern roommates.
+        </p>
+
+        <div class="hero__actions">
+          <a href="howtojoin.html#cta-signup" class="btn-primary" id="hero-cta-primary">
+            🚀 Get Started Free <span class="btn-arrow">→</span>
+          </a>
+          <a href="features.html" class="btn-secondary" id="hero-cta-secondary">
+            Explore Features
+          </a>
+        </div>
+
+        <div class="hero__social-proof" aria-label="Social proof">
+          <div class="avatars" aria-hidden="true">
+            <span title="Alex">A</span>
+            <span title="Maya">M</span>
+            <span title="Raj">R</span>
+            <span title="Sam">S</span>
+            <span title="Priya">P</span>
+          </div>
+          <span>Trusted by <strong>10,000+</strong> roommates worldwide</span>
+        </div>
+      </div>
+
+      <!-- Floating dashboard mockup -->
+      <div class="hero__mockup" aria-hidden="true">
+        <div class="mockup-card">
+          <div class="mockup-header">
+            <span class="mockup-dot red"></span>
+            <span class="mockup-dot yellow"></span>
+            <span class="mockup-dot green"></span>
+            <span class="mockup-title">RoomieSync Dashboard</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-row">
+              <span class="mockup-emoji">💸</span>
+              <div class="mockup-info">
+                <span class="mockup-label">Electricity Bill</span>
+                <span class="mockup-amount">₹2,400 · Split 4 ways</span>
+              </div>
+              <span class="mockup-status paid">Paid</span>
+            </div>
+            <div class="mockup-row">
+              <span class="mockup-emoji">🛒</span>
+              <div class="mockup-info">
+                <span class="mockup-label">Groceries — Week 3</span>
+                <span class="mockup-amount">₹1,800 · Split 3 ways</span>
+              </div>
+              <span class="mockup-status pending">Pending</span>
+            </div>
+            <div class="mockup-row">
+              <span class="mockup-emoji">🧹</span>
+              <div class="mockup-info">
+                <span class="mockup-label">Kitchen Cleaning</span>
+                <span class="mockup-amount">Assigned to Raj</span>
+              </div>
+              <span class="mockup-status done">Done</span>
+            </div>
+            <div class="mockup-row">
+              <span class="mockup-emoji">📶</span>
+              <div class="mockup-info">
+                <span class="mockup-label">WiFi Subscription</span>
+                <span class="mockup-amount">₹999 · Split 4 ways</span>
+              </div>
+              <span class="mockup-status paid">Paid</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── STATS COUNTER ─────────────────────────────────── -->
+    <section class="stats-section" id="stats" aria-label="Platform statistics">
+      <div class="stats-inner">
+        <div class="stat-item" id="stat-1">
+          <span class="stat-number" data-target="10000">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Happy Roommates</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item" id="stat-2">
+          <span class="stat-number" data-target="2500">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Rooms Created</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item" id="stat-3">
+          <span class="stat-number" data-target="50000">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Expenses Split</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item" id="stat-4">
+          <span class="stat-number" data-target="99">0</span><span class="stat-suffix">%</span>
+          <span class="stat-label">Uptime</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FEATURES PREVIEW ──────────────────────────────── -->
+    <section class="features-preview" id="features-preview" aria-labelledby="features-preview-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label" aria-hidden="true">✨ Why RoomieSync?</span>
+          <h2 class="section-title" id="features-preview-title">
+            Everything You Need,<br />
+            <span class="accent">Nothing You Don't</span>
+          </h2>
+          <p class="section-desc">
+            Built from scratch by roommates, for roommates. Every feature solves a real pain point.
+          </p>
+        </div>
+
+        <div class="features-grid">
+
+          <div class="feature-card" id="feat-1">
+            <div class="feature-icon">💸</div>
+            <h3>Expense Splitting</h3>
+            <p>Add bills, split them instantly, and track who owes what — with smart suggestions and auto-reminders.</p>
+          </div>
+
+          <div class="feature-card" id="feat-2">
+            <div class="feature-icon">📋</div>
+            <h3>Chore Rotation</h3>
+            <p>Automatically rotate and assign household tasks. Fair, transparent, and nobody forgets.</p>
+          </div>
+
+          <div class="feature-card" id="feat-3">
+            <div class="feature-icon">🛒</div>
+            <h3>Shared Grocery List</h3>
+            <p>Add items in real-time, check them off while shopping, and never buy duplicate milk again.</p>
+          </div>
+
+          <div class="feature-card" id="feat-4">
+            <div class="feature-icon">🔔</div>
+            <h3>Smart Notifications</h3>
+            <p>Gentle reminders for bills, chores, and deadlines. Your roommates stay in the loop without the nagging.</p>
+          </div>
+
+          <div class="feature-card" id="feat-5">
+            <div class="feature-icon">📊</div>
+            <h3>Spending Insights</h3>
+            <p>Beautiful charts and monthly summaries so you know exactly where your shared money goes.</p>
+          </div>
+
+          <div class="feature-card" id="feat-6">
+            <div class="feature-icon">🔒</div>
+            <h3>Privacy First</h3>
+            <p>End-to-end encryption, no ads, and we never sell your data. Your home, your rules.</p>
+          </div>
+
+        </div>
+
+        <div class="features-cta">
+          <a href="features.html" class="btn-secondary" id="features-see-all">
+            See All Features →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── TESTIMONIALS ──────────────────────────────────── -->
+    <section class="testimonials-section" id="testimonials" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label" aria-hidden="true">💬 What People Say</span>
+          <h2 class="section-title" id="testimonials-title">
+            Loved by <span class="accent">Roommates</span>
+          </h2>
+          <p class="section-desc">
+            Real reviews from real roommates who made the switch.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card" id="testimonial-1">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="testimonial-text">
+              "RoomieSync saved our friendship. We used to fight over bills every month — now everything is split automatically and transparent."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">A</div>
+              <div>
+                <span class="testimonial-name">Ananya S.</span>
+                <span class="testimonial-role">3-person flat, Bangalore</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card" id="testimonial-2">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="testimonial-text">
+              "The chore rotation feature is genius. No more awkward conversations about whose turn it is to clean the bathroom!"
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">M</div>
+              <div>
+                <span class="testimonial-name">Marcus K.</span>
+                <span class="testimonial-role">4-person house, London</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card" id="testimonial-3">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="testimonial-text">
+              "I was skeptical at first, but the shared grocery list alone makes it worth it. Real-time updates while shopping = life changing."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">P</div>
+              <div>
+                <span class="testimonial-name">Priya R.</span>
+                <span class="testimonial-role">2-person flat, Mumbai</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FINAL CTA ─────────────────────────────────────── -->
+    <section class="cta-section" id="home-cta" aria-labelledby="home-cta-title">
+      <div class="cta-inner">
+
+        <div class="cta-emoji-row" aria-hidden="true">
+          <span>🏠</span>
+          <span>✨</span>
+          <span>🤝</span>
+        </div>
+
+        <h2 id="home-cta-title">
+          Ready to Simplify<br />
+          <span class="grad">Shared Living?</span>
+        </h2>
+
+        <p>
+          Join thousands of roommates who've ditched the spreadsheets and group chats.
+          RoomieSync is free, fast, and built for real life.
+        </p>
+
+        <div class="cta-btn-group">
+          <a href="howtojoin.html#cta-signup" class="btn-primary" id="home-cta-btn" role="button">
+            🚀 Get Started Free <span class="btn-arrow">→</span>
+          </a>
+          <a href="features.html" class="btn-secondary" id="home-features-btn">
+            See Features
+          </a>
+        </div>
+
+        <div class="cta-trust" aria-label="Social proof">
+          <div class="avatars" aria-hidden="true">
+            <span title="Alex">A</span>
+            <span title="Maya">M</span>
+            <span title="Raj">R</span>
+            <span title="Sam">S</span>
+            <span title="Priya">P</span>
+          </div>
+          Join <strong>&nbsp;10,000+&nbsp;</strong> happy roommates today · No card needed
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__top">
+
+        <!-- Brand -->
+        <div class="footer__brand">
+          <a href="index.html" class="footer__brand-link" aria-label="RoomieSync Home">
+            <div class="footer__brand-icon" aria-hidden="true">🏠</div>
+            <span class="footer__brand-name">RoomieSync</span>
+          </a>
+          <p class="footer__tagline">
+            The smartest way to manage shared living.
+            Fair splits, zero drama, happy homes.
+          </p>
+          <div class="footer__socials" aria-label="Social media links">
+            <a href="#" class="footer__social-btn" id="footer-twitter" aria-label="Twitter">𝕏</a>
+            <a href="#" class="footer__social-btn" id="footer-instagram" aria-label="Instagram">📸</a>
+            <a href="#" class="footer__social-btn" id="footer-discord" aria-label="Discord">💬</a>
+            <a href="#" class="footer__social-btn" id="footer-github" aria-label="GitHub">⌨</a>
+          </div>
+        </div>
+
+        <!-- Product Links -->
+        <div class="footer__col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="features.html" id="footer-features">Features</a></li>
+            <li><a href="howtojoin.html" id="footer-howtojoin">How to Join</a></li>
+            <li><a href="#" id="footer-pricing">Pricing</a></li>
+            <li><a href="#" id="footer-changelog">Changelog</a></li>
+          </ul>
+        </div>
+
+        <!-- Support Links -->
+        <div class="footer__col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="howtojoin.html#faq" id="footer-faq">FAQ</a></li>
+            <li><a href="#" id="footer-docs">Documentation</a></li>
+            <li><a href="#" id="footer-contact">Contact Us</a></li>
+            <li><a href="#" id="footer-status">Status</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal Links -->
+        <div class="footer__col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#" id="footer-privacy">Privacy Policy</a></li>
+            <li><a href="#" id="footer-terms">Terms of Service</a></li>
+            <li><a href="#" id="footer-cookies">Cookie Policy</a></li>
+            <li><a href="#" id="footer-security">Security</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <hr class="footer__divider" />
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          © 2026 <strong>RoomieSync</strong>. Built with ❤️ for roommates everywhere.
+        </p>
+        <nav class="footer__legal" aria-label="Legal links">
+          <a href="#" id="footer-privacy-bottom">Privacy</a>
+          <a href="#" id="footer-terms-bottom">Terms</a>
+          <a href="#" id="footer-cookies-bottom">Cookies</a>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       JAVASCRIPT
+       ═══════════════════════════════════════════════════════ -->
+  <script>
+    // ── Navbar: scroll class ──────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ── Navbar: hamburger menu ────────────────────────────
+    const hamburgerBtn  = document.getElementById('hamburger-btn');
+    const mobileMenu    = document.getElementById('mobile-menu');
+
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = hamburgerBtn.classList.toggle('open');
+      mobileMenu.classList.toggle('open', isOpen);
+      hamburgerBtn.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', e => {
+      if (!navbar.contains(e.target) && !mobileMenu.contains(e.target)) {
+        hamburgerBtn.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // ── Stats counter animation ──────────────────────────
+    const statNumbers = document.querySelectorAll('.stat-number');
+    let statsCounted = false;
+
+    function animateCounters() {
+      statNumbers.forEach(num => {
+        const target = +num.getAttribute('data-target');
+        const duration = 2000;
+        const start = performance.now();
+
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          // easeOutExpo
+          const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+          num.textContent = Math.floor(eased * target).toLocaleString();
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      });
+    }
+
+    const statsObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !statsCounted) {
+          statsCounted = true;
+          animateCounters();
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const statsSection = document.getElementById('stats');
+    if (statsSection) statsObserver.observe(statsSection);
+
+    // ── Intersection Observer: animate cards on scroll ────
+    const animatedCards = document.querySelectorAll('.feature-card, .testimonial-card');
+    const cardObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            cardObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    animatedCards.forEach(card => cardObserver.observe(card));
+
+    // ── Smooth scroll for anchor links ───────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
