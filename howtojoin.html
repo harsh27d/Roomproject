@@ -438,15 +438,25 @@
     </div>
   </footer>
 
+  <!-- Scroll to Top -->
+  <button class="scroll-top-btn" id="scroll-top" aria-label="Scroll to top">↑</button>
+
   <!-- ═══════════════════════════════════════════════════════
        JAVASCRIPT
        ═══════════════════════════════════════════════════════ -->
   <script>
     // ── Navbar: scroll class ──────────────────────────────
     const navbar = document.getElementById('navbar');
+    const scrollTopBtn = document.getElementById('scroll-top');
+
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 40);
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
     }, { passive: true });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
     // ── Navbar: hamburger menu ────────────────────────────
     const hamburgerBtn  = document.getElementById('hamburger-btn');
