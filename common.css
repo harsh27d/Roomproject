@@ -10,20 +10,20 @@
 /* ── Design Tokens ────────────────────────────────────────── */
 :root {
   /* Colors */
-  --c-primary:       #7c6aff;
-  --c-primary-light: #a78bfa;
-  --c-primary-dark:  #5b4ed4;
-  --c-accent:        #00d4aa;
-  --c-accent-light:  #34eac3;
-  --c-surface:       #1a1a2e;
-  --c-surface-dark:  #0f0f1e;
-  --c-surface-mid:   #16213e;
-  --c-surface-card:  rgba(255,255,255,0.025);
-  --c-border:        rgba(124,106,255,0.12);
-  --c-border-hover:  rgba(124,106,255,0.35);
-  --c-text:          #f0f0f5;
-  --c-text-muted:    #9ca3af;
-  --c-text-dim:      #6b7280;
+  --c-primary:       #f59e0b;
+  --c-primary-light: #fbbf24;
+  --c-primary-dark:  #d97706;
+  --c-accent:        #3b82f6;
+  --c-accent-light:  #60a5fa;
+  --c-surface:       #0f172a;
+  --c-surface-dark:  #020617;
+  --c-surface-mid:   #1e293b;
+  --c-surface-card:  rgba(255,255,255,0.03);
+  --c-border:        rgba(255,255,255,0.1);
+  --c-border-hover:  rgba(255,255,255,0.2);
+  --c-text:          #f8fafc;
+  --c-text-muted:    #cbd5e1;
+  --c-text-dim:      #94a3b8;
 
   /* Typography */
   --font-sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
