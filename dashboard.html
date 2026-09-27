@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — RoomieSync</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>" />
+  <link rel="stylesheet" href="common.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body class="dashboard-body">
+
+  <div class="dash-layout">
+    <!-- Sidebar -->
+    <aside class="dash-sidebar">
+      <div class="sidebar-logo">
+        <div class="navbar__logo-icon">🏠</div>
+        <span class="navbar__logo-text">RoomieSync</span>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a href="#" class="active"><span class="icon">📊</span> Overview</a>
+        <a href="#"><span class="icon">💸</span> Expenses</a>
+        <a href="#"><span class="icon">🧹</span> Chores</a>
+        <a href="#"><span class="icon">🛒</span> Groceries</a>
+        <a href="#"><span class="icon">🤖</span> AI Match</a>
+      </nav>
+      
+      <div class="sidebar-bottom">
+        <div class="user-card">
+          <div class="user-avatar" id="dash-avatar">U</div>
+          <div class="user-info">
+            <h4 id="dash-name">User Name</h4>
+            <p id="dash-role">Admin</p>
+          </div>
+        </div>
+        <button id="logout-btn" class="logout-btn">Log Out</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dash-main">
+      <header class="dash-header">
+        <div>
+          <h1 id="dash-room-name">My Room</h1>
+          <p>Code: <strong id="dash-room-code">ROOM-0000</strong></p>
+        </div>
+        <div class="dash-header-actions">
+          <button class="navbar__cta">+ New Expense</button>
+        </div>
+      </header>
+      
+      <!-- Stats Row -->
+      <section class="dash-stats">
+        <div class="stat-card">
+          <h3>Total Expenses (This Month)</h3>
+          <p class="stat-value">₹12,450</p>
+        </div>
+        <div class="stat-card">
+          <h3>Your Share</h3>
+          <p class="stat-value highlight">₹3,112.50</p>
+        </div>
+        <div class="stat-card">
+          <h3>Pending Chores</h3>
+          <p class="stat-value warning">2 Due Today</p>
+        </div>
+      </section>
+
+      <!-- Content Grid -->
+      <section class="dash-grid">
+        <div class="dash-panel">
+          <h3>Recent Activity</h3>
+          <ul class="activity-list">
+            <li>
+              <span class="emoji">⚡</span>
+              <div class="activity-info">
+                <strong>Electricity Bill</strong> added by Raj
+                <span class="time">2 hours ago</span>
+              </div>
+              <span class="amount">₹2,400</span>
+            </li>
+            <li>
+              <span class="emoji">🧹</span>
+              <div class="activity-info">
+                <strong>Living Room Cleanup</strong> completed by Maya
+                <span class="time">5 hours ago</span>
+              </div>
+            </li>
+            <li>
+              <span class="emoji">🛒</span>
+              <div class="activity-info">
+                <strong>Weekly Groceries</strong> added by You
+                <span class="time">Yesterday</span>
+              </div>
+              <span class="amount">₹1,800</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="dash-panel">
+          <h3>Roommates</h3>
+          <ul class="roommate-list" id="roommate-list">
+            <!-- Will be populated by JS -->
+          </ul>
+          <button class="btn-ghost" style="width:100%; margin-top:1rem;">+ Invite Roommate</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = getCurrentUser();
+      if (!user) {
+        window.location.href = 'auth.html';
+        return;
+      }
+      
+      document.getElementById('dash-name').textContent = user.name;
+      document.getElementById('dash-avatar').textContent = user.avatar || 'U';
+      document.getElementById('dash-role').textContent = user.role;
+      document.getElementById('dash-room-name').textContent = user.roomName || 'My Room';
+      document.getElementById('dash-room-code').textContent = user.roomCode || 'N/A';
+      
+      const rmList = document.getElementById('roommate-list');
+      const roommates = [user.name, "Maya", "Raj"]; // mock
+      rmList.innerHTML = roommates.map(name => `
+        <li>
+          <div class="rm-avatar">${name.charAt(0)}</div>
+          <span>${name}</span>
+        </li>
+      `).join('');
+      
+      document.getElementById('logout-btn').addEventListener('click', () => {
+        logoutUser();
+        window.location.href = 'auth.html';
+      });
+    });
+  </script>
+</body>
+</html>
