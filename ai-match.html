@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Roommate Matcher — RoomieSync</title>
+  <meta name="description" content="Use our advanced AI to find the perfect roommate based on your habits, preferences, and lifestyle." />
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+  
+  <link rel="stylesheet" href="common.css" />
+  <link rel="stylesheet" href="ai-match.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="navbar__logo">
+      <div class="navbar__logo-icon">🤖</div>
+      <span class="navbar__logo-text">RoomieSync</span>
+    </a>
+    <ul class="navbar__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="howtojoin.html">How to Join</a></li>
+      <li><a href="ai-match.html" class="active">AI Match</a></li>
+    </ul>
+    <a href="howtojoin.html#cta-signup" class="navbar__cta">Get Started Free</a>
+    <button class="navbar__hamburger" id="hamburger-btn">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="navbar__mobile-menu" id="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="howtojoin.html">How to Join</a>
+    <a href="ai-match.html" class="active">AI Match</a>
+    <a href="howtojoin.html#cta-signup" class="mobile-cta">Get Started Free</a>
+  </div>
+
+  <main class="ai-container">
+    <header class="ai-header">
+      <div class="ai-header-icon">✨</div>
+      <h1>AI Matchmaker</h1>
+      <p>Let Roomie AI find your perfect match. Chat below to get started.</p>
+    </header>
+
+    <div class="chat-window">
+      <div class="chat-history" id="chat-history">
+        <!-- AI Initial Message -->
+        <div class="message ai-message">
+          <div class="avatar">🤖</div>
+          <div class="bubble">
+            Hi! I'm Roomie AI. I can analyze thousands of profiles to find your ideal roommate. Are you a night owl or an early bird?
+          </div>
+        </div>
+      </div>
+      
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Type your answer..." autocomplete="off" />
+        <button id="send-btn" aria-label="Send">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Match Result Modal (Hidden initially) -->
+    <div class="match-modal" id="match-modal">
+      <div class="match-card">
+        <div class="match-card-header">
+          <h2>🎯 Perfect Match Found!</h2>
+          <span class="match-score">98% Match</span>
+        </div>
+        <div class="match-profile">
+          <div class="profile-pic">A</div>
+          <div class="profile-info">
+            <h3>Alex Johnson</h3>
+            <p>24 • Software Engineer • Early Bird</p>
+          </div>
+        </div>
+        <ul class="match-reasons">
+          <li>✨ Both love keeping common areas spotless</li>
+          <li>✨ Similar sleep schedules (early risers)</li>
+          <li>✨ Both enjoy quiet weekends</li>
+        </ul>
+        <button class="navbar__cta" style="width: 100%; text-align: center; margin-top: 1.5rem;" onclick="location.href='howtojoin.html'">Connect with Alex</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="ai-match.js"></script>
+  <script>
+    // Navbar scroll logic
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+    });
+    // Hamburger logic
+    const hamburger = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
