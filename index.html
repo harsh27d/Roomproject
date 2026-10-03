@@ -604,6 +604,26 @@
       });
     });
 
+    // ── 3D Scrolling Effect ─────────────────────────────
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const windowCenter = window.innerHeight / 2;
+        const distance = center - windowCenter;
+        const normalized = distance / window.innerHeight;
+        
+        const scale = 1 - Math.min(Math.abs(normalized) * 0.1, 0.1);
+        const rotateX = normalized * 5; // max 5 deg
+        const opacity = 1 - Math.min(Math.abs(normalized) * 0.5, 0.5);
+
+        sec.style.transform = `perspective(1000px) scale(${scale}) rotateX(${-rotateX}deg)`;
+        sec.style.opacity = opacity;
+        sec.style.transition = 'transform 0.1s ease-out, opacity 0.1s ease-out';
+      });
+    });
+
     // ── Parallax tilt on mockup ──────────────────────────
     const mockup = document.querySelector('.hero__mockup');
     if (mockup && window.innerWidth > 920) {

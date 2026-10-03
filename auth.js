@@ -18,6 +18,14 @@ function getAllUsers() {
   }
 }
 
+async function hashPassword(password) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 function getCurrentUser() {
   try {
     return JSON.parse(localStorage.getItem(AUTH_KEYS.SESSION)) || null;
@@ -73,11 +81,13 @@ async function registerUser({ name, email, password, roomName, roomCode, avatar 
     return { success: false, message: 'An account with this email already exists locally.' };
   }
 
+  const hashedPassword = await hashPassword(password);
+
   const newUser = {
     id: 'user_' + Date.now(),
     name: cleanName,
     email: normalizedEmail,
-    password: password,
+    password: hashedPassword,
     avatar: userAvatar,
     roomName: finalRoomName,
     roomCode: generatedRoomCode,
@@ -174,7 +184,8 @@ async function loginUser(email, password) {
 
   // 2. Fallback to Local Storage Users
   const users = getAllUsers();
-  const user = users.find(u => u.email === normalizedEmail && u.password === password);
+  const hashedPassword = await hashPassword(password);
+  const user = users.find(u => u.email === normalizedEmail && u.password === hashedPassword);
 
   if (!user) {
     return { success: false, message: 'Invalid email or password. Please check your credentials or create an account.' };
